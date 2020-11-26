@@ -52,48 +52,48 @@
 
   ${"PRACTICE_TASK_$task[0]"} = array(
     "id"  => "practice_task_$task[0]",
-    "next" => "trial_task_1_$stimuli[0]",
+    "next" => "trial_task_$serial[0]_$stimuli[0]",
     "button" => "Next",
     "page"  => "pages/questions/task-$task[0].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_1_$stimuli[0]"} = array(
-    "id"  => "trial_task_1_$stimuli[0]",
+  ${"TRIAL_TASK_$serial[0]_$stimuli[0]"} = array(
+    "id"  => "trial_task_$serial[0]_$stimuli[0]",
     "next" => "practice_task_$task[1]",
     "button" => "Next",
-    "page"  => "pages/questions/trial-1-$stimuli[0].php",
+    "page"  => "pages/questions/trial-$serial[0]-$stimuli[0].php",
     "disabled"	=> false
   );
   ${"PRACTICE_TASK_$task[1]"} = array(
     "id"  => "practice_task_$task[1]",
-    "next" => "trial_task_2_$stimuli[0]",
+    "next" => "trial_task_$serial[1]_$stimuli[0]",
     "button" => "Next",
     "page"  => "pages/questions/task-$task[1].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_2_$stimuli[0]"} = array(
-    "id"  => "trial_task_2_$stimuli[0]",
+  ${"TRIAL_TASK_$serial[1]_$stimuli[0]"} = array(
+    "id"  => "trial_task_$serial[1]_$stimuli[0]",
     "next" => "practice_task_$task[2]",
     "button" => "Next",
-    "page"  => "pages/questions/trial-2-$stimuli[0].php",
+    "page"  => "pages/questions/trial-$serial[1]-$stimuli[0].php",
     "disabled"	=> false
   );
 
   ${"PRACTICE_TASK_$task[2]"} = array(
     "id"  => "practice_task_$task[2]",
-    "next" => "trial_task_3_$stimuli[0]",
+    "next" => "trial_task_$serial[2]_$stimuli[0]",
     "button" => "Next",
     "page"  => "pages/questions/task-$task[2].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_3_$stimuli[0]"} = array(
-    "id"  => "trial_task_3_$stimuli[0]",
+  ${"TRIAL_TASK_$serial[2]_$stimuli[0]"} = array(
+    "id"  => "trial_task_$serial[2]_$stimuli[0]",
     "next" => "vis",
     "button" => "Next",
-    "page"  => "pages/questions/trial-3-$stimuli[0].php",
+    "page"  => "pages/questions/trial-$serial[2]-$stimuli[0].php",
     "disabled"	=> false
   );
 
@@ -195,11 +195,11 @@
           //  $TRIAL_QUESTIONS,
           //  $EXPERIMENT_SETUP,
           ${"PRACTICE_TASK_$task[0]"}, 
-          ${"TRIAL_TASK_1_$stimuli[0]"},
+          ${"TRIAL_TASK_$serial[0]_$stimuli[0]"},
           ${"PRACTICE_TASK_$task[1]"}, 
-          ${"TRIAL_TASK_2_$stimuli[0]"}, 
+          ${"TRIAL_TASK_$serial[1]_$stimuli[0]"}, 
           ${"PRACTICE_TASK_$task[2]"}, 
-          ${"TRIAL_TASK_3_$stimuli[0]"}
+          ${"TRIAL_TASK_$serial[2]_$stimuli[0]"}
           //  $PRACTICE_TASK_T1,
           //  $TRIAL_TASK_S1
           

@@ -140,54 +140,63 @@ if(!empty($trial_sequence)){
     {
         case 1:
             $task = array("T1", "T2", "T3"); 
+            $serial = array(1,2,3);
             $stimuli = array("S1");
             $image_start_end = array(0,39); 
             var_dump("the value is either 1.");
             break;
         case 2:
-            $task = array("T1", "T2", "T3"); 
+            $task = array("T1", "T2", "T3");
+            $serial = array(1,2,3); 
             $stimuli = array("S2");
             $image_start_end = array(40,79);  
             var_dump("the value is either 2.");
             break;
         case 3:
-            $task = array("T1", "T2", "T3"); 
+            $task = array("T1", "T2", "T3");
+            $serial = array(1,2,3); 
             $stimuli = array("S3");
             $image_start_end = array(80,119);  
             var_dump("the value is either 3.");
             break;
         case 4:
-            $task = array("T2", "T3", "T1"); 
+            $task = array("T2", "T3", "T1");
+            $serial = array(2,3,1); 
             $stimuli = array("S1");
             $image_start_end = array(40,79);   
             var_dump("the value is either 4.");
             break;
         case 5:
             $task = array("T2", "T3", "T1"); 
+            $serial = array(2,3,1); 
             $stimuli = array("S2");
             $image_start_end = array(80,119);   
             var_dump("the value is either 5.");
             break;
         case 6:
-            $task = array("T2", "T3", "T1"); 
+            $task = array("T2", "T3", "T1");
+            $serial = array(2,3,1);  
             $stimuli = array("S3");
             $image_start_end = array(0,39); 
             var_dump("the value is either 6.");
             break;
         case 7:
             $task = array("T3", "T1", "T2"); 
+            $serial = array(3,1,2); 
             $stimuli = array("S1");
             $image_start_end = array(80,119);    
             var_dump("the value is either 7.");
             break;
         case 8:
-            $task = array("T3", "T1", "T2"); 
+            $task = array("T3", "T1", "T2");
+            $serial = array(3,1,2);  
             $stimuli = array("S2");
             $image_start_end = array(0,39);  
             var_dump("the value is either 8.");
             break;
         case 9:
-            $task = array("T3", "T1", "T2"); 
+            $task = array("T3", "T1", "T2");
+            $serial = array(3,1,2);  
             $stimuli = array("S3");
             $image_start_end = array(40,79);    
             var_dump("the value is either 9.");
