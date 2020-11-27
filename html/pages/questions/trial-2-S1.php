@@ -37,6 +37,50 @@
 }
 
 
+#gif_trial_images_T2S1{  
+    width: 213px;
+    height: 213px;
+    border: 2px solid black;
+    margin: 10px 0px 10px 0;
+    position: relative; /* added */
+    border-top: 15px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 28px solid black;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 18px solid black;
+    border-right: 18px solid black; 
+    background: black;
+    } 
+    #gif_trial_images_T2S1 img{
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      margin: auto;
+      top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#gif_trial_images_T2S1 .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#gif_trial_images_T2S1 .btn:hover {
+  background-color: black;
+}
+
 </style>
 
 
@@ -94,34 +138,38 @@
       </div>
       
       <div class="d-flex justify-content-center" style="margin-top: 10px;">
-         <div class="watch-container">
                     <input type="hidden" id="current_trial_image_name_T2S1" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
                             Task 2 S1
+                            <!-- <div id="gif_trial_images_T2S1">
+                                   <img  src="img/exp_start.gif"/>
+                                   <button class="btn" id="btn_trial_images_T2S1">Start!</button>
+                             </div> 
+                             <div id="div_trial_images_T2S1" style="display:none">  -->
                             <?php
                                     for( $i_t2s1 = 0; $i_t2s1 < $total_image_T2S1; $i_t2s1++)
                                     {  ?>                                     
                                         <div class="trial_images_T2S1" id="T2S1_<?php echo $i_t2s1; ?>_<?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>">
                                           <img id="img_T2S1_<?php echo $i_t2s1 ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" src="img/<?php echo $chart_type_T2S1; ?>/<?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>.png"/>
-                                            <div class="d-flex justify-content-center">
+                                            <!-- <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_correct_T2S1_<?php echo $i_t2s1; ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" style="">Correct!</div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_error_T2S1_<?php echo $i_t2s1; ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" style="">Wrong!</div>
-                                            </div>
+                                            </div> -->
                                         </div>  
                               <?php } ?>
-                            </div>
-                        </div>
-          </div>
+                              <!-- </div> -->
+                         </div>
+                    </div>
       </div>
 
 
       <div class="d-flex justify-content-center">
-            <div class = "btn-group-justified btn-group-lg btn-group-vertical">
-              <button type="button" id="btn_saturday_T2S1" class="btn btn-info">Sat</button>
-              <button type="button" id="btn_sunday_T2S1" class="btn btn-info" style="margin-top: 15px;">Sun</button>
+            <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+              <button type="button" id="btn_yes_T2S1" class="btn btn-info">Yes</button>
+              <button type="button" id="btn_no_T2S1" class="btn btn-info" style="margin-right: 15px;">No</button>
             </div>
     </div>
 
@@ -144,6 +192,12 @@ var feedback_time_T2S1 = [];
 
 $(document).ready(function() {
 
+  // setTimeout(function() {
+  //   $("#gif_trial_images_T2S1").hide();
+  //   }, 4000);
+  //   $('#div_trial_images_T2S1').delay(4000).show(0);  
+
+
 var time_counter_0_T2S1 = performance.now();
 set_current_time_T2S1(time_counter_0_T2S1);
 console.log("Initital time counter", time_counter_0_T2S1);
@@ -157,12 +211,12 @@ function canvas_image_touch_deactive_T2S1(){
   $('.trial_images_T2S1').unbind('click touch');  
 }
 function button_enable_T2S1(){
-    $('#btn_saturday_T2S1').prop('disabled', false);
-    $('#btn_sunday_T2S1').prop('disabled', false);
+    $('#btn_yes_T2S1').prop('disabled', false);
+    $('#btn_no_T2S1').prop('disabled', false);
 }
 function button_disable_T2S1(){
-    $('#btn_saturday_T2S1').prop('disabled', true);
-    $('#btn_sunday_T2S1').prop('disabled', true);     
+    $('#btn_yes_T2S1').prop('disabled', true);
+    $('#btn_no_T2S1').prop('disabled', true);     
 }
 
 function show_images_T2S1(n){
@@ -194,7 +248,7 @@ function next_images_T2S1(n){
     }
 }
 
-$("#btn_sunday_T2S1").click(function(){
+$("#btn_no_T2S1").click(function(){
     var current_trial_image_name_T2S1 = $('#current_trial_image_name_T2S1').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
@@ -253,7 +307,7 @@ $("#btn_sunday_T2S1").click(function(){
    
 }); 
 
-$("#btn_saturday_T2S1").click(function(){
+$("#btn_yes_T2S1").click(function(){
     var current_trial_image_name_T2S1 = $('#current_trial_image_name_T2S1').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")

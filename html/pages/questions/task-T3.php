@@ -86,13 +86,13 @@ weekdays (Mon-Fri)?</h2>
                             <?php
                                     for( $i_T3 = 0; $i_T3 < $total_image_T3; $i_T3++)
                                     {  ?>                                     
-                                        <div class="trial_images_T3" id="T3_<?php echo $i_T3; ?>_<?php echo $practice_trial_shuffle_T3[$i_T3] ?>">
-                                          <img id="img_T3_<?php echo $i_T3 ?><?php echo $practice_trial_shuffle_T3[$i_T3] ?>" src="img/<?php echo $chart_type_T3 ?>/<?php echo $practice_trial_shuffle_T3[$i_T3] ?>.png"/>
+                                        <div class="trial_images_T3" id="T3-<?php echo $i_T3; ?>-<?php echo $practice_trial_shuffle_T3[$i_T3] ?>">
+                                          <img id="img_T3-<?php echo $i_T3 ?>-<?php echo $practice_trial_shuffle_T3[$i_T3] ?>" src="img/<?php echo $chart_type_T3 ?>/<?php echo $practice_trial_shuffle_T3[$i_T3] ?>.png"/>
                                             <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_correct_T3_<?php echo $i_T3; ?><?php echo $practice_trial_shuffle_T3[$i_T3] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
+                                                <div class="caption center-block" id="feedback_correct_T3-<?php echo $i_T3; ?>-<?php echo $practice_trial_shuffle_T3[$i_T3] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
                                             </div>
                                             <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_error_T3_<?php echo $i_T3; ?><?php echo $practice_trial_shuffle_T3[$i_T3] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
+                                                <div class="caption center-block" id="feedback_error_T3-<?php echo $i_T3; ?>-<?php echo $practice_trial_shuffle_T3[$i_T3] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
                                             </div>
                                         </div>  
                               <?php } ?>
@@ -102,9 +102,9 @@ weekdays (Mon-Fri)?</h2>
 
 
       <div class="d-flex justify-content-center">
-            <div class = "btn-group-justified btn-group-lg btn-group-vertical">
-              <button type="button" id="btn_saturday_T3" class="btn btn-info">Sat</button>
-              <button type="button" id="btn_sunday_T3" class="btn btn-info" style="margin-top: 15px;">Sun</button>
+            <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+              <button type="button" id="btn_saturday_T3" class="btn btn-info">Yes</button>
+              <button type="button" id="btn_sunday_T3" class="btn btn-info" style="margin-right: 15px;">No</button>
             </div>
     </div>
 
@@ -190,8 +190,8 @@ $(document).ready(function() {
         $(".trial_images_T3").on('click touch', function () {
             next_images_T3(1);
             // feedback_hide_T1();
-            $("#feedback_correct_T3_"+current_trial_image_name_T3).hide();
-            $("#feedback_error_T3_"+current_trial_image_name_T3).hide();
+            $("#feedback_correct_"+current_trial_image_name_T3).hide();
+            $("#feedback_error_"+current_trial_image_name_T3).hide();
          });
 
      
@@ -206,30 +206,30 @@ $(document).ready(function() {
         sequence_T3.push(image_number);
         trial_T3.push(image_index_T3);
 
-        var sliced_current_trial_image_name = current_trial_image_name_T3.slice(current_trial_image_name_T3.lastIndexOf('t2') + 2);
+        var sliced_current_trial_image_name = current_trial_image_name_T3.slice(current_trial_image_name_T3.lastIndexOf('t3') + 2);
         var feedback_match = sliced_current_trial_image_name.substr(0, 1);
         if(feedback_match === 'r'){
           
           // var element = document.querySelector('[id^="img_T3_"]').id;
-           $("#img_T3_"+current_trial_image_name_T3).css({"border-color": "green", 
+           $("#img_"+current_trial_image_name_T3).css({"border-color": "green", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T3_"+current_trial_image_name_T3).show();
+          $("#feedback_correct_"+current_trial_image_name_T3).show();
           feedback_T3.push("correct");
           feedback_time_T3.push(time_counter_left - last_time_count);
         }else{
 
-          $("#img_T3_"+current_trial_image_name_T3).css({"border-color": "red", 
+          $("#img_"+current_trial_image_name_T3).css({"border-color": "red", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
-          $("#feedback_error_T3_"+current_trial_image_name_T3).show();
+          $("#feedback_error_"+current_trial_image_name_T3).show();
           feedback_T3.push("error");
           feedback_time_T3.push(time_counter_left - last_time_count);
         }
@@ -248,8 +248,8 @@ $(document).ready(function() {
         button_disable_T3();
         $(".trial_images_T3").on('click touch', function () {
             next_images_T3(1);
-            $("#feedback_correct_T3_"+current_trial_image_name_T3).hide();
-            $("#feedback_error_T3_"+current_trial_image_name_T3).hide();
+            $("#feedback_correct_"+current_trial_image_name_T3).hide();
+            $("#feedback_error_"+current_trial_image_name_T3).hide();
          });
       
         file_T3.push(current_trial_image_name_T3);
@@ -263,29 +263,29 @@ $(document).ready(function() {
         sequence_T3.push(image_number);
         trial_T3.push(image_index_T3);
 
-        var sliced_current_trial_image_name = current_trial_image_name_T3.slice(current_trial_image_name_T3.lastIndexOf('t2') + 2);
+        var sliced_current_trial_image_name = current_trial_image_name_T3.slice(current_trial_image_name_T3.lastIndexOf('t3') + 2);
 
         var feedback_match = sliced_current_trial_image_name.substr(0, 1);
         if(feedback_match === 'l'){
-          $("#img_T3_"+current_trial_image_name_T3).css({"border-color": "green", 
+          $("#img_"+current_trial_image_name_T3).css({"border-color": "green", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T3_"+current_trial_image_name_T3).show();
+          $("#feedback_correct_"+current_trial_image_name_T3).show();
           feedback_T3.push("correct");
           feedback_time_T3.push(time_counter_left - last_time_count);
         }else{
-          $("#img_T3_"+current_trial_image_name_T3).css({"border-color": "red", 
+          $("#img_"+current_trial_image_name_T3).css({"border-color": "red", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_error_T3_"+current_trial_image_name_T3).show();
+          $("#feedback_error_"+current_trial_image_name_T3).show();
           feedback_T3.push("error");
           feedback_time_T3.push(time_counter_left - last_time_count);
         }

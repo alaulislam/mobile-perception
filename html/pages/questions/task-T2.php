@@ -89,13 +89,13 @@
                             <?php
                                     for( $i_t2 = 0; $i_t2 < $total_image_T2; $i_t2++)
                                     {  ?>                                     
-                                        <div class="trial_images_T2" id="T2_<?php echo $i_t2; ?>_<?php echo $practice_trial_shuffle_T2[$i_t2] ?>">
-                                          <img id="img_T2_<?php echo $i_t2 ?><?php echo $practice_trial_shuffle_T2[$i_t2] ?>" src="img/<?php echo $chart_type_T2 ?>/<?php echo $practice_trial_shuffle_T2[$i_t2] ?>.png"/>
+                                        <div class="trial_images_T2" id="T2-<?php echo $i_t2; ?>-<?php echo $practice_trial_shuffle_T2[$i_t2] ?>">
+                                          <img id="img_T2-<?php echo $i_t2 ?>-<?php echo $practice_trial_shuffle_T2[$i_t2] ?>" src="img/<?php echo $chart_type_T2 ?>/<?php echo $practice_trial_shuffle_T2[$i_t2] ?>.png"/>
                                             <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_correct_T2_<?php echo $i_t2; ?><?php echo $practice_trial_shuffle_T2[$i_t2] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
+                                                <div class="caption center-block" id="feedback_correct_T2-<?php echo $i_t2; ?>-<?php echo $practice_trial_shuffle_T2[$i_t2] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
                                             </div>
                                             <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_error_T2_<?php echo $i_t2; ?><?php echo $practice_trial_shuffle_T2[$i_t2] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
+                                                <div class="caption center-block" id="feedback_error_T2-<?php echo $i_t2; ?>-<?php echo $practice_trial_shuffle_T2[$i_t2] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
                                             </div>
                                         </div>  
                               <?php } ?>
@@ -106,9 +106,9 @@
 
 
       <div class="d-flex justify-content-center">
-            <div class = "btn-group-justified btn-group-lg btn-group-vertical">
-              <button type="button" id="btn_saturday_T2" class="btn btn-info">Sat</button>
-              <button type="button" id="btn_sunday_T2" class="btn btn-info" style="margin-top: 15px;">Sun</button>
+            <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+              <button type="button" id="btn_yes_T2" class="btn btn-info">Yes</button>
+              <button type="button" id="btn_no_T2" class="btn btn-info" style="margin-right: 15px;">No</button>
             </div>
     </div>
 
@@ -146,12 +146,12 @@ $(document).ready(function() {
       $('.trial_images_T2').unbind('click touch');  
     }
     function button_enable_T2(){
-        $('#btn_saturday_T2').prop('disabled', false);
-        $('#btn_sunday_T2').prop('disabled', false);
+        $('#btn_yes_T2').prop('disabled', false);
+        $('#btn_no_T2').prop('disabled', false);
     }
     function button_disable_T2(){
-        $('#btn_saturday_T2').prop('disabled', true);
-        $('#btn_sunday_T2').prop('disabled', true);     
+        $('#btn_yes_T2').prop('disabled', true);
+        $('#btn_no_T2').prop('disabled', true);     
     }
 
     function show_images_T2(n){
@@ -182,8 +182,9 @@ $(document).ready(function() {
         }
     }
 
-    $("#btn_sunday_T2").click(function(){
+    $("#btn_no_T2").click(function(){
         var current_trial_image_name_T2 = $('#current_trial_image_name_T2').val();
+       
         time_counter_left = performance.now();
         // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
         if( image_index_T2 === trial_image_count_T2){
@@ -193,8 +194,8 @@ $(document).ready(function() {
         $(".trial_images_T2").on('click touch', function () {
             next_images_T2(1);
             // feedback_hide_T1();
-            $("#feedback_correct_T2_"+current_trial_image_name_T2).hide();
-            $("#feedback_error_T2_"+current_trial_image_name_T2).hide();
+            $("#feedback_correct_"+current_trial_image_name_T2).hide();
+            $("#feedback_error_"+current_trial_image_name_T2).hide();
          });
 
      
@@ -211,28 +212,29 @@ $(document).ready(function() {
 
         var sliced_current_trial_image_name = current_trial_image_name_T2.slice(current_trial_image_name_T2.lastIndexOf('t2') + 2);
         var feedback_match = sliced_current_trial_image_name.substr(0, 1);
+      
         if(feedback_match === 'r'){
           
           // var element = document.querySelector('[id^="img_T2_"]').id;
-           $("#img_T2_"+current_trial_image_name_T2).css({"border-color": "green", 
+           $("#img_"+current_trial_image_name_T2).css({"border-color": "green", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T2_"+current_trial_image_name_T2).show();
+          $("#feedback_correct_"+current_trial_image_name_T2).show();
           feedback_T2.push("correct");
           feedback_time_T2.push(time_counter_left - last_time_count);
         }else{
 
-          $("#img_T2_"+current_trial_image_name_T2).css({"border-color": "red", 
+          $("#img_"+current_trial_image_name_T2).css({"border-color": "red", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
-          $("#feedback_error_T2_"+current_trial_image_name_T2).show();
+          $("#feedback_error_"+current_trial_image_name_T2).show();
           feedback_T2.push("error");
           feedback_time_T2.push(time_counter_left - last_time_count);
         }
@@ -241,7 +243,7 @@ $(document).ready(function() {
        
     }); 
 
-    $("#btn_saturday_T2").click(function(){
+    $("#btn_yes_T2").click(function(){
         var current_trial_image_name_T2 = $('#current_trial_image_name_T2').val();
         time_counter_left = performance.now();
         // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
@@ -251,8 +253,8 @@ $(document).ready(function() {
         button_disable_T2();
         $(".trial_images_T2").on('click touch', function () {
             next_images_T2(1);
-            $("#feedback_correct_T2_"+current_trial_image_name_T2).hide();
-            $("#feedback_error_T2_"+current_trial_image_name_T2).hide();
+            $("#feedback_correct_"+current_trial_image_name_T2).hide();
+            $("#feedback_error_"+current_trial_image_name_T2).hide();
          });
 
       
@@ -271,25 +273,25 @@ $(document).ready(function() {
 
         var feedback_match = sliced_current_trial_image_name.substr(0, 1);
         if(feedback_match === 'l'){
-          $("#img_T2_"+current_trial_image_name_T2).css({"border-color": "green", 
+          $("#img_"+current_trial_image_name_T2).css({"border-color": "green", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T2_"+current_trial_image_name_T2).show();
+          $("#feedback_correct_"+current_trial_image_name_T2).show();
           feedback_T2.push("correct");
           feedback_time_T2.push(time_counter_left - last_time_count);
         }else{
-          $("#img_T2_"+current_trial_image_name_T2).css({"border-color": "red", 
+          $("#img_"+current_trial_image_name_T2).css({"border-color": "red", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_error_T2_"+current_trial_image_name_T2).show();
+          $("#feedback_error_"+current_trial_image_name_T2).show();
           feedback_T2.push("error");
           feedback_time_T2.push(time_counter_left - last_time_count);
         }

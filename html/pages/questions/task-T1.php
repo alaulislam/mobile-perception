@@ -91,27 +91,27 @@
       </div>
       
       <div class="d-flex justify-content-center" style="margin-top: 10px;">
-                    <input type="hidden" id="current_trial_image_name_T1" name="current_trial_image_name_T1" value="">
+              <input type="hidden" id="current_trial_image_name_T1" name="current_trial_image_name_T1" value="">
                 <div class="slideshow-container">
-                            <div class="slideshow-inner justify-content-center ">
+                            <div class="slideshow-inner justify-content-center">
                             Task 1
                             <!-- <div class="trial_images_T1" id="xxx">
                                           <img  src="img/S1/s1_20_t1rt2lt3l.png"/>
                              </div>   -->
-                            <?php
-                                    for( $i_t1 = 0; $i_t1 < $total_image_T1; $i_t1++)
-                                    {  ?>                                     
-                                        <div class="trial_images_T1" id="<?php echo $i_t1; ?><?php echo $practice_trial_shuffle_T1[$i_t1] ?>">
-                                          <img id="img-<?php echo $i_t1 ?><?php echo $practice_trial_shuffle_T1[$i_t1] ?>" src="img/<?php echo $chart_type_T1 ?>/<?php echo $practice_trial_shuffle_T1[$i_t1] ?>.png"/>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_correct_T1_<?php echo $i_t1; ?><?php echo $practice_trial_shuffle_T1[$i_t1] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block" id="feedback_error_T1_<?php echo $i_t1; ?><?php echo $practice_trial_shuffle_T1[$i_t1] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
-                                            </div>
-                                        </div>  
-                              <?php } ?>
-                             
+                              <?php
+                                      for( $i_t1 = 0; $i_t1 < $total_image_T1; $i_t1++)
+                                      {  ?>                                     
+                                          <div class="trial_images_T1" id="T1-<?php echo $i_t1; ?>-<?php echo $practice_trial_shuffle_T1[$i_t1] ?>">
+                                            <img id="img-T1-<?php echo $i_t1 ?>-<?php echo $practice_trial_shuffle_T1[$i_t1] ?>" src="img/<?php echo $chart_type_T1 ?>/<?php echo $practice_trial_shuffle_T1[$i_t1] ?>.png"/>
+                                              <div class="d-flex justify-content-center">
+                                                  <div class="caption center-block" id="feedback_correct_T1-<?php echo $i_t1; ?>-<?php echo $practice_trial_shuffle_T1[$i_t1] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
+                                              </div>
+                                              <div class="d-flex justify-content-center">
+                                                  <div class="caption center-block" id="feedback_error_T1-<?php echo $i_t1; ?>-<?php echo $practice_trial_shuffle_T1[$i_t1] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
+                                              </div>
+                                          </div>  
+                                <?php } ?>
+                                
                             </div>
                          
                  </div>
@@ -206,8 +206,8 @@ $(document).ready(function() {
         $(".trial_images_T1").on('click touch', function () {
             next_images_T1(1);
             // feedback_hide_T1();
-            $("#feedback_correct_T1_"+current_trial_image_name_T1).hide();
-            $("#feedback_error_T1_"+current_trial_image_name_T1).hide();
+            $("#feedback_correct_"+current_trial_image_name_T1).hide();
+            $("#feedback_error_"+current_trial_image_name_T1).hide();
          });
 
      
@@ -234,7 +234,7 @@ $(document).ready(function() {
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T1_"+current_trial_image_name_T1).show();
+          $("#feedback_correct_"+current_trial_image_name_T1).show();
           feedback_T1.push("correct");
           feedback_time_T1.push(time_counter_left - last_time_count);
         }else{
@@ -245,7 +245,7 @@ $(document).ready(function() {
             //  "opacity":"0.5",
              "filter":"alpha(opacity=90)",
              });
-          $("#feedback_error_T1_"+current_trial_image_name_T1).show();
+          $("#feedback_error_"+current_trial_image_name_T1).show();
           feedback_T1.push("error");
           feedback_time_T1.push(time_counter_left - last_time_count);
         }
@@ -264,8 +264,8 @@ $(document).ready(function() {
         button_disable_T1();
         $(".trial_images_T1").on('click touch', function () {
             next_images_T1(1);
-            $("#feedback_correct_T1_"+current_trial_image_name_T1).hide();
-            $("#feedback_error_T1_"+current_trial_image_name_T1).hide();
+            $("#feedback_correct_"+current_trial_image_name_T1).hide();
+            $("#feedback_error_"+current_trial_image_name_T1).hide();
          });
 
       
@@ -291,7 +291,7 @@ $(document).ready(function() {
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_correct_T1_"+current_trial_image_name_T1).show();
+          $("#feedback_correct_"+current_trial_image_name_T1).show();
           feedback_T1.push("correct");
           feedback_time_T1.push(time_counter_left - last_time_count);
         }else{
@@ -302,7 +302,7 @@ $(document).ready(function() {
              "filter":"alpha(opacity=90)",
              });
 
-          $("#feedback_error_T1_"+current_trial_image_name_T1).show();
+          $("#feedback_error_"+current_trial_image_name_T1).show();
           feedback_T1.push("error");
           feedback_time_T1.push(time_counter_left - last_time_count);
         }

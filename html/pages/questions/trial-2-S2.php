@@ -103,12 +103,12 @@
                                     {  ?>                                     
                                         <div class="trial_images_T2S2" id="T2S2_<?php echo $i_t2s2; ?>_<?php echo $practice_trial_shuffle_T2S2[$i_t2s2] ?>">
                                           <img id="img_T2S2_<?php echo $i_t2s2 ?><?php echo $practice_trial_shuffle_T2S2[$i_t2s2] ?>" src="img/<?php echo $chart_type_T2S2; ?>/<?php echo $practice_trial_shuffle_T2S2[$i_t2s2] ?>.png"/>
-                                            <div class="d-flex justify-content-center">
+                                            <!-- <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_correct_T2S2_<?php echo $i_t2s2; ?><?php echo $practice_trial_shuffle_T2S2[$i_t2s2] ?>" style="">Correct!</div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_error_T2S2_<?php echo $i_t2s2; ?><?php echo $practice_trial_shuffle_T2S2[$i_t2s2] ?>" style="">Wrong!</div>
-                                            </div>
+                                            </div> -->
                                         </div>  
                               <?php } ?>
                             </div>
@@ -118,9 +118,9 @@
 
 
       <div class="d-flex justify-content-center">
-            <div class = "btn-group-justified btn-group-lg btn-group-vertical">
-              <button type="button" id="btn_saturday_T2S2" class="btn btn-info">Sat</button>
-              <button type="button" id="btn_sunday_T2S2" class="btn btn-info" style="margin-top: 15px;">Sun</button>
+            <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+              <button type="button" id="btn_yes_T2S2" class="btn btn-info">Yes</button>
+              <button type="button" id="btn_no_T2S2" class="btn btn-info" style="margin-right: 15px;">No</button>
             </div>
     </div>
 
@@ -156,12 +156,12 @@ function canvas_image_touch_deactive_T2S2(){
   $('.trial_images_T2S2').unbind('click touch');  
 }
 function button_enable_T2S2(){
-    $('#btn_saturday_T2S2').prop('disabled', false);
-    $('#btn_sunday_T2S2').prop('disabled', false);
+    $('#btn_yes_T2S2').prop('disabled', false);
+    $('#btn_no_T2S2').prop('disabled', false);
 }
 function button_disable_T2S2(){
-    $('#btn_saturday_T2S2').prop('disabled', true);
-    $('#btn_sunday_T2S2').prop('disabled', true);     
+    $('#btn_yes_T2S2').prop('disabled', true);
+    $('#btn_no_T2S2').prop('disabled', true);     
 }
 
 function show_images_T2S2(n){
@@ -193,7 +193,7 @@ function next_images_T2S2(n){
     }
 }
 
-$("#btn_sunday_T2S2").click(function(){
+$("#btn_no_T2S2").click(function(){
     var current_trial_image_name_T2S2 = $('#current_trial_image_name_T2S2').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
@@ -252,7 +252,7 @@ $("#btn_sunday_T2S2").click(function(){
    
 }); 
 
-$("#btn_saturday_T2S2").click(function(){
+$("#btn_yes_T2S2").click(function(){
     var current_trial_image_name_T2S2 = $('#current_trial_image_name_T2S2').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")

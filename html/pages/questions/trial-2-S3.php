@@ -94,7 +94,6 @@
       </div>
       
       <div class="d-flex justify-content-center" style="margin-top: 10px;">
-         <div class="watch-container">
                     <input type="hidden" id="current_trial_image_name_T2S3" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
@@ -102,26 +101,25 @@
                             <?php
                                     for( $i_t2s3 = 0; $i_t2s3 < $total_image_T2S3; $i_t2s3++)
                                     {  ?>                                     
-                                        <div class="trial_images_T2S3" id="T2S3_<?php echo $i_t2s3; ?>_<?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>">
+                                        <div class="trial_images_T2S3" id="T2S3_<?php echo $i_t2s3; ?>_<?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>" >
                                           <img id="img_T2S3_<?php echo $i_t2s3 ?><?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>" src="img/<?php echo $chart_type_T2S3; ?>/<?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>.png"/>
-                                            <div class="d-flex justify-content-center">
+                                            <!-- <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_correct_T2S3_<?php echo $i_t2s3; ?><?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>" style="">Correct!</div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="caption center-block feed-caption" id="feedback_error_T2S3_<?php echo $i_t2s3; ?><?php echo $practice_trial_shuffle_T2S3[$i_t2s3] ?>" style="">Wrong!</div>
-                                            </div>
+                                            </div> -->
                                         </div>  
                               <?php } ?>
                             </div>
                         </div>
-          </div>
       </div>
 
 
       <div class="d-flex justify-content-center">
-            <div class = "btn-group-justified btn-group-lg btn-group-vertical">
-              <button type="button" id="btn_saturday_T2S3" class="btn btn-info">Sat</button>
-              <button type="button" id="btn_sunday_T2S3" class="btn btn-info" style="margin-top: 15px;">Sun</button>
+            <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+              <button type="button" id="btn_yes_T2S3" class="btn btn-info">Yes</button>
+              <button type="button" id="btn_no_T2S3" class="btn btn-info" style="margin-right: 15px;">No</button>
             </div>
     </div>
 
@@ -157,12 +155,12 @@ function canvas_image_touch_deactive_T2S3(){
   $('.trial_images_T2S3').unbind('click touch');  
 }
 function button_enable_T2S3(){
-    $('#btn_saturday_T2S3').prop('disabled', false);
-    $('#btn_sunday_T2S3').prop('disabled', false);
+    $('#btn_yes_T2S3').prop('disabled', false);
+    $('#btn_no_T2S3').prop('disabled', false);
 }
 function button_disable_T2S3(){
-    $('#btn_saturday_T2S3').prop('disabled', true);
-    $('#btn_sunday_T2S3').prop('disabled', true);     
+    $('#btn_yes_T2S3').prop('disabled', true);
+    $('#btn_no_T2S3').prop('disabled', true);     
 }
 
 function show_images_T2S3(n){
@@ -194,7 +192,7 @@ function next_images_T2S3(n){
     }
 }
 
-$("#btn_sunday_T2S3").click(function(){
+$("#btn_no_T2S3").click(function(){
     var current_trial_image_name_T2S3 = $('#current_trial_image_name_T2S3').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
@@ -253,7 +251,7 @@ $("#btn_sunday_T2S3").click(function(){
    
 }); 
 
-$("#btn_saturday_T2S3").click(function(){
+$("#btn_yes_T2S3").click(function(){
     var current_trial_image_name_T2S3 = $('#current_trial_image_name_T2S3').val();
     time_counter_left = performance.now();
     // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")

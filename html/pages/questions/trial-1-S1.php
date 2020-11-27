@@ -37,6 +37,52 @@
 }
 
 
+#gif_trial_images_T1S1{  
+    width: 213px;
+    height: 213px;
+    border: 2px solid black;
+    margin: 10px 0px 10px 0;
+    position: relative; /* added */
+    border-top: 15px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 28px solid black;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 18px solid black;
+    border-right: 18px solid black; 
+    background: black;
+    } 
+    #gif_trial_images_T1S1 img{
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      margin: auto;
+      top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#gif_trial_images_T1S1 .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#gif_trial_images_T1S1 .btn:hover {
+  background-color: black;
+}
+
+
+
 </style>
 
 
@@ -94,27 +140,31 @@
       </div>
       
       <div class="d-flex justify-content-center" style="margin-top: 10px;">
-         <div class="watch-container">
-                    <input type="hidden" id="current_trial_image_name_T1S1" value="">
-                        <div class="slideshow-container">
-                            <div class="slideshow-inner justify-content-center ">
-                            Task 1 S1
-                            <?php
-                                    for( $i_t1s1 = 0; $i_t1s1 < $total_image_T1S1; $i_t1s1++)
-                                    {  ?>                                     
-                                        <div class="trial_images_T1S1" id="T1S1_<?php echo $i_t1s1; ?>_<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>">
-                                          <img id="img_T1S1_<?php echo $i_t1s1 ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" src="img/<?php echo $chart_type_T1S1; ?>/<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>.png"/>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_correct_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Correct!</div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_error_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Wrong!</div>
-                                            </div>
-                                        </div>  
-                              <?php } ?>
-                            </div>
+                <input type="hidden" id="current_trial_image_name_T1S1" value="">
+                    <div class="slideshow-container">
+                        <div class="slideshow-inner justify-content-center ">
+                        Task 1 S1
+                        <div id="gif_trial_images_T1S1">
+                                   <img  src="img/exp_start2.jpg"/>
+                                   <button class="btn" id="btn_trial_images_T1S1">Start!</button>
+                             </div> 
+                             <div id="div_trial_images_T1S1" style="display:none"> 
+                        <?php
+                                for( $i_t1s1 = 0; $i_t1s1 < $total_image_T1S1; $i_t1s1++)
+                                {  ?>                                     
+                                    <div class="trial_images_T1S1" id="T1S1_<?php echo $i_t1s1; ?>_<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" >
+                                      <img id="img_T1S1_<?php echo $i_t1s1 ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" src="img/<?php echo $chart_type_T1S1; ?>/<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>.png"/>
+                                        <!-- <div class="d-flex justify-content-center">
+                                            <div class="caption center-block feed-caption" id="feedback_correct_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Correct!</div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="caption center-block feed-caption" id="feedback_error_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Wrong!</div>
+                                        </div> -->
+                                    </div>  
+                          <?php } ?>
+                          </div>
                         </div>
-          </div>
+                    </div>
       </div>
 
 
@@ -143,6 +193,16 @@ var feedback_time_T1S1 = [];
 
 
 $(document).ready(function() {
+
+  $("#btn_trial_images_T1S1").click(function(){
+    $("#gif_trial_images_T1S1").hide();
+    $('#div_trial_images_T1S1').show();
+  }); 
+
+  // setTimeout(function() {
+  //   $("#gif_trial_images_T1S1").hide();
+  //   }, 4000);
+  //   $('#div_trial_images_T1S1').delay(4000).show(0);  
 
 var ftime_counter_0_T1S1 = performance.now();
 set_current_time_T1S1(ftime_counter_0_T1S1);
