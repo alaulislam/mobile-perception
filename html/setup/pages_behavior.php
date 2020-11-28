@@ -50,50 +50,51 @@
   //     "disabled"	=> false
   //   );
 
-  ${"PRACTICE_TASK_$task[0]"} = array(
-    "id"  => "practice_task_$task[0]",
-    "next" => "trial_task_$serial[0]_$stimuli[0]",
+  ${"PRACTICE_TASK_$task[0]_$stimuli[0]"} = array(
+    "id"  => "practice_$task[0]_$stimuli[0]",
+    "next" => "trial_$task[0]-$stimuli[0]",
     "button" => "Next",
-    "page"  => "pages/questions/task-$task[0].php",
+    "page"  => "pages/questions/prac-$task[0]-$stimuli[0].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_$serial[0]_$stimuli[0]"} = array(
-    "id"  => "trial_task_$serial[0]_$stimuli[0]",
-    "next" => "practice_task_$task[1]",
+  ${"TRIAL_TASK_$task[0]-$stimuli[0]"} = array(
+    "id"  => "trial_$task[0]-$stimuli[0]",
+    "next" => "practice_$task[0]_$stimuli[1]",
     "button" => "Next",
-    "page"  => "pages/questions/trial-$serial[0]-$stimuli[0].php",
-    "disabled"	=> false
-  );
-  ${"PRACTICE_TASK_$task[1]"} = array(
-    "id"  => "practice_task_$task[1]",
-    "next" => "trial_task_$serial[1]_$stimuli[0]",
-    "button" => "Next",
-    "page"  => "pages/questions/task-$task[1].php",
+    "page"  => "pages/questions/trial-$task[0]-$stimuli[0].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_$serial[1]_$stimuli[0]"} = array(
-    "id"  => "trial_task_$serial[1]_$stimuli[0]",
-    "next" => "practice_task_$task[2]",
+  ${"PRACTICE_TASK_$task[0]_$stimuli[1]"} = array(
+    "id"  => "practice_$task[0]_$stimuli[1]",
+    "next" => "trial_$task[0]-$stimuli[1]",
     "button" => "Next",
-    "page"  => "pages/questions/trial-$serial[1]-$stimuli[0].php",
+    "page"  => "pages/questions/prac-$task[0]-$stimuli[1].php",
     "disabled"	=> false
   );
 
-  ${"PRACTICE_TASK_$task[2]"} = array(
-    "id"  => "practice_task_$task[2]",
-    "next" => "trial_task_$serial[2]_$stimuli[0]",
+  ${"TRIAL_TASK_$task[0]-$stimuli[1]"} = array(
+    "id"  => "trial_$task[0]-$stimuli[1]",
+    "next" => "practice_$task[0]_$stimuli[2]",
     "button" => "Next",
-    "page"  => "pages/questions/task-$task[2].php",
+    "page"  => "pages/questions/trial-$task[0]-$stimuli[1].php",
     "disabled"	=> false
   );
 
-  ${"TRIAL_TASK_$serial[2]_$stimuli[0]"} = array(
-    "id"  => "trial_task_$serial[2]_$stimuli[0]",
+  ${"PRACTICE_TASK_$task[0]_$stimuli[2]"} = array(
+    "id"  => "practice_$task[0]_$stimuli[2]",
+    "next" => "trial_$task[0]-$stimuli[2]",
+    "button" => "Next",
+    "page"  => "pages/questions/prac-$task[0]-$stimuli[2].php",
+    "disabled"	=> false
+  );
+
+  ${"TRIAL_TASK_$task[0]-$stimuli[2]"} = array(
+    "id"  => "trial_$task[0]-$stimuli[2]",
     "next" => "vis",
     "button" => "Next",
-    "page"  => "pages/questions/trial-$serial[2]-$stimuli[0].php",
+    "page"  => "pages/questions/trial-$task[0]-$stimuli[2].php",
     "disabled"	=> false
   );
 
@@ -194,14 +195,13 @@
           // $DESCRIPTION_PAGE,
           //  $TRIAL_QUESTIONS,
           //  $EXPERIMENT_SETUP,
-          ${"PRACTICE_TASK_$task[0]"}, 
-          ${"TRIAL_TASK_$serial[0]_$stimuli[0]"},
-          ${"PRACTICE_TASK_$task[1]"}, 
-          ${"TRIAL_TASK_$serial[1]_$stimuli[0]"}, 
-          ${"PRACTICE_TASK_$task[2]"}, 
-          ${"TRIAL_TASK_$serial[2]_$stimuli[0]"}
-          //  $PRACTICE_TASK_T1,
-          //  $TRIAL_TASK_S1
+          ${"PRACTICE_TASK_$task[0]_$stimuli[0]"}, 
+          ${"TRIAL_TASK_$task[0]-$stimuli[0]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[1]"}, 
+          ${"TRIAL_TASK_$task[0]-$stimuli[1]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[2]"}, 
+          ${"TRIAL_TASK_$task[0]-$stimuli[2]"},
+        
           
           // $VIS_PAGE
           // $COMPREHENSION_PAGE,

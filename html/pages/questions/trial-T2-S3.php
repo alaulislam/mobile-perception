@@ -44,7 +44,7 @@
   $total_image_T2S3 = 30;
   $img_start_T2S3 = $image_start_end[0];
   $img_end_T2S3 = $image_start_end[1]; 
-  $chart_type_T2S3 = $stimuli[0];
+  $chart_type_T2S3 = "S3";
   $practice_trial_shuffle_T2S3 = array();
   $practice_trial_shuffle_T2S3 = handleImageFIle_T2S3($img_start_T2S3, $img_end_T2S3, $chart_type_T2S3);
     

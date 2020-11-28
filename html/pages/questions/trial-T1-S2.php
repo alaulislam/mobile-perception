@@ -89,7 +89,7 @@
   $total_image_T1S2 = 30;
   $img_start_T1S2 = $image_start_end[0];
   $img_end_T1S2 = $image_start_end[1]; 
-  $chart_type_T1S2 = $stimuli[0];
+  $chart_type_T1S2 = "S2";
   $practice_trial_shuffle_T1S2 = array();
   $practice_trial_shuffle_T1S2 = handleImageFIle_T1S2($img_start_T1S2, $img_end_T1S2, $chart_type_T1S2);
     
