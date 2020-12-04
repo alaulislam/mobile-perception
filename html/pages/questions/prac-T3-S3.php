@@ -81,11 +81,10 @@
                     <input type="hidden" id="current_trial_image_name_P_T3S3" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 3
                             <?php
                                     for( $i_P_T3S3 = 0; $i_P_T3S3 < $total_image_P_T3S3; $i_P_T3S3++)
                                     {  ?>                                     
-                                        <div class="trial_images_P_T3S3" id="P-T3S2-<?php echo $i_P_T3S3; ?>-<?php echo $trial_shuffle_P_T3S3[$i_P_T3S3] ?>">
+                                        <div class="trial_images_P_T3S3" id="P-T3S3-<?php echo $i_P_T3S3; ?>-<?php echo $trial_shuffle_P_T3S3[$i_P_T3S3] ?>">
                                           <img id="img-P-T3S3-<?php echo $i_P_T3S3 ?>-<?php echo $trial_shuffle_P_T3S3[$i_P_T3S3] ?>" src="img/<?php echo $chart_type_P_T3S3 ?>/<?php echo $trial_shuffle_P_T3S3[$i_P_T3S3] ?>.png"/>
                                             <div class="d-flex justify-content-center">
                                                 <div class="caption center-block" id="feedback_correct_P-T3S3-<?php echo $i_P_T3S3; ?>-<?php echo $trial_shuffle_P_T3S3[$i_P_T3S3] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
@@ -102,8 +101,8 @@
 
       <div class="d-flex justify-content-center">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-              <button type="button" id="btn_yes_P_T3S3" class="btn btn-info">Yes</button>
-              <button type="button" id="btn_no_P_T3S3" class="btn btn-info" style="margin-right: 15px;">No</button>
+              <button type="button" id="btn_no_P_T3S3" class="btn btn-info">No</button>
+              <button type="button" id="btn_yes_P_T3S3" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
     </div>
 

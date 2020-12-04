@@ -28,12 +28,12 @@
     border-right: 18px solid black; 
     background: black;
     } 
-    .trial_images_T1S2 img{
-      max-height: 100%;
-      max-width: 100%;
-      position: absolute;
-      margin: auto;
-      top: 0; left: 0; bottom: 0; right: 0;
+.trial_images_T1S2 img{
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 #gif_trial_images_T1S2{  
@@ -142,7 +142,6 @@
                     <input type="hidden" id="current_trial_image_name_T1S2" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 1 S2
                             <div id="gif_trial_images_T1S2">
                                   <img  src="img/exp_start2.jpg"/>
                                    <button class="btn" id="btn_trial_images_T1S2">Start!</button>
@@ -153,12 +152,6 @@
                                     {  ?>                                     
                                         <div class="trial_images_T1S2" id="T1S2_<?php echo $i_t1s2; ?>_<?php echo $practice_trial_shuffle_T1S2[$i_t1s2] ?>" >
                                           <img id="img_T1S2_<?php echo $i_t1s2 ?><?php echo $practice_trial_shuffle_T1S2[$i_t1s2] ?>" src="img/<?php echo $chart_type_T1S2; ?>/<?php echo $practice_trial_shuffle_T1S2[$i_t1s2] ?>.png"/>
-                                            <!-- <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_correct_T1S2_<?php echo $i_t1s2; ?><?php echo $practice_trial_shuffle_T1S2[$i_t1s2] ?>" style="">Correct!</div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_error_T1S2_<?php echo $i_t1s2; ?><?php echo $practice_trial_shuffle_T1S2[$i_t1s2] ?>" style="">Wrong!</div>
-                                            </div> -->
                                         </div>  
                               <?php } ?>
                               </div>
@@ -192,10 +185,16 @@ var feedback_time_T1S2 = [];
 
 
 $(document).ready(function() {
+  $("#btn_saturday_T1S2").hide();
+  $("#btn_sunday_T1S2").hide();
+  $("#btn_<?php echo $id;?>").hide();
 
   $("#btn_trial_images_T1S2").click(function(){
     $("#gif_trial_images_T1S2").hide();
     $('#div_trial_images_T1S2').show();
+    $("#btn_saturday_T1S2").show();
+    $("#btn_sunday_T1S2").show();
+    $("#btn_<?php echo $id;?>").show();
   }); 
 
   // setTimeout(function() {
@@ -228,7 +227,7 @@ function button_disable_T1S2(){
 function show_images_T1S2(n){
       if( image_index_T1S2 > trial_image_count_T1S2){
         button_disable_T1S2();
-        canvas_image_touch_deactive_T1S2();
+        // canvas_image_touch_deactive_T1S2();
         return;
       }
       var i;
@@ -246,7 +245,7 @@ function show_images_T1S2(n){
 }
 function next_images_T1S2(n){
     button_enable_T1S2();
-    canvas_image_touch_deactive_T1S2();
+    // canvas_image_touch_deactive_T1S2();
     if (n < 0){
     show_images_T1S2(image_index_T1S2 -= 1);
     } else {
@@ -262,14 +261,12 @@ $("#btn_sunday_T1S2").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T1S2();
-    $(".trial_images_T1S2").on('click touch', function () {
-        next_images_T1S2(1);
-        // feedback_hide_T1();
-        $("#feedback_correct_T1S2_"+current_trial_image_name_T1S2).hide();
-        $("#feedback_error_T1S2_"+current_trial_image_name_T1S2).hide();
-     });
+    // $(".trial_images_T1S2").on('click touch', function () {
+    //     next_images_T1S2(1);
+    //     $("#feedback_correct_T1S2_"+current_trial_image_name_T1S2).hide();
+    //     $("#feedback_error_T1S2_"+current_trial_image_name_T1S2).hide();
+    //  });
 
- 
     file_T1S2.push(current_trial_image_name_T1S2);
     var stimuli = current_trial_image_name_T1S2.substring(0,2);
     chart_T1S2.push(stimuli);
@@ -310,6 +307,7 @@ $("#btn_sunday_T1S2").click(function(){
     }
 
     set_current_time_T1S2(time_counter_left);
+    next_images_T1S2(1);
    
 }); 
 
@@ -321,11 +319,11 @@ $("#btn_saturday_T1S2").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T1S2();
-    $(".trial_images_T1S2").on('click touch', function () {
-        next_images_T1S2(1);
-        $("#feedback_correct_T1S2_"+current_trial_image_name_T1S2).hide();
-        $("#feedback_error_T1S2_"+current_trial_image_name_T1S2).hide();
-     });
+    // $(".trial_images_T1S2").on('click touch', function () {
+    //     next_images_T1S2(1);
+    //     $("#feedback_correct_T1S2_"+current_trial_image_name_T1S2).hide();
+    //     $("#feedback_error_T1S2_"+current_trial_image_name_T1S2).hide();
+    //  });
 
   
     file_T1S2.push(current_trial_image_name_T1S2);
@@ -367,6 +365,7 @@ $("#btn_saturday_T1S2").click(function(){
     }
 
     set_current_time_T1S2(time_counter_left);
+    next_images_T1S2(1);
    
 }); 
 

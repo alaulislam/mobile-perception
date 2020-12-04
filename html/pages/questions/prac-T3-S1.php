@@ -82,7 +82,6 @@ weekdays (Mon-Fri)?</h2>
                     <input type="hidden" id="current_trial_image_name_P_T3S1" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 3
                             <?php
                                     for( $i_P_T3S1 = 0; $i_P_T3S1 < $total_image_P_T3S1; $i_P_T3S1++)
                                     {  ?>                                     
@@ -103,8 +102,8 @@ weekdays (Mon-Fri)?</h2>
 
       <div class="d-flex justify-content-center">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-              <button type="button" id="btn_yes_P_T3S1" class="btn btn-info">Yes</button>
-              <button type="button" id="btn_no_P_T3S1" class="btn btn-info" style="margin-right: 15px;">No</button>
+              <button type="button" id="btn_no_P_T3S1" class="btn btn-info">No</button>
+              <button type="button" id="btn_yes_P_T3S1" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
     </div>
 

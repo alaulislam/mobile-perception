@@ -94,7 +94,6 @@
               <input type="hidden" id="current_trial_image_name_P_T1S2" name="current_trial_image_name_P_T1S2" value="">
                 <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center">
-                            Task 1
                             <!-- <div class="trial_images_P_T1S2" id="xxx">
                                           <img  src="img/S1/s1_20_t1rt2lt3l.png"/>
                              </div>   -->

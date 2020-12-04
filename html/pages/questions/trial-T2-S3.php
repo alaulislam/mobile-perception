@@ -35,7 +35,49 @@
       margin: auto;
       top: 0; left: 0; bottom: 0; right: 0;
 }
+#gif_trial_images_T2S3{  
+    width: 213px;
+    height: 213px;
+    border: 2px solid black;
+    margin: 10px 0px 10px 0;
+    position: relative; /* added */
+    border-top: 15px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 28px solid black;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 18px solid black;
+    border-right: 18px solid black; 
+    background: black;
+    } 
+#gif_trial_images_T2S3 img{
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
 
+#gif_trial_images_T2S3 .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#gif_trial_images_T2S3 .btn:hover {
+  background-color: black;
+}
 
 </style>
 
@@ -97,7 +139,11 @@
                     <input type="hidden" id="current_trial_image_name_T2S3" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 2 S3
+                            <div id="gif_trial_images_T2S3">
+                                <img  src="img/exp_start2.jpg"/>
+                                   <button class="btn" id="btn_trial_images_T2S3">Start!</button>
+                             </div> 
+                             <div id="div_trial_images_T2S3" style="display:none"> 
                             <?php
                                     for( $i_t2s3 = 0; $i_t2s3 < $total_image_T2S3; $i_t2s3++)
                                     {  ?>                                     
@@ -111,6 +157,7 @@
                                             </div> -->
                                         </div>  
                               <?php } ?>
+                              </div>
                             </div>
                         </div>
       </div>
@@ -118,8 +165,8 @@
 
       <div class="d-flex justify-content-center">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-              <button type="button" id="btn_yes_T2S3" class="btn btn-info">Yes</button>
-              <button type="button" id="btn_no_T2S3" class="btn btn-info" style="margin-right: 15px;">No</button>
+              <button type="button" id="btn_no_T2S3" class="btn btn-info">No</button>
+              <button type="button" id="btn_yes_T2S3" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
     </div>
 
@@ -141,6 +188,16 @@ var feedback_time_T2S3 = [];
 
 
 $(document).ready(function() {
+  $("#btn_yes_T2S3").hide();
+  $("#btn_no_T2S3").hide();
+  $("#btn_<?php echo $id;?>").hide();
+  $("#gif_trial_images_T2S3").click(function(){
+    $("#gif_trial_images_T2S3").hide();
+    $('#div_trial_images_T2S3').show();
+    $("#btn_yes_T2S3").show();
+    $("#btn_no_T2S3").show();
+    $("#btn_<?php echo $id;?>").show();
+  }); 
 
 var time_counter_0_T2S3 = performance.now();
 set_current_time_T2S3(time_counter_0_T2S3);
@@ -166,7 +223,7 @@ function button_disable_T2S3(){
 function show_images_T2S3(n){
       if( image_index_T2S3 > trial_image_count_T2S3){
         button_disable_T2S3();
-        canvas_image_touch_deactive_T2S3();
+        // canvas_image_touch_deactive_T2S3();
         return;
       }
       var i;
@@ -184,7 +241,7 @@ function show_images_T2S3(n){
 }
 function next_images_T2S3(n){
     button_enable_T2S3();
-    canvas_image_touch_deactive_T2S3();
+    // canvas_image_touch_deactive_T2S3();
     if (n < 0){
     show_images_T2S3(image_index_T2S3 -= 1);
     } else {
@@ -200,12 +257,11 @@ $("#btn_no_T2S3").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T2S3();
-    $(".trial_images_T2S3").on('click touch', function () {
-        next_images_T2S3(1);
-        // feedback_hide_T1();
-        $("#feedback_correct_T2S3_"+current_trial_image_name_T2S3).hide();
-        $("#feedback_error_T2S3_"+current_trial_image_name_T2S3).hide();
-     });
+    // $(".trial_images_T2S3").on('click touch', function () {
+    //     next_images_T2S3(1);
+    //     $("#feedback_correct_T2S3_"+current_trial_image_name_T2S3).hide();
+    //     $("#feedback_error_T2S3_"+current_trial_image_name_T2S3).hide();
+    //  });
 
  
     file_T2S3.push(current_trial_image_name_T2S3);
@@ -219,7 +275,7 @@ $("#btn_no_T2S3").click(function(){
     sequence_T2S3.push(image_number);
     trial_T2S3.push(image_index_T2S3);
 
-    var sliced_current_trial_image_name = current_trial_image_name_T2S3.slice(current_trial_image_name_T2S3.lastIndexOf('t1') + 2);
+    var sliced_current_trial_image_name = current_trial_image_name_T2S3.slice(current_trial_image_name_T2S3.lastIndexOf('t2') + 2);
     var feedback_match = sliced_current_trial_image_name.substr(0, 1);
     if(feedback_match === 'r'){
       
@@ -248,7 +304,7 @@ $("#btn_no_T2S3").click(function(){
     }
 
     set_current_time_T2S3(time_counter_left);
-   
+    next_images_T2S3(1);
 }); 
 
 $("#btn_yes_T2S3").click(function(){
@@ -259,11 +315,11 @@ $("#btn_yes_T2S3").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T2S3();
-    $(".trial_images_T2S3").on('click touch', function () {
-        next_images_T2S3(1);
-        $("#feedback_correct_T2S3_"+current_trial_image_name_T2S3).hide();
-        $("#feedback_error_T2S3_"+current_trial_image_name_T2S3).hide();
-     });
+    // $(".trial_images_T2S3").on('click touch', function () {
+    //     next_images_T2S3(1);
+    //     $("#feedback_correct_T2S3_"+current_trial_image_name_T2S3).hide();
+    //     $("#feedback_error_T2S3_"+current_trial_image_name_T2S3).hide();
+    //  });
 
   
     file_T2S3.push(current_trial_image_name_T2S3);
@@ -277,7 +333,7 @@ $("#btn_yes_T2S3").click(function(){
     sequence_T2S3.push(image_number);
     trial_T2S3.push(image_index_T2S3);
 
-    var sliced_current_trial_image_name = current_trial_image_name_T2S3.slice(current_trial_image_name_T2S3.lastIndexOf('t1') + 2);
+    var sliced_current_trial_image_name = current_trial_image_name_T2S3.slice(current_trial_image_name_T2S3.lastIndexOf('t2') + 2);
 
     var feedback_match = sliced_current_trial_image_name.substr(0, 1);
     if(feedback_match === 'l'){
@@ -305,7 +361,7 @@ $("#btn_yes_T2S3").click(function(){
     }
 
     set_current_time_T2S3(time_counter_left);
-   
+    next_images_T2S3(1);
 }); 
 
 });

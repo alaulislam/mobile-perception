@@ -29,7 +29,7 @@
 	
 	// The information below is meant to be filled in automatically in the consent form. Adjust to the value corresponding to your experiment.
 	// Experiment duration in minutes
-	static $EXP_DURATION = 3;
+	static $EXP_DURATION = 15;
 	// Payment to participants in British Pound
 	static $EXP_PAYMENT = 0.45;
 

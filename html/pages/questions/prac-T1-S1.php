@@ -41,12 +41,12 @@
   $total_image_P_T1S1 = 15;
   $img_start_P_T1S1 = $image_start_end[0]; 
   $img_end_P_T1S1 = $image_start_end[1]; 
-  $chart_type_T1 = "S1";
+  $chart_type_P_T1S1 = "S1";
   $trial_shuffle_P_T1S1 = array();
-  $trial_shuffle_P_T1S1 = handleImageFIle_P_T1S1($img_start_P_T1S1, $img_end_P_T1S1, $chart_type_T1);
+  $trial_shuffle_P_T1S1 = handleImageFIle_P_T1S1($img_start_P_T1S1, $img_end_P_T1S1, $chart_type_P_T1S1);
     
-  function handleImageFIle_P_T1S1($img_start_P_T1S1, $img_end_P_T1S1, $chart_type_T1){
-        $handle_task = fopen("img_csv/$chart_type_T1.csv",'r') or die("can't open file");
+  function handleImageFIle_P_T1S1($img_start_P_T1S1, $img_end_P_T1S1, $chart_type_P_T1S1){
+        $handle_task = fopen("img_csv/$chart_type_P_T1S1.csv",'r') or die("can't open file");
         $task_data = fgetcsv($handle_task, 1000, ",");
         $images = array();
         while (($task_data = fgetcsv($handle_task, 1000, ",")) !== FALSE) {
@@ -94,7 +94,6 @@
               <input type="hidden" id="current_trial_image_name_P_T1S1" name="current_trial_image_name_P_T1S1" value="">
                 <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center">
-                            Task 1
                             <!-- <div class="trial_images_P_T1S1" id="xxx">
                                           <img  src="img/S1/s1_20_t1rt2lt3l.png"/>
                              </div>   -->
@@ -102,7 +101,7 @@
                                       for( $i_P_T1S1 = 0; $i_P_T1S1 < $total_image_P_T1S1; $i_P_T1S1++)
                                       {  ?>                                     
                                           <div class="trial_images_P_T1S1" id="P-T1S1-<?php echo $i_P_T1S1; ?>-<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>">
-                                            <img id="img-P-T1S1-<?php echo $i_P_T1S1 ?>-<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>" src="img/<?php echo $chart_type_T1 ?>/<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>.png"/>
+                                            <img id="img-P-T1S1-<?php echo $i_P_T1S1 ?>-<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>" src="img/<?php echo $chart_type_P_T1S1 ?>/<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>.png"/>
                                               <div class="d-flex justify-content-center">
                                                   <div class="caption center-block" id="feedback_correct_P-T1S1-<?php echo $i_P_T1S1; ?>-<?php echo $trial_shuffle_P_T1S1[$i_P_T1S1] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
                                               </div>

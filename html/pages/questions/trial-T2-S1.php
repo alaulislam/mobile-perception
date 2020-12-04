@@ -53,12 +53,12 @@
     border-right: 18px solid black; 
     background: black;
     } 
-    #gif_trial_images_T2S1 img{
-      max-height: 100%;
-      max-width: 100%;
-      position: absolute;
-      margin: auto;
-      top: 0; left: 0; bottom: 0; right: 0;
+#gif_trial_images_T2S1 img{
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 #gif_trial_images_T2S1 .btn {
@@ -141,26 +141,19 @@
                     <input type="hidden" id="current_trial_image_name_T2S1" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 2 S1
-                            <!-- <div id="gif_trial_images_T2S1">
-                                   <img  src="img/exp_start.gif"/>
+                            <div id="gif_trial_images_T2S1">
+                              <img  src="img/exp_start2.jpg"/>
                                    <button class="btn" id="btn_trial_images_T2S1">Start!</button>
                              </div> 
-                             <div id="div_trial_images_T2S1" style="display:none">  -->
+                             <div id="div_trial_images_T2S1" style="display:none"> 
                             <?php
                                     for( $i_t2s1 = 0; $i_t2s1 < $total_image_T2S1; $i_t2s1++)
                                     {  ?>                                     
                                         <div class="trial_images_T2S1" id="T2S1_<?php echo $i_t2s1; ?>_<?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>">
                                           <img id="img_T2S1_<?php echo $i_t2s1 ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" src="img/<?php echo $chart_type_T2S1; ?>/<?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>.png"/>
-                                            <!-- <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_correct_T2S1_<?php echo $i_t2s1; ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" style="">Correct!</div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="caption center-block feed-caption" id="feedback_error_T2S1_<?php echo $i_t2s1; ?><?php echo $practice_trial_shuffle_T2S1[$i_t2s1] ?>" style="">Wrong!</div>
-                                            </div> -->
                                         </div>  
                               <?php } ?>
-                              <!-- </div> -->
+                              </div>
                          </div>
                     </div>
       </div>
@@ -168,8 +161,8 @@
 
       <div class="d-flex justify-content-center">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-              <button type="button" id="btn_yes_T2S1" class="btn btn-info">Yes</button>
-              <button type="button" id="btn_no_T2S1" class="btn btn-info" style="margin-right: 15px;">No</button>
+              <button type="button" id="btn_no_T2S1" class="btn btn-info">No</button>
+              <button type="button" id="btn_yes_T2S1" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
     </div>
 
@@ -191,12 +184,16 @@ var feedback_time_T2S1 = [];
 
 
 $(document).ready(function() {
-
-  // setTimeout(function() {
-  //   $("#gif_trial_images_T2S1").hide();
-  //   }, 4000);
-  //   $('#div_trial_images_T2S1').delay(4000).show(0);  
-
+  $("#btn_yes_T2S1").hide();
+  $("#btn_no_T2S1").hide();
+  $("#btn_<?php echo $id;?>").hide();
+  $("#gif_trial_images_T2S1").click(function(){
+    $("#gif_trial_images_T2S1").hide();
+    $('#div_trial_images_T2S1').show();
+    $("#btn_yes_T2S1").show();
+    $("#btn_no_T2S1").show();
+    $("#btn_<?php echo $id;?>").show();
+  }); 
 
 var time_counter_0_T2S1 = performance.now();
 set_current_time_T2S1(time_counter_0_T2S1);
@@ -222,7 +219,7 @@ function button_disable_T2S1(){
 function show_images_T2S1(n){
       if( image_index_T2S1 > trial_image_count_T2S1){
         button_disable_T2S1();
-        canvas_image_touch_deactive_T2S1();
+        //canvas_image_touch_deactive_T2S1();
         return;
       }
       var i;
@@ -240,7 +237,7 @@ function show_images_T2S1(n){
 }
 function next_images_T2S1(n){
     button_enable_T2S1();
-    canvas_image_touch_deactive_T2S1();
+    //canvas_image_touch_deactive_T2S1();
     if (n < 0){
     show_images_T2S1(image_index_T2S1 -= 1);
     } else {
@@ -256,12 +253,11 @@ $("#btn_no_T2S1").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T2S1();
-    $(".trial_images_T2S1").on('click touch', function () {
-        next_images_T2S1(1);
-        // feedback_hide_T1();
-        $("#feedback_correct_T2S1_"+current_trial_image_name_T2S1).hide();
-        $("#feedback_error_T2S1_"+current_trial_image_name_T2S1).hide();
-     });
+    // $(".trial_images_T2S1").on('click touch', function () {
+    //     next_images_T2S1(1);
+    //     $("#feedback_correct_T2S1_"+current_trial_image_name_T2S1).hide();
+    //     $("#feedback_error_T2S1_"+current_trial_image_name_T2S1).hide();
+    //  });
 
  
     file_T2S1.push(current_trial_image_name_T2S1);
@@ -275,7 +271,7 @@ $("#btn_no_T2S1").click(function(){
     sequence_T2S1.push(image_number);
     trial_T2S1.push(image_index_T2S1);
 
-    var sliced_current_trial_image_name = current_trial_image_name_T2S1.slice(current_trial_image_name_T2S1.lastIndexOf('t1') + 2);
+    var sliced_current_trial_image_name = current_trial_image_name_T2S1.slice(current_trial_image_name_T2S1.lastIndexOf('t2') + 2);
     var feedback_match = sliced_current_trial_image_name.substr(0, 1);
     if(feedback_match === 'r'){
       
@@ -304,6 +300,7 @@ $("#btn_no_T2S1").click(function(){
     }
 
     set_current_time_T2S1(time_counter_left);
+    next_images_T2S1(1);
    
 }); 
 
@@ -315,11 +312,11 @@ $("#btn_yes_T2S1").click(function(){
         $("#btn_<?php echo $id;?>").prop('disabled', false);
     }
     button_disable_T2S1();
-    $(".trial_images_T2S1").on('click touch', function () {
-        next_images_T2S1(1);
-        $("#feedback_correct_T2S1_"+current_trial_image_name_T2S1).hide();
-        $("#feedback_error_T2S1_"+current_trial_image_name_T2S1).hide();
-     });
+    // $(".trial_images_T2S1").on('click touch', function () {
+    //     next_images_T2S1(1);
+    //     $("#feedback_correct_T2S1_"+current_trial_image_name_T2S1).hide();
+    //     $("#feedback_error_T2S1_"+current_trial_image_name_T2S1).hide();
+    //  });
 
   
     file_T2S1.push(current_trial_image_name_T2S1);
@@ -333,7 +330,7 @@ $("#btn_yes_T2S1").click(function(){
     sequence_T2S1.push(image_number);
     trial_T2S1.push(image_index_T2S1);
 
-    var sliced_current_trial_image_name = current_trial_image_name_T2S1.slice(current_trial_image_name_T2S1.lastIndexOf('t1') + 2);
+    var sliced_current_trial_image_name = current_trial_image_name_T2S1.slice(current_trial_image_name_T2S1.lastIndexOf('t2') + 2);
 
     var feedback_match = sliced_current_trial_image_name.substr(0, 1);
     if(feedback_match === 'l'){
@@ -361,7 +358,7 @@ $("#btn_yes_T2S1").click(function(){
     }
 
     set_current_time_T2S1(time_counter_left);
-   
+    next_images_T2S1(1);
 }); 
 
 });

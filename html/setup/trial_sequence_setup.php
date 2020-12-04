@@ -142,7 +142,11 @@ if(!empty($trial_sequence)){
             $task = array("T1"); 
             $stimuli = array("S1","S2","S3");
             $serial = array(1,2,3);
-            $image_start_end = array(0,39); 
+            $image_start_end = array(
+              "D1" => array( 0, 39 ),
+              "D2" => array( 40, 79 ),
+              "D3" => array( 80, 119),
+          );
             var_dump("the value is either 1.");
             break;
         case 2:
@@ -170,12 +174,16 @@ if(!empty($trial_sequence)){
             $task = array("T2"); 
             $stimuli = array("S2","S3","S1");
             $serial = array(1,2,3);
-            $image_start_end = array(80,119);   
+            $image_start_end = array(
+              "D1" => array( 0, 39 ),
+              "D2" => array( 40, 79 ),
+              "D3" => array( 80, 119),
+          );
             var_dump("the value is either 5.");
             break;
         case 6:
             $task = array("T3");
-            $stimuli = array("S2","S3","S2");
+            $stimuli = array("S2","S3","S1");
             $serial = array(1,2,3);
             $image_start_end = array(0,39); 
             var_dump("the value is either 6.");

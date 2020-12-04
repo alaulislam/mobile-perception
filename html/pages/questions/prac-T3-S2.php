@@ -81,7 +81,6 @@
                     <input type="hidden" id="current_trial_image_name_P_T3S2" value="">
                         <div class="slideshow-container">
                             <div class="slideshow-inner justify-content-center ">
-                            Task 3
                             <?php
                                     for( $i_P_T3S2 = 0; $i_P_T3S2 < $total_image_P_T3S2; $i_P_T3S2++)
                                     {  ?>                                     
@@ -102,8 +101,8 @@
 
       <div class="d-flex justify-content-center">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-              <button type="button" id="btn_yes_P_T3S2" class="btn btn-info">Yes</button>
-              <button type="button" id="btn_no_P_T3S2" class="btn btn-info" style="margin-right: 15px;">No</button>
+              <button type="button" id="btn_no_P_T3S2" class="btn btn-info">No</button>
+              <button type="button" id="btn_yes_P_T3S2" class="btn btn-info"  style="margin-right: 15px;">Yes</button>
             </div>
     </div>
 
@@ -188,7 +187,6 @@ $(document).ready(function() {
         button_disable_P_T3S2();
         $(".trial_images_P_T3S2").on('click touch', function () {
             next_images_P_T3S2(1);
-            // feedback_hide_T1();
             $("#feedback_correct_"+current_trial_image_name_P_T3S2).hide();
             $("#feedback_error_"+current_trial_image_name_P_T3S2).hide();
          });
@@ -266,7 +264,7 @@ $(document).ready(function() {
 
         var feedback_match = sliced_current_trial_image_name.substr(0, 1);
         if(feedback_match === 'l'){
-          $("#img_"+current_trial_image_name_P_T3S2).css({"border-color": "green", 
+          $("#img-"+current_trial_image_name_P_T3S2).css({"border-color": "green", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",
@@ -277,7 +275,7 @@ $(document).ready(function() {
           feedback_P_T3S2.push("correct");
           feedback_time_P_T3S2.push(time_counter_left - last_time_count);
         }else{
-          $("#img_"+current_trial_image_name_P_T3S2).css({"border-color": "red", 
+          $("#img-"+current_trial_image_name_P_T3S2).css({"border-color": "red", 
              "border-width":"4px", 
              "border-style":"solid",
             //  "opacity":"0.5",

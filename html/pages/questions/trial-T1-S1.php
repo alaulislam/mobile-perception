@@ -87,10 +87,10 @@
 
 
 <?php
-  $total_image_T1S1 = 30;
+  $total_image_T1S1 = 31;
   $img_start_T1S1 = $image_start_end[0];
   $img_end_T1S1 = $image_start_end[1]; 
-  $chart_type_T1S1 = $stimuli[0];
+  $chart_type_T1S1 = "S1";
   $practice_trial_shuffle_T1S1 = array();
   $practice_trial_shuffle_T1S1 = handleImageFIle_S1($img_start_T1S1, $img_end_T1S1, $chart_type_T1S1);
     
@@ -143,25 +143,29 @@
                 <input type="hidden" id="current_trial_image_name_T1S1" value="">
                     <div class="slideshow-container">
                         <div class="slideshow-inner justify-content-center ">
-                        Task 1 S1
                         <div id="gif_trial_images_T1S1">
                                    <img  src="img/exp_start2.jpg"/>
                                    <button class="btn" id="btn_trial_images_T1S1">Start!</button>
                              </div> 
                              <div id="div_trial_images_T1S1" style="display:none"> 
                         <?php
-                                for( $i_t1s1 = 0; $i_t1s1 < $total_image_T1S1; $i_t1s1++)
+                                for( $i_t1s1 = 0; $i_t1s1 < 30; $i_t1s1++)
                                 {  ?>                                     
                                     <div class="trial_images_T1S1" id="T1S1_<?php echo $i_t1s1; ?>_<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" >
                                       <img id="img_T1S1_<?php echo $i_t1s1 ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" src="img/<?php echo $chart_type_T1S1; ?>/<?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>.png"/>
-                                        <!-- <div class="d-flex justify-content-center">
-                                            <div class="caption center-block feed-caption" id="feedback_correct_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Correct!</div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="caption center-block feed-caption" id="feedback_error_T1S1_<?php echo $i_t1s1; ?><?php echo $practice_trial_shuffle_T1S1[$i_t1s1] ?>" style="">Wrong!</div>
-                                        </div> -->
                                     </div>  
                           <?php } ?>
+
+                                  <!-- <div class="trial_images_T1S1" id="T1S1ATTN-s1_76_t1lt2lt3r">
+                                          <img  src="img/attention/T1_S1/ATTN-s1_76_t1lt2lt3r.png"/>
+                                  </div> -->
+                                  <div class="trial_images_T1S1" id="T1S1ATTN-s1_113_t1rt2lt3r">
+                                          <img  src="img/attention/T1_S1/ATTN-s1_113_t1rt2lt3r.png"/>
+                                  </div>
+                                  <!-- <div class="trial_images_T1S1" id="T1S1ATTN-s1_117_t1lt2lt3r">
+                                          <img  src="img/attention/T1_S1/ATTN-s1_117_t1lt2lt3r.png"/>
+                                  </div> -->
+
                           </div>
                         </div>
                     </div>
@@ -190,13 +194,20 @@ var trial_T1S1 = [];
 var sequence_T1S1 = [];
 var feedback_T1S1 = [];
 var feedback_time_T1S1 = [];
+var attention_check_count_T1S1 = 0;
 
 
 $(document).ready(function() {
+  $("#btn_saturday_T1S1").hide();
+  $("#btn_sunday_T1S1").hide();
+  $("#btn_<?php echo $id;?>").hide();
 
   $("#btn_trial_images_T1S1").click(function(){
     $("#gif_trial_images_T1S1").hide();
     $('#div_trial_images_T1S1').show();
+    $("#btn_saturday_T1S1").show();
+    $("#btn_sunday_T1S1").show();
+    $("#btn_<?php echo $id;?>").show();
   }); 
 
   // setTimeout(function() {
@@ -204,18 +215,18 @@ $(document).ready(function() {
   //   }, 4000);
   //   $('#div_trial_images_T1S1').delay(4000).show(0);  
 
-var ftime_counter_0_T1S1 = performance.now();
-set_current_time_T1S1(ftime_counter_0_T1S1);
-console.log("Initital time counter", ftime_counter_0_T1S1);
+var time_counter_0_T1S1 = performance.now();
+set_current_time_T1S1(time_counter_0_T1S1);
+console.log("Initital time counter", time_counter_0_T1S1);
 show_images_T1S1(image_index_T1S1);
 $('.trial_images_T1S1').unbind('click touch');
 
 function set_current_time_T1S1(time_counter){
   last_time_count = time_counter;
 }
-function canvas_image_touch_deactive_T1S1(){
-  $('.trial_images_T1S1').unbind('click touch');  
-}
+// function canvas_image_touch_deactive_T1S1(){
+//   $('.trial_images_T1S1').unbind('click touch');  
+// }
 function button_enable_T1S1(){
     $('#btn_saturday_T1S1').prop('disabled', false);
     $('#btn_sunday_T1S1').prop('disabled', false);
@@ -228,7 +239,8 @@ function button_disable_T1S1(){
 function show_images_T1S1(n){
       if( image_index_T1S1 > trial_image_count_T1S1){
         button_disable_T1S1();
-        canvas_image_touch_deactive_T1S1();
+        $("#btn_<?php echo $id;?>").prop('disabled', false);
+        // alert(attention_check_count_T1S1);
         return;
       }
       var i;
@@ -246,7 +258,7 @@ function show_images_T1S1(n){
 }
 function next_images_T1S1(n){
     button_enable_T1S1();
-    canvas_image_touch_deactive_T1S1();
+    // canvas_image_touch_deactive_T1S1();
     if (n < 0){
     show_images_T1S1(image_index_T1S1 -= 1);
     } else {
@@ -256,117 +268,95 @@ function next_images_T1S1(n){
 
 $("#btn_sunday_T1S1").click(function(){
     var current_trial_image_name_T1S1 = $('#current_trial_image_name_T1S1').val();
-    time_counter_left = performance.now();
-    // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
-    if( image_index_T1S1 === trial_image_count_T1S1){
-        $("#btn_<?php echo $id;?>").prop('disabled', false);
-    }
-    button_disable_T1S1();
-    $(".trial_images_T1S1").on('click touch', function () {
-        next_images_T1S1(1);
-        // feedback_hide_T1();
-        $("#feedback_correct_T1S1_"+current_trial_image_name_T1S1).hide();
-        $("#feedback_error_T1S1_"+current_trial_image_name_T1S1).hide();
-     });
+    var attention_check = current_trial_image_name_T1S1.startsWith("T1S1ATTN-");
+    if(!attention_check){
+        time_counter_left = performance.now();
+        file_T1S1.push(current_trial_image_name_T1S1);
+        var stimuli = current_trial_image_name_T1S1.substring(0,2);
+        chart_T1S1.push(stimuli);
+        elements_T1S1.push("t1");
+        var start_pos = current_trial_image_name_T1S1.indexOf('_') + 1;
+        var end_pos = current_trial_image_name_T1S1.indexOf('_',start_pos);
+        var image_number = current_trial_image_name_T1S1.substring(start_pos,end_pos)
+        sequence_T1S1.push(image_number);
+        trial_T1S1.push(image_index_T1S1);
 
- 
-    file_T1S1.push(current_trial_image_name_T1S1);
-    var stimuli = current_trial_image_name_T1S1.substring(0,2);
-    chart_T1S1.push(stimuli);
-    elements_T1S1.push("t1");
-    var start_pos = current_trial_image_name_T1S1.indexOf('_') + 1;
-    var end_pos = current_trial_image_name_T1S1.indexOf('_',start_pos);
-    var image_number = current_trial_image_name_T1S1.substring(start_pos,end_pos)
-    // console.log("Trial No", image_number)
-    sequence_T1S1.push(image_number);
-    trial_T1S1.push(image_index_T1S1);
-
-    var sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
-    var feedback_match = sliced_current_trial_image_name.substr(0, 1);
-    if(feedback_match === 'r'){
-      
-      // var element = document.querySelector('[id^="img_T1S1_"]').id;
-       $("#img_T1S1_"+current_trial_image_name_T1S1).css({"border-color": "green", 
-         "border-width":"4px", 
-         "border-style":"solid",
-        //  "opacity":"0.5",
-         "filter":"alpha(opacity=90)",
-         });
-
-      $("#feedback_correct_T1S1_"+current_trial_image_name_T1S1).show();
-      feedback_T1S1.push("correct");
-      feedback_time_T1S1.push(time_counter_left - last_time_count);
+        var sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
+        var feedback_match = sliced_current_trial_image_name.substr(0, 1);
+        if(feedback_match === 'r'){
+          feedback_T1S1.push("correct");
+          feedback_time_T1S1.push(time_counter_left - last_time_count);
+        }else{
+          feedback_T1S1.push("error");
+          feedback_time_T1S1.push(time_counter_left - last_time_count);
+        }
+        set_current_time_T1S1(time_counter_left);
     }else{
-
-      $("#img_T1S1_"+current_trial_image_name_T1S1).css({"border-color": "red", 
-         "border-width":"4px", 
-         "border-style":"solid",
-        //  "opacity":"0.5",
-         "filter":"alpha(opacity=90)",
-         });
-      $("#feedback_error_T1S1_"+current_trial_image_name_T1S1).show();
-      feedback_T1S1.push("error");
-      feedback_time_T1S1.push(time_counter_left - last_time_count);
+        var attn_sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
+        var attn_feedback_match = attn_sliced_current_trial_image_name.substr(0, 1);
+        if(attn_feedback_match === 'r'){
+          attention_check_count_T1S1 = attention_check_count_T1S1 + 1;
+        }else{
+          attention_check_count_T1S1 = attention_check_count_T1S1 + 0;
+        } 
     }
-
-    set_current_time_T1S1(time_counter_left);
+    if( image_index_T1S1 > trial_image_count_T1S1){
+        button_disable_T1S1();
+        return;
+      }
+      else{
+        next_images_T1S1(1);
+      }
    
 }); 
 
 $("#btn_saturday_T1S1").click(function(){
     var current_trial_image_name_T1S1 = $('#current_trial_image_name_T1S1').val();
-    time_counter_left = performance.now();
-    // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
-    if( image_index_T1S1 === trial_image_count_T1S1){
-        $("#btn_<?php echo $id;?>").prop('disabled', false);
-    }
-    button_disable_T1S1();
-    $(".trial_images_T1S1").on('click touch', function () {
-        next_images_T1S1(1);
-        $("#feedback_correct_T1S1_"+current_trial_image_name_T1S1).hide();
-        $("#feedback_error_T1S1_"+current_trial_image_name_T1S1).hide();
-     });
+    var attention_check = current_trial_image_name_T1S1.startsWith("T1S1ATTN-");
+    if(!attention_check){
+        time_counter_left = performance.now();
+      
+        file_T1S1.push(current_trial_image_name_T1S1);
+        var stimuli = current_trial_image_name_T1S1.substring(0,2);
+        chart_T1S1.push(stimuli);
+        elements_T1S1.push("t1");
+        var start_pos = current_trial_image_name_T1S1.indexOf('_') + 1;
+        var end_pos = current_trial_image_name_T1S1.indexOf('_',start_pos);
+        var image_number = current_trial_image_name_T1S1.substring(start_pos,end_pos)
+        // console.log("Image Seq", image_number)
+        sequence_T1S1.push(image_number);
+        trial_T1S1.push(image_index_T1S1);
 
-  
-    file_T1S1.push(current_trial_image_name_T1S1);
-    var stimuli = current_trial_image_name_T1S1.substring(0,2);
-    chart_T1S1.push(stimuli);
-    elements_T1S1.push("t1");
-    var start_pos = current_trial_image_name_T1S1.indexOf('_') + 1;
-    var end_pos = current_trial_image_name_T1S1.indexOf('_',start_pos);
-    var image_number = current_trial_image_name_T1S1.substring(start_pos,end_pos)
-    // console.log("Image Seq", image_number)
-    sequence_T1S1.push(image_number);
-    trial_T1S1.push(image_index_T1S1);
+        var sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
 
-    var sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
+        var feedback_match = sliced_current_trial_image_name.substr(0, 1);
+        if(feedback_match === 'l'){
+          feedback_T1S1.push("correct");
+          feedback_time_T1S1.push(time_counter_left - last_time_count);
+        }else{
+          feedback_T1S1.push("error");
+          feedback_time_T1S1.push(time_counter_left - last_time_count);
+        }
 
-    var feedback_match = sliced_current_trial_image_name.substr(0, 1);
-    if(feedback_match === 'l'){
-      $("#img_T1S1_"+current_trial_image_name_T1S1).css({"border-color": "green", 
-         "border-width":"4px", 
-         "border-style":"solid",
-        //  "opacity":"0.5",
-         "filter":"alpha(opacity=90)",
-         });
+        set_current_time_T1S1(time_counter_left);
 
-      $("#feedback_correct_T1S1_"+current_trial_image_name_T1S1).show();
-      feedback_T1S1.push("correct");
-      feedback_time_T1S1.push(time_counter_left - last_time_count);
     }else{
-      $("#img_T1S1_"+current_trial_image_name_T1S1).css({"border-color": "red", 
-         "border-width":"4px", 
-         "border-style":"solid",
-        //  "opacity":"0.5",
-         "filter":"alpha(opacity=90)",
-         });
-
-      $("#feedback_error_T1S1_"+current_trial_image_name_T1S1).show();
-      feedback_T1S1.push("error");
-      feedback_time_T1S1.push(time_counter_left - last_time_count);
+        var attn_sliced_current_trial_image_name = current_trial_image_name_T1S1.slice(current_trial_image_name_T1S1.lastIndexOf('t1') + 2);
+        var attn_feedback_match = attn_sliced_current_trial_image_name.substr(0, 1);
+        if(attn_feedback_match === 'l'){
+          attention_check_count_T1S1 = attention_check_count_T1S1 + 1;
+        }else{
+          attention_check_count_T1S1 = attention_check_count_T1S1 + 0;
+        } 
     }
-
-    set_current_time_T1S1(time_counter_left);
+    
+    if( image_index_T1S1 > trial_image_count_T1S1){
+        button_disable_T1S1();
+        return;
+      }
+      else{
+        next_images_T1S1(1);
+      }
    
 }); 
 
@@ -378,6 +368,16 @@ $('body').on('next', function(e, type){
   event.preventDefault();
   var p_id_T1S1 = $('#participant_id').val();
   if (type === '<?php echo $id;?>'){
+    if(attention_check_count_T1S1 === 0){
+      excluded = true;
+      $('body').trigger('excluded');
+      // console.log("failed on attention check --> exclude");
+      $('#<?php echo $next ?>').hide().promise().done(() => $('#excluded').show());
+      $(":button").hide();
+    } else {
+      // console.log("passed on attention check");
+      $('#<?php echo $id ?>').hide().promise().done(() => $('#<?php echo $next ?>').show());
+  }
     $.ajax({
         type        : 'POST',  
         url         : 'ajax/test.php',  

@@ -123,11 +123,11 @@
     "disabled"	=> true
   );
 
-  $ATTENTION_FAILED_PAGE = array(
+  $ATTENTION_FAILED_PAGE_T1S1 = array(
     "id"		=> "excluded",
     "next"		=> "non",
     "button" 	=> " ",
-    "page"		=> "pages/questions/attention-failed.php",
+    "page"		=> "pages/questions/attention-failed-T1S1.php",
     "disabled"	=> true
   );
 
@@ -147,51 +147,10 @@
     "disabled"	=> true
   );
 
-  // This array defines the order of the pages. 
-  // You can temporarily modify this order for debugging. Just move the page you want first at the first position.
-
-
-  // $dynamic_pages = array();
-
-  // for ($dp_i= 0; $dp_i< 3; $dp_i++){
-
-  //   // $dynamic_pages[] =  "\$PRACTICE_TASK_$task[$i]";
-  //   // array_push($dynamic_pages, "\$TRIAL_TASK_$stimuli[0][$i]");
-  //   $add_one = $dp_i+1;
-
-  //   ${"PRACTICE_TASK_$task[$dp_i]"} = array(
-  //     "id"  => "practice_task_p_$dp_i",
-  //     "next" => "trial_task_t_$dp_i",
-  //     "button" => "Next",
-  //     "page"  => "pages/questions/task-$task[$dp_i].php",
-  //     "disabled"	=> true
-  //   );
-
-  //   ${"TRIAL_TASK_$stimuli[0][$dp_i]"} = array(
-  //     "id"  => "trial_task_t_$dp_i",
-  //     "next" => "practice_task_p_$add_one",
-  //     "button" => "Next",
-  //     "page"  => "pages/questions/trial-$stimuli[0][$dp_i].php",
-  //     "disabled"	=> true
-  //   );
-
-  // }
-
-  // for ($dp_i= 0; $dp_i< 3; $dp_i++){
-  //   $dynamic_pages[] =  "\$PRACTICE_TASK_$task[$dp_i]";
-  //   array_push($dynamic_pages, "\$TRIAL_TASK_$stimuli[0][$dp_i]");
-  // }
-
-  // var_dump($PRACTICE_TASK_T2);
-  // $str = implode(", ", $dynamic_pages);
-  // $commaList = json_encode($dynamic_pages);
-  // $commaList = implode(', ', $dynamic_pages);
-  //  var_dump($str);
-  // echo $str;
 
   $PAGE_ORDER = array(
           // $IMPORTANT_PAGE,
-          // $CONSENT_PAGE,
+          //  $CONSENT_PAGE,
           // $DESCRIPTION_PAGE,
           //  $TRIAL_QUESTIONS,
           //  $EXPERIMENT_SETUP,
@@ -206,7 +165,7 @@
           // $VIS_PAGE
           // $COMPREHENSION_PAGE,
           // $ATTENTION_PAGE,
-          // $ATTENTION_FAILED_PAGE,
+          $ATTENTION_FAILED_PAGE_T1S1,
           // $END_PAGE
         );
   
