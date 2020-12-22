@@ -152,7 +152,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );
-            var_dump("the value is either 1.");
+            // var_dump("the value is either 1.");
             break;
         case 2:
             $task = array("T2");
@@ -163,7 +163,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           ); 
-            var_dump("the value is either 2.");
+            // var_dump("the value is either 2.");
             break;
         case 3:
             $task = array("T3");
@@ -174,7 +174,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );
-            var_dump("the value is either 3.");
+            // var_dump("the value is either 3.");
             break;
         case 4:
             $task = array("T1");
@@ -185,7 +185,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );   
-            var_dump("the value is either 4.");
+            // var_dump("the value is either 4.");
             break;
         case 5:
             $task = array("T2"); 
@@ -196,7 +196,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );
-            var_dump("the value is either 5.");
+            // var_dump("the value is either 5.");
             break;
         case 6:
             $task = array("T3");
@@ -207,7 +207,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );
-            var_dump("the value is either 6.");
+            // var_dump("the value is either 6.");
             break;
         case 7:
             $task = array("T1"); 
@@ -218,7 +218,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );    
-            var_dump("the value is either 7.");
+            // var_dump("the value is either 7.");
             break;
         case 8:
             $task = array("T2");
@@ -229,7 +229,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );  
-            var_dump("the value is either 8.");
+            // var_dump("the value is either 8.");
             break;
         case 9:
             $task = array("T3");
@@ -240,7 +240,7 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );    
-            var_dump("the value is either 9.");
+            // var_dump("the value is either 9.");
             break;
     }
 }

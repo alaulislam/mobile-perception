@@ -133,9 +133,9 @@
 ?>  
 <div class="row justify-content-center align-items-center">
   <div class="col-12">
-    <div class="d-flex justify-content-center task-description">
+    <!-- <div class="d-flex justify-content-center task-description">
           <h2 class="legend">Did you go to bed later than planned (22:00) on 4 or more days this week?</h2>
-      </div>
+      </div> -->
       
       <div class="d-flex justify-content-center" style="margin-top: 10px;">
                     <input type="hidden" id="current_trial_image_name_T2S2D1" value="">
