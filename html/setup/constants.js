@@ -6,8 +6,16 @@
 // export const MIN_WINDOW_HEIGHT = 700;
 // export const CANVAS_WIDTH = 750;
 
-export const MIN_WINDOW_WIDTH = 320;
-export const MIN_WINDOW_HEIGHT = 480;
+// export const MIN_WINDOW_WIDTH = 320;
+// export const MIN_WINDOW_HEIGHT = 480;
+// export const CANVAS_WIDTH = 320;
+
+
+// 240 x 320 (small phone)
+// 320 x 480 (iPhone)
+// 480 x 640
+export const MAX_WINDOW_WIDTH = 414;
+export const MAX_WINDOW_HEIGHT = 896;
 export const CANVAS_WIDTH = 320;
 
 

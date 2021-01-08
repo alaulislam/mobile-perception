@@ -117,21 +117,20 @@ assignFactorLevels();
 <div id="experiment-info">
 
 <?php
-
-  echo '<input type="hidden" id="participant_id" value="' . (($is_debug > 0) ? 'DEBUG' : $participant_id) .  '"</input>';
-  echo '<input type="hidden" id="study_id" value="' . "" . $study_id .  '"</input>';
-  echo '<input type="hidden" id="session_id" value="' . "" . $session_id .  '"</input>';
-  echo '<input type="hidden" id="condition" value="' . "" . $condition .  '"</input>';
+  echo '<input type="hidden" id="participant_id" value="' . (($is_debug > 0) ? 'DEBUG' : $participant_id) .  '">';
+  echo '<input type="hidden" id="study_id" value="' . "" . $study_id .  '">';
+  echo '<input type="hidden" id="session_id" value="' . "" . $session_id .  '">';
+  echo '<input type="hidden" id="condition" value="' . "" . $condition .  '">';
   if (!is_null($factor1)){
     echo '<input  type="hidden" 
-                  id="' . $FACTOR_LEVELS["factor1"]["name"]  . '" value="' . "" . $factor1 .  '"</input>';
+                  id="' . $FACTOR_LEVELS["factor1"]["name"]  . '" value="' . "" . $factor1 .  '">';
   }
 
   if (!is_null($factor2)){
-    echo '<input type="hidden" id="' . $FACTOR_LEVELS["factor2"]["name"]  . '" value="' . "" . $factor2 .  '"</input>';
+    echo '<input type="hidden" id="' . $FACTOR_LEVELS["factor2"]["name"]  . '" value="' . "" . $factor2 .  '">';
   }
-  echo '<input type="hidden" id="is_debug" value="' . "" . $is_debug .  '"</input>';
-  echo '<input type="hidden" id="exclude_reloaders" value="' . "" . $EXCLUDE_RELOADERS .  '"</input>';
+  echo '<input type="hidden" id="is_debug" value="' . "" . $is_debug .  '">';
+  echo '<input type="hidden" id="exclude_reloaders" value="' . "" . $EXCLUDE_RELOADERS .  '">';
 
 ?>
 </div>
@@ -227,6 +226,22 @@ assignFactorLevels();
   <?php
   require "setup/load_js.php";
   ?>
+  <script>
+  // var isMobile = /Android|webOS|iPhone|BlackBerry|Windows Phone|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  // if (isMobile) {
+  //   alert("mobile");
+  // }else{
+  //   alert("not mobile");
+  // }
+
+    window.onbeforeunload = function() {
+      return "Data will be lost if you leave the page, are you sure?";
+    };
+    window.addEventListener("hashchange", function(e) {
+      alert("You can't navigate back otherwise you'll be terminated from the experiment. Are you sure?")
+    })
+
+  </script>
   
 
 </body>

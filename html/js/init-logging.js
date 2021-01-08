@@ -39,7 +39,7 @@ $('body').on('next', function(e, type){
   var event_name = 'timestamp_' + page_number;
   measurements[event_name] = Date.now();
 
-  if (page_number === '2') {
+  if (page_number === '3') {
     $.ajax({
       url: 'ajax/agreed.php',
       type: 'POST',

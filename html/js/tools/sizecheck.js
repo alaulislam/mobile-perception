@@ -1,5 +1,6 @@
 
-import { MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT } from '../../setup/constants.js';
+// import { MAX_WINDOW_WIDTH, MAX_WINDOW_HEIGHT } from '../../setup/constants.js';
+import { MAX_WINDOW_WIDTH, MAX_WINDOW_HEIGHT } from '../../setup/constants.js';
 import {getZoom} from '../lib/zoom.js';
 
 function drawDimensionChart() {
@@ -11,7 +12,7 @@ function drawDimensionChart() {
 
   // red rectangle
   var rw = Math.floor(width * 0.42);
-  var rh = Math.floor(rw * MIN_WINDOW_HEIGHT / MIN_WINDOW_WIDTH);
+  var rh = Math.floor(rw * MAX_WINDOW_HEIGHT / MAX_WINDOW_WIDTH);
   var rx0 = Math.floor((width - rw)/2);
   var ry0 = Math.floor((height - rh)/2);
   ctx.strokeStyle = "#990000";
@@ -37,8 +38,8 @@ function drawDimensionChart() {
   ctx.fillText("window size", tx, ty + fs*0.6);
 
   // white rectangle
-  var rw_ = Math.floor(rw * $(window).width() / MIN_WINDOW_WIDTH);
-  var rh_ = Math.floor(rh * $(window).height() / MIN_WINDOW_HEIGHT);
+  var rw_ = Math.floor(rw * $(window).width() / MAX_WINDOW_WIDTH);
+  var rh_ = Math.floor(rh * $(window).height() / MAX_WINDOW_HEIGHT);
   var rx0_ = rx0;
   var ry0_ = ry0;
   ctx.strokeStyle = "#000000";
@@ -59,6 +60,20 @@ function drawDimensionChart() {
   ctx.fillText("Your", tx_, ty_ - fs*0.6);
   ctx.fillText("window size", tx_, ty_ + fs*0.6);
 }
+function draw(){
+  var canvas = document.getElementById("windowsize");
+  var content = canvas.getContext("2d");
+  // var mobile_dimension_img = document.getElementById("desktop_view_alert_img");
+  // content.drawImage(mobile_dimension_img, 0, 0, 280, 150);
+  var imageObj = new Image();
+  imageObj.src = "html/img/alert_device.png";
+  imageObj.onload = function(){
+    content.drawImage(imageObj,  0, 0, 280, 150);
+  }
+  
+}
+
+
 
 export function checkWindowDimension() {
   var zoom = getZoom();
@@ -66,8 +81,9 @@ export function checkWindowDimension() {
 
   $('#content').show();
 
-  if ($(window).width() < MIN_WINDOW_WIDTH || $(window).height() < MIN_WINDOW_HEIGHT) {
-    drawDimensionChart();
+  if ($(window).width() > MAX_WINDOW_WIDTH || $(window).height() > MAX_WINDOW_HEIGHT) {
+    //drawDimensionChart();
+    draw();
     $('#content').hide();
     $('#dimension-message').show();
   } else {
