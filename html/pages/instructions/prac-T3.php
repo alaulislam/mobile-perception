@@ -90,6 +90,37 @@
                </div>
             </div>
             <div class="task_explanation_T3_slide">
+             <p><b>Q.</b> Did you sleep longer on average on the weekend days (Sat, Sun) compared to the weekdays (Mon-Fri)?</p>
+          
+               <figure class="img-container" style="margin-top:-10px">
+                  <img src="img/task_explanation/task_explanation_T3_S3.gif" style="height: 160px !important;"  alt="Example of Tall size visualization.">
+                  <figcaption class="figure-caption">Example of Tall size visualization.</figcaption>
+               </figure>
+               <p class="text-center mt-0">Weekend average sleep <b>></b> Weekdays average sleep</br><b>Answer:</b> YES</p>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <h5 class="d-inline-block align-middle text-muted task_explanation_T3_slide_counter"></h5>
+                     <button type="button" class="btn btn-warning task_explanation_T3_understand_btn">I understand</button>
+                  </div>
+               </div>
+            </div>
+
+            <div class="task_explanation_T3_slide">
+                     <p>During the experiment you will use these two buttons to answer. </p>
+                     <div class="d-flex justify-content-center">
+                        <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
+                           <button type="button" class="btn btn-info">No</button>
+                           <button type="button" class="btn btn-info" style="margin-right: 15px;">Yes</button>
+                        </div>
+                     </div>
+                     <p class="text-center text-muted" style="font-size:90%;">Example of answering buttons</p>
+                     <div class="mt-4">
+                     <p>  Hold your phone so you can comfortably push these buttons. 
+                     Try it now and then press <strong>Next</strong> to move on.</p>
+                     </div>
+            </div>
+
+            <!-- <div class="task_explanation_T3_slide">
                <figure class="img-container">
                   <img src="img/task_explanation/task_explanation_T3_S3.gif" style="height: 160px !important;"  alt="Example of Tall size visualization.">
                   <figcaption class="figure-caption">Example of Tall size visualization.</figcaption>
@@ -113,7 +144,7 @@
                <div role="alert" id="alert_wrong_task_explanation_T3">
                   <p class="text-danger"><strong>Wrong!</strong> The correct answer is YES. Please select YES to proceed to the next section.</p>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>
@@ -124,15 +155,15 @@ $(document).ready(function(event) {
    // event.preventDefault();
         let count = 1;
         function updateDisplay(){
-            $('.task_explanation_T3_slide_counter').text(count +"/6")
+            $('.task_explanation_T3_slide_counter').text(count +"/7")
         };
 
         updateDisplay();
     
          $("#task_explanation_T1_slide_comment").hide();
          $("#btn_<?php echo $id;?>").hide();
-         $("#alert_correct_task_explanation_T3").hide();
-         $("#alert_wrong_task_explanation_T3").hide();
+         // $("#alert_correct_task_explanation_T3").hide();
+         // $("#alert_wrong_task_explanation_T3").hide();
          
          $(".task_explanation_T3_understand_btn").click(function() {
 
@@ -148,19 +179,20 @@ $(document).ready(function(event) {
         if (!next_div.next().length) {
             $('.task_explanation_T3_slide_counter').hide();
             $('.task_explanation_T3_understand_btn').hide();
+            $("#btn_<?php echo $id;?>").show();
 
-            $('.radio_btn_task_explanation_T3').on('input', function() {
-                    var answer_T1 = $(this).val();
-                    if(answer_T1 === "yes"){
-                        $("#alert_wrong_task_explanation_T3").hide();
-                        $("#alert_correct_task_explanation_T3").show();
-                        $("#btn_<?php echo $id;?>").show();
-                    }else{
-                        $("#btn_<?php echo $id;?>").hide();
-                        $("#alert_correct_task_explanation_T3").hide();
-                        $("#alert_wrong_task_explanation_T3").show();
-                    }
-            });
+            // $('.radio_btn_task_explanation_T3').on('input', function() {
+            //         var answer_T1 = $(this).val();
+            //         if(answer_T1 === "yes"){
+            //             $("#alert_wrong_task_explanation_T3").hide();
+            //             $("#alert_correct_task_explanation_T3").show();
+            //             $("#btn_<?php echo $id;?>").show();
+            //         }else{
+            //             $("#btn_<?php echo $id;?>").hide();
+            //             $("#alert_correct_task_explanation_T3").hide();
+            //             $("#alert_wrong_task_explanation_T3").show();
+            //         }
+            // });
         }
     });
        

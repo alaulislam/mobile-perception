@@ -40,6 +40,21 @@
   </div>
 
 <?php
+      if (isset($_GET["DEBUG"]) || isset($_GET["debug"])){
+        $ip = getenv('HTTP_CLIENT_IP')?:
+        getenv('HTTP_X_FORWARDED_FOR')?:
+        getenv('HTTP_X_FORWARDED')?:
+        getenv('HTTP_FORWARDED_FOR')?:
+        getenv('HTTP_FORWARDED')?:
+        getenv('REMOTE_ADDR');
+        session_start();
+        //Petra: it's not really recommended to use get like this. I would prefer $_SESSION but then not sure if that would be compatible with the regular use through prolific
+        // $_GET["STUDY_ID"] = 'Pilot';
+        // $_GET["SESSION_ID"] = session_id();
+        // $_GET["PROLIFIC_PID"] = hash('md5', $ip);
+        $system_generated_id = hash('md5', $ip);
+      }
+
     $missing_parameters = false;
   // get URL parameters sent by Prolific
   if (isset($_GET["PROLIFIC_PID"])) {
@@ -65,6 +80,8 @@
   }  else {
     $is_debug = 0;
   }
+
+  echo '<script>console.log('.$participant_id.')</script>';
 
 ?>
   <div class ="container" id="missing-parameter-container" style="display:none;">
@@ -117,7 +134,8 @@ assignFactorLevels();
 <div id="experiment-info">
 
 <?php
-  echo '<input type="hidden" id="participant_id" value="' . (($is_debug > 0) ? 'DEBUG' : $participant_id) .  '">';
+  echo '<input type="hidden" id="participant_id" value="' . (($is_debug > 0) ? 'Pilot' : $participant_id) .  '">';
+  echo '<input type="hidden" id="system_generated_id" value="' . "" . $system_generated_id .  '">';
   echo '<input type="hidden" id="study_id" value="' . "" . $study_id .  '">';
   echo '<input type="hidden" id="session_id" value="' . "" . $session_id .  '">';
   echo '<input type="hidden" id="condition" value="' . "" . $condition .  '">';

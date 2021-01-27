@@ -186,13 +186,13 @@ h2 {
 	font-weight: bold;
 }
 
-.consent {
+/* .consent {
   font-size: 13px;
-}
+} */
 
-#scroll-warning {
+/* #scroll-warning {
   font-size: 13px;
-}
+} */
 
 .cause-a {
   color:#00008B;
@@ -410,4 +410,140 @@ input[type=text] {
 body {
   height: 100%;
   touch-action: pan-x pan-y;
+}
+
+
+/* Left & Right Modal for feedback */
+/* 
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  margin-top: 36%;
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+
+.modal.left.fade .modal-dialog {
+  left: -500px;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.show .modal-dialog {
+  left: 0;
+}
+
+.modal.right.fade .modal-dialog {
+  right: -500px;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.show .modal-dialog {
+  right: 0;
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content,
+.modal.top .modal-content,
+.modal.bottom .modal-content,
+.modal.full .modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal.left .modal-dialog.modal-sm,
+.modal.right .modal-dialog.modal-sm {
+  width: 300px;
+}
+
+.modal.left .modal-dialog.modal-lg,
+.modal.right .modal-dialog.modal-lg {
+  width: 800px;
+}
+
+.modal.left .modal-dialog.modal-xl,
+.modal.right .modal-dialog.modal-xl {
+  width: 1140px;
+} */
+
+
+
+/* Chrome, Safari, AND NOW ALSO the Edge Browser and Firefox */
+/* @media screen and (-webkit-min-device-pixel-ratio:0) {
+  .modal.left .modal-dialog, .modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 91%;
+    max-width: 100%;
+    margin-top: 56px;
+  }
+} */
+
+/* @-moz-document url-prefix() {
+  .modal.left .modal-dialog,
+  .modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 500px;
+    max-width: 100%;
+    height: 100%;
+    margin-top: 98px;
+  }
+} */
+
+/* Chrome 29+ */
+/* @media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .modal.left .modal-dialog, .modal.right .modal-dialog {
+      position: fixed;
+      margin: auto;
+      width: 91%;
+      max-width: 100%;
+      margin-top: 56px;
+    }
+} */
+
+/* Chrome 22-28 */
+/* @media screen and(-webkit-min-device-pixel-ratio:0) {
+  .modal.left .modal-dialog, .modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 91%;
+    max-width: 100%;
+    margin-top: 56px;
+  }
+} */
+
+.modal {
+  position: fixed;
+  top: 140px;
+  /* right: 100px;
+  bottom: 0;
+  left: 0; */
+  z-index: 10040;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.bigger-font200 { font-size:200%; }
+
+.btn-info:hover,.btn-info:focus,.btn-info:active, 
+.btn-info:active:focus:not(:disabled):not(.disabled),
+.btn:focus, .btn:active, .btn:hover{
+    box-shadow: none!important;
+    outline: 0;
 }

@@ -22,6 +22,13 @@
    margin: auto;
    top: 0; left: 0; bottom: 0; right: 0;
    }
+   .modal-header{
+   border:0px;
+   max-height: 0px !important;
+   }
+   .modal-footer{
+   border:0px;
+   }
 </style>
 <?php
    $total_image_P_T2S1D1 = 15;
@@ -29,9 +36,9 @@
    $img_end_P_T2S1D1 = $image_start_end["D1"][1]; 
    $chart_type_P_T2S1D1 = "S1";
    $trial_shuffle_P_T2S1D1 = array();
-   $trial_shuffle_P_T2S1D1 = handleImageFIle_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1);
+   $trial_shuffle_P_T2S1D1 = handleImageimage_file_name_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1);
      
-   function handleImageFIle_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1){
+   function handleImageimage_file_name_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1){
          $handle_task = fopen("img_csv/$chart_type_P_T2S1D1.csv",'r') or die("can't open file");
          $task_data = fgetcsv($handle_task, 1000, ",");
          $images = array();
@@ -72,58 +79,98 @@
 <div class="row">
    <div class="col">
       <div class="container">
-         <!-- <h5 class="text-center">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5> -->
-         <div class="d-flex justify-content-center">
+      <div class="mt-3"></div>
+       <h5 id="header_question_P_T2S1D1">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5>
+         <div class="d-flex justify-content-center" id="div_trainging_images_P_T2S1D1">
             <input type="hidden" id="current_trial_image_name_P_T2S1D1" name="current_trial_image_name_P_T2S1D1" value="">
             <div class="slideshow-container">
-               <div class="slideshow-inner justify-content-center ">
+               <div class="slideshow-inner justify-content-center">
                   <?php
                      for( $i_P_T2S1D1 = 0; $i_P_T2S1D1 < $total_image_P_T2S1D1; $i_P_T2S1D1++)
                      {  ?>                                     
                   <div class="trial_images_P_T2S1D1" id="P-T2S1D1-<?php echo $i_P_T2S1D1; ?>-<?php echo $trial_shuffle_P_T2S1D1[$i_P_T2S1D1] ?>">
                      <img id="img-P-T2S1D1-<?php echo $i_P_T2S1D1 ?>-<?php echo $trial_shuffle_P_T2S1D1[$i_P_T2S1D1] ?>" src="img/<?php echo $chart_type_P_T2S1D1 ?>/<?php echo $trial_shuffle_P_T2S1D1[$i_P_T2S1D1] ?>.png"/>
-                     <div class="d-flex justify-content-center">
-                        <div class="caption center-block" id="feedback_correct_P-T2S1D1-<?php echo $i_P_T2S1D1; ?>-<?php echo $trial_shuffle_P_T2S1D1[$i_P_T2S1D1] ?>" style="display:none; color: black;margin-top: 173px;background: green;width: 86px;text-align: center;">Correct!</div>
-                     </div>
-                     <div class="d-flex justify-content-center">
-                        <div class="caption center-block" id="feedback_error_P-T2S1D1-<?php echo $i_P_T2S1D1; ?>-<?php echo $trial_shuffle_P_T2S1D1[$i_P_T2S1D1] ?>" style="display:none; color: white;margin-top: 173px;background: red;width: 86px;text-align: center;">Wrong!</div>
-                     </div>
                   </div>
                   <?php } ?>
                </div>
             </div>
          </div>
-         <div class="d-flex justify-content-center">
+         <div class="d-flex justify-content-center" id="div_trainging_ans_buttons_P_T2S1D1">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-               <button type="button" id="btn_no_P_T2S1D1" class="btn btn-info">No</button>
+                <button type="button" id="btn_no_P_T2S1D1" class="btn btn-info">No</button>
                <button type="button" id="btn_yes_P_T2S1D1" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
          </div>
+         <div class="row mt-4 d-none" id="end_message_P_T2S1D1">
+            <div class="alert alert-success col-md-4 col-md-offset-4">
+            <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
+            You finished your training trials. Please click <strong>Next</strong> to proceed with the main trails.
+            </div>
+        </div>
          <div class=mt-4></div>
-         <div class="row" id="alert_prac_T2S1D1">
-            <div class="alert alert-dark alert-dismissible fade show col-md-4 col-md-offset-4">
-               <strong>NB:</strong> Press on the training images after each feedback for the next image.
-               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
+         <div class="modal left xs fade" id="modal_correct_ans_P_T2S1D1" tabindex="-1" role="dialog" aria-labelledby="top_modal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+               <div class="modal-content h-auto rounded-right">
+                  <div class="mt-1"></div>
+                  <div class="modal-body text-center">
+                     <div class="row">
+                           <div class="col-4 img-container">
+                              <img src="img/icons/correct.png" style="height:40px !important;"  alt="CORRECT!">
+                           </div>
+                           <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is correct!</p></div>
+                        </div>
+                     <div class="progress">
+                        <div class="progress-bar bg-info" id="progress_bar_correct_P_T2S1D1" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                     </div>
+                  </div>
+                  <div style="margin-top:-15px"></div>
+                  <div class="modal-footer">
+                     <p class="d-none" id="btn_next_correct_modal_message_P_T2S1D1">Training is over, wait a moment please!</p>
+                     <button type="button" class="btn btn-dark border rounded-pill shadow-sm mb-1" id="btn_next_correct_modal_P_T2S1D1">NEXT</button>
+                  </div>
+               </div>
             </div>
          </div>
+         <div class="modal left xs fade" id="modal_error_ans_P_T2S1D1" tabindex="-1" role="dialog" aria-labelledby="top_modal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+               <div class="modal-content h-auto rounded-right">
+                  <div class="mt-1"></div>
+                   <div class="modal-body text-center">
+                     <div class="row">
+                           <div class="col-4 img-container">
+                              <img src="img/icons/error.png" style="height:40px !important;"  alt="Wrong!">
+                           </div>
+                           <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is wrong!</p></div>
+                        </div>
+                     <div class="progress">
+                        <div class="progress-bar bg-info" id="progress_bar_error_P_T2S1D1" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                     </div>
+                  </div>
+                  <div style="margin-top:-15px"></div>
+                  <div class="modal-footer">
+                     <p class="d-none" id="btn_next_error_modal_message_P_T2S1D1">Training is over, wait a moment please!</p>
+                     <button type="button" class="btn btn-dark border rounded-pill shadow-sm mb-1" id="btn_next_error_modal_P_T2S1D1">NEXT</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+        
       </div>
    </div>
 </div>
 <script type="text/javascript">
    var trial_image_count_P_T2S1D1 = <?php echo $total_image_P_T2S1D1; ?>;
+   var viz_size_P_T2S1D1 = '<?php echo $chart_type_P_T2S1D1 ?>';
+   var stimuli_P_T2S1D1 = viz_size_P_T2S1D1.toLowerCase();
    var image_index_P_T2S1D1 = 1;
    
-   var file_P_T2S1D1 = [];
+   var image_file_name_P_T2S1D1 = [];
    var chart_P_T2S1D1 = [];
-   var elements_P_T2S1D1 = [];
+   var task_P_T2S1D1 = [];
    var trial_P_T2S1D1 = [];
    var sequence_P_T2S1D1 = [];
    var feedback_P_T2S1D1 = [];
    var feedback_time_P_T2S1D1 = [];
-   // window.addEventListener("load",function() {
-   
-   // })
    
    $(document).ready(function() {
       $("#btn_<?php echo $id;?>").hide();
@@ -134,27 +181,30 @@
        $('.trial_images_P_T2S1D1').unbind('click touch');
    
        function set_current_time_P_T2S1D1(time_counter){
-         last_time_count = time_counter;
-       }
-       function canvas_image_touch_deactive_P_T2S1D1(){
-         $('.trial_images_P_T2S1D1').unbind('click touch');  
+         last_time_count_P_T2S1D1 = time_counter;
        }
        function button_enable_P_T2S1D1(){
-           $('#btn_yes_P_T2S1D1').prop('disabled', false);
            $('#btn_no_P_T2S1D1').prop('disabled', false);
+           $('#btn_yes_P_T2S1D1').prop('disabled', false);
        }
        function button_disable_P_T2S1D1(){
-           $('#btn_yes_P_T2S1D1').prop('disabled', true);
-           $('#btn_no_P_T2S1D1').prop('disabled', true);     
+           $('#btn_no_P_T2S1D1').prop('disabled', true);
+           $('#btn_yes_P_T2S1D1').prop('disabled', true);     
        }
    
        function show_images_P_T2S1D1(n){
+            if( image_index_P_T2S1D1 === trial_image_count_P_T2S1D1){
+                $("#btn_next_correct_modal_P_T2S1D1").hide();
+                $("#btn_next_error_modal_P_T2S1D1").hide();
+                $('#btn_next_correct_modal_message_P_T2S1D1').removeClass("d-none");
+                $('#btn_next_error_modal_message_P_T2S1D1').removeClass("d-none");
+             }
              if( image_index_P_T2S1D1 > trial_image_count_P_T2S1D1){
                button_disable_P_T2S1D1();
-               canvas_image_touch_deactive_P_T2S1D1();
-               var current_trial_image_name_P_T2S1D1 = $('#current_trial_image_name_P_T2S1D1').val();
-               $("#img-"+current_trial_image_name_P_T2S1D1).css({"border-style":"none"});
-               $('#alert_prac_T2S1D1').hide();
+              $("#div_trainging_images_P_T2S1D1").children().hide();
+              $("#div_trainging_ans_buttons_P_T2S1D1").children().hide();
+              $('#end_message_P_T2S1D1').removeClass("d-none");
+              $("#header_question_P_T2S1D1").hide();
                $("#btn_<?php echo $id;?>").show();
                return;
              }
@@ -172,151 +222,168 @@
        }
        function next_images_P_T2S1D1(n){
            button_enable_P_T2S1D1();
-           canvas_image_touch_deactive_P_T2S1D1();
            if (n < 0){
            show_images_P_T2S1D1(image_index_P_T2S1D1 -= 1);
            } else {
            show_images_P_T2S1D1(image_index_P_T2S1D1 += 1); 
            }
        }
+       var progress_bar_interval_P_T2S1D1;
+       function clear_modal_progress_bar_interval_P_T2S1D1(){
+         clearInterval(progress_bar_interval_P_T2S1D1);
+       }
+       function fill_progress_bar_P_T2S1D1(answer){
+         var progressBar =  $("#progress_bar_"+answer+"_P_T2S1D1"),
+             width = 0;
+             progressBar.width(width);
+             progress_bar_interval_P_T2S1D1 = setInterval(function() {
+                 width += 2;
+                 progressBar.css('width', width + '%');
+                 if (width >= 100) {
+                     clearInterval(progress_bar_interval_P_T2S1D1);
+                     if(answer === "correct"){
+                       $('#modal_correct_ans_P_T2S1D1').fadeOut(100,function(){
+                           $('#modal_correct_ans_P_T2S1D1').modal('hide');
+                       });
+                     }
+                     if(answer === "error"){
+                       $('#modal_error_ans_P_T2S1D1').fadeOut(100,function(){
+                           $('#modal_error_ans_P_T2S1D1').modal('hide');
+                       });
+                     }
+                     next_images_P_T2S1D1(1);
+                     progressBar.css('width', 0 + '%');
+                 }
+             }, 100); // 5 second = 100/width 2 => 50 => .1*50 [[ 100= .1 second ]] ; if width=1 => 10 second or, 50 = .05
+       }
    
        $("#btn_no_P_T2S1D1").click(function(){
            var current_trial_image_name_P_T2S1D1 = $('#current_trial_image_name_P_T2S1D1').val();
-          
-           time_counter_left = performance.now();
-           // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
-           if( image_index_P_T2S1D1 === trial_image_count_P_T2S1D1){
-               $("#btn_<?php echo $id;?>").prop('disabled', false);
-           }
-           button_disable_P_T2S1D1();
-           $(".trial_images_P_T2S1D1").on('click touch', function () {
-               next_images_P_T2S1D1(1);
-               // feedback_hide_T1();
-               $("#feedback_correct_"+current_trial_image_name_P_T2S1D1).hide();
-               $("#feedback_error_"+current_trial_image_name_P_T2S1D1).hide();
-            });
-   
-        
-           file_P_T2S1D1.push(current_trial_image_name_P_T2S1D1);
-           var stimuli = current_trial_image_name_P_T2S1D1.substring(0,2);
-           chart_P_T2S1D1.push(stimuli);
-           elements_P_T2S1D1.push("t2");
-           var start_pos = current_trial_image_name_P_T2S1D1.indexOf('_') + 1;
-           var end_pos = current_trial_image_name_P_T2S1D1.indexOf('_',start_pos);
-           var image_number = current_trial_image_name_P_T2S1D1.substring(start_pos,end_pos)
-           // console.log("Trial No", image_number)
-           sequence_P_T2S1D1.push(image_number);
+           var time_counter_left_P_T2S1D1 = performance.now();
+
+           image_file_name_P_T2S1D1.push(current_trial_image_name_P_T2S1D1);
+           chart_P_T2S1D1.push(stimuli_P_T2S1D1);
+           task_P_T2S1D1.push("t2");
+           var start_pos_P_T2S1D1 = current_trial_image_name_P_T2S1D1.indexOf('_') + 1;
+           var end_pos_P_T2S1D1 = current_trial_image_name_P_T2S1D1.indexOf('_',start_pos_P_T2S1D1);
+           var image_number_P_T2S1D1 = current_trial_image_name_P_T2S1D1.substring(start_pos_P_T2S1D1,end_pos_P_T2S1D1)
+           // console.log("Trial No", image_number_P_T2S1D1)
+           sequence_P_T2S1D1.push(image_number_P_T2S1D1);
            trial_P_T2S1D1.push(image_index_P_T2S1D1);
    
-           var sliced_current_trial_image_name = current_trial_image_name_P_T2S1D1.slice(current_trial_image_name_P_T2S1D1.lastIndexOf('t2') + 2);
-           var feedback_match = sliced_current_trial_image_name.substr(0, 1);
-         
-           if(feedback_match === 'r'){
-             
-             // var element = document.querySelector('[id^="img_T2_"]').id;
-              $("#img-"+current_trial_image_name_P_T2S1D1).css({"border-color": "green", 
-                "border-width":"4px", 
-                "border-style":"solid",
-               //  "opacity":"0.5",
-                "filter":"alpha(opacity=90)",
-                });
-   
-             $("#feedback_correct_"+current_trial_image_name_P_T2S1D1).show();
+           var sliced_current_trial_image_name_P_T2S1D1 = current_trial_image_name_P_T2S1D1.slice(current_trial_image_name_P_T2S1D1.lastIndexOf('t2') + 2);
+           var feedback_match_P_T2S1D1 = sliced_current_trial_image_name_P_T2S1D1.substr(0, 1);
+           if(feedback_match_P_T2S1D1 === 'r'){
+             $('#modal_correct_ans_P_T2S1D1').modal('show');
+             clear_modal_progress_bar_interval_P_T2S1D1();
+             fill_progress_bar_P_T2S1D1("correct");
+            $("#btn_next_correct_modal_P_T2S1D1").off('click').on('click', function(){
+              clear_modal_progress_bar_interval_P_T2S1D1();
+              $("#progress_bar_correct_P_T2S1D1").css('width', 0 + '%');
+               $('#modal_correct_ans_P_T2S1D1').modal('toggle');
+              //  $('#modal_correct_ans_P_T2S1D1').fadeOut(100,function(){ $('#modal_correct_ans_P_T2S1D1').modal('hide'); });
+               next_images_P_T2S1D1(1);
+             });
              feedback_P_T2S1D1.push("correct");
-             feedback_time_P_T2S1D1.push(time_counter_left - last_time_count);
+             feedback_time_P_T2S1D1.push(time_counter_left_P_T2S1D1 - last_time_count_P_T2S1D1);
            }else{
-   
-             $("#img-"+current_trial_image_name_P_T2S1D1).css({"border-color": "red", 
-                "border-width":"4px", 
-                "border-style":"solid",
-               //  "opacity":"0.5",
-                "filter":"alpha(opacity=90)",
-                });
-             $("#feedback_error_"+current_trial_image_name_P_T2S1D1).show();
+              $('#modal_error_ans_P_T2S1D1').modal('show');
+              clear_modal_progress_bar_interval_P_T2S1D1();
+              fill_progress_bar_P_T2S1D1("error");
+              $("#btn_next_error_modal_P_T2S1D1").off('click').on('click', function(){
+                clear_modal_progress_bar_interval_P_T2S1D1();
+                $("#progress_bar_error_P_T2S1D1").css('width', 0 + '%');
+                    $('#modal_error_ans_P_T2S1D1').modal('toggle');
+              //  $('#modal_error_ans_P_T2S1D1').fadeOut(100,function(){$('#modal_error_ans_P_T2S1D1').modal('hide'); });
+               next_images_P_T2S1D1(1);
+             });
+
              feedback_P_T2S1D1.push("error");
-             feedback_time_P_T2S1D1.push(time_counter_left - last_time_count);
+             feedback_time_P_T2S1D1.push(time_counter_left_P_T2S1D1 - last_time_count_P_T2S1D1);
            }
-   
-           set_current_time_P_T2S1D1(time_counter_left);
+           set_current_time_P_T2S1D1(time_counter_left_P_T2S1D1);
           
        }); 
    
        $("#btn_yes_P_T2S1D1").click(function(){
            var current_trial_image_name_P_T2S1D1 = $('#current_trial_image_name_P_T2S1D1').val();
-           time_counter_left = performance.now();
-           // console.log("Left button clicked" + (time_counter_left - last_time_count) + " milliseconds.")
-           if( image_index_P_T2S1D1 === trial_image_count_P_T2S1D1){
-               $("#btn_<?php echo $id;?>").prop('disabled', false);
-           }
-           button_disable_P_T2S1D1();
-           $(".trial_images_P_T2S1D1").on('click touch', function () {
-               next_images_P_T2S1D1(1);
-               $("#feedback_correct_"+current_trial_image_name_P_T2S1D1).hide();
-               $("#feedback_error_"+current_trial_image_name_P_T2S1D1).hide();
-            });
-   
-         
-           file_P_T2S1D1.push(current_trial_image_name_P_T2S1D1);
-           var stimuli = current_trial_image_name_P_T2S1D1.substring(0,2);
-           chart_P_T2S1D1.push(stimuli);
-           elements_P_T2S1D1.push("t2");
-           var start_pos = current_trial_image_name_P_T2S1D1.indexOf('_') + 1;
-           var end_pos = current_trial_image_name_P_T2S1D1.indexOf('_',start_pos);
-           var image_number = current_trial_image_name_P_T2S1D1.substring(start_pos,end_pos)
-           // console.log("Image Seq", image_number)
-           sequence_P_T2S1D1.push(image_number);
+           var time_counter_left_P_T2S1D1 = performance.now();
+           
+           image_file_name_P_T2S1D1.push(current_trial_image_name_P_T2S1D1);
+           chart_P_T2S1D1.push(stimuli_P_T2S1D1);
+           task_P_T2S1D1.push("t2");
+           var start_pos_P_T2S1D1 = current_trial_image_name_P_T2S1D1.indexOf('_') + 1;
+           var end_pos_P_T2S1D1 = current_trial_image_name_P_T2S1D1.indexOf('_',start_pos_P_T2S1D1);
+           var image_number_P_T2S1D1 = current_trial_image_name_P_T2S1D1.substring(start_pos_P_T2S1D1,end_pos_P_T2S1D1)
+           // console.log("Image Seq", image_number_P_T2S1D1)
+           sequence_P_T2S1D1.push(image_number_P_T2S1D1);
            trial_P_T2S1D1.push(image_index_P_T2S1D1);
    
-           var sliced_current_trial_image_name = current_trial_image_name_P_T2S1D1.slice(current_trial_image_name_P_T2S1D1.lastIndexOf('t2') + 2);
+           var sliced_current_trial_image_name_P_T2S1D1 = current_trial_image_name_P_T2S1D1.slice(current_trial_image_name_P_T2S1D1.lastIndexOf('t2') + 2);
    
-           var feedback_match = sliced_current_trial_image_name.substr(0, 1);
-           if(feedback_match === 'l'){
-             $("#img-"+current_trial_image_name_P_T2S1D1).css({"border-color": "green", 
-                "border-width":"4px", 
-                "border-style":"solid",
-               //  "opacity":"0.5",
-                "filter":"alpha(opacity=90)",
-                });
-   
-             $("#feedback_correct_"+current_trial_image_name_P_T2S1D1).show();
+           var feedback_match_P_T2S1D1 = sliced_current_trial_image_name_P_T2S1D1.substr(0, 1);
+           if(feedback_match_P_T2S1D1 === 'l'){
+             $('#modal_correct_ans_P_T2S1D1').modal('show');
+             clear_modal_progress_bar_interval_P_T2S1D1();
+             fill_progress_bar_P_T2S1D1("correct");
+            $("#btn_next_correct_modal_P_T2S1D1").off('click').on('click', function(){
+              clear_modal_progress_bar_interval_P_T2S1D1();
+              $("#progress_bar_correct_P_T2S1D1").css('width', 0 + '%');
+              $('#modal_correct_ans_P_T2S1D1').modal('toggle');
+               // $('#modal_correct_ans_P_T2S1D1').fadeOut(100,function(){ $('#modal_correct_ans_P_T2S1D1').modal('hide'); });
+               next_images_P_T2S1D1(1);
+             });
              feedback_P_T2S1D1.push("correct");
-             feedback_time_P_T2S1D1.push(time_counter_left - last_time_count);
+             feedback_time_P_T2S1D1.push(time_counter_left_P_T2S1D1 - last_time_count_P_T2S1D1);
            }else{
-             $("#img-"+current_trial_image_name_P_T2S1D1).css({"border-color": "red", 
-                "border-width":"4px", 
-                "border-style":"solid",
-               //  "opacity":"0.5",
-                "filter":"alpha(opacity=90)",
-                });
-   
-             $("#feedback_error_"+current_trial_image_name_P_T2S1D1).show();
+             $('#modal_error_ans_P_T2S1D1').modal('show');
+              clear_modal_progress_bar_interval_P_T2S1D1();
+              fill_progress_bar_P_T2S1D1("error");
+              $("#btn_next_error_modal_P_T2S1D1").off('click').on('click', function(){
+                clear_modal_progress_bar_interval_P_T2S1D1();
+                $("#progress_bar_error_P_T2S1D1").css('width', 0 + '%');
+               $('#modal_error_ans_P_T2S1D1').modal('toggle');
+               next_images_P_T2S1D1(1);
+              });
              feedback_P_T2S1D1.push("error");
-             feedback_time_P_T2S1D1.push(time_counter_left - last_time_count);
+             feedback_time_P_T2S1D1.push(time_counter_left_P_T2S1D1 - last_time_count_P_T2S1D1);
            }
    
-           set_current_time_P_T2S1D1(time_counter_left);
+           set_current_time_P_T2S1D1(time_counter_left_P_T2S1D1);
           
        }); 
    
    });
    
    $('body').on('next', function(e, type){
+   
      // var page_number = $('#page_' + type).val();
-     //  console.log("page number",  page_number);
+     //  console.log("page number",  type);
      event.preventDefault();
-     var p_id_P_T2S1D1 = $('#participant_id').val();
+     var page_name_P_T2S1D1                   = '<?php echo $id;?>';
+     var participant_id_P_T2S1D1              = $('#participant_id').val();
+     var system_generated_id_P_T2S1D1         = $('#system_generated_id').val();
+     var experiment_sequence_P_T2S1D1         = '<?php echo $between_subject_sequence;?>';
+     var experiment_order_P_T2S1D1            = 'T2-S1-D1';
+     var is_main_trial_P_T2S1D1               = '0';
      if (type === '<?php echo $id;?>'){
-       $.ajax({
+      $.ajax({
            type        : 'POST',  
-           url         : 'ajax/test.php',  
-           data        : { participant_id  : JSON.stringify(p_id_P_T2S1D1), 
-                           chart           : JSON.stringify(chart_P_T2S1D1), 
-                           elements        : JSON.stringify(elements_P_T2S1D1), 
-                           trial           : JSON.stringify(trial_P_T2S1D1), 
-                           sequence        : JSON.stringify(sequence_P_T2S1D1),
-                           file            : JSON.stringify(file_P_T2S1D1), 
-                           time            : JSON.stringify(feedback_time_P_T2S1D1), 
-                           feedback        : JSON.stringify(feedback_P_T2S1D1) 
+           url         : 'ajax/experiment_data_save.php',  
+           data        : { 
+                                  page_name                   : JSON.stringify(page_name_P_T2S1D1), 
+                                  participant_id              : JSON.stringify(participant_id_P_T2S1D1), 
+                                  system_generated_id         : JSON.stringify(system_generated_id_P_T2S1D1), 
+                                  experiment_sequence         : JSON.stringify(experiment_sequence_P_T2S1D1),
+                                  experiment_order            : JSON.stringify(experiment_order_P_T2S1D1),
+                                  is_main_trial               : JSON.stringify(is_main_trial_P_T2S1D1),
+                                  task                        : JSON.stringify(task_P_T2S1D1),
+                                  visualization_size          : JSON.stringify(chart_P_T2S1D1),
+                                  trial_order                 : JSON.stringify(trial_P_T2S1D1),
+                                  image_file_order            : JSON.stringify(sequence_P_T2S1D1),
+                                  answering_time              : JSON.stringify(feedback_time_P_T2S1D1),
+                                  answer                      : JSON.stringify(feedback_P_T2S1D1),
+                                  image_file_name             : JSON.stringify(image_file_name_P_T2S1D1)
                          }, 
            dataType    : 'json',  
            success:function(response){
@@ -330,15 +397,16 @@
              // console.log(textStatus)
            },
            error:function (jqXHR, status, thrownError){
-             //  alert('error occured');
-             var jsonValue = jQuery.parseJSON( jqXHR.responseText );
-             console.log(jsonValue.Message);
-             // console.log(jqXHR);
+                console.log(jqXHR);
+                console.log(status);
+                console.log(thrownError);
            }
        });
    
      }
+     // $('#'+type).remove();
        
    });
    
 </script>
+

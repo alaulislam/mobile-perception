@@ -28,7 +28,7 @@
 
     <div id="basics_sleep_viz">
         <div class="visible basics_page_slide">
-        <p>You will see weekly sleep visualization displayed in 3 sizes (Square, wide & tall):</p>
+        <p>You will see a weekly sleep visualization displayed in 3 sizes (square, wide & tall):</p>
         <figure class="img-container">
                 <img class="card-img-top" src="img/basics_sleep_viz/viz_big_small.png" style="width:230px !important;" alt="Example Bar Charts">
                 <!-- <figcaption class="figure-caption">3 sizes from left to right (Square, wide & tall)</figcaption> -->
@@ -48,7 +48,7 @@
                     <img src="img/basics_sleep_viz/basics_instruction_week.png" class="center" style="width:230px !important;"  alt="Example Bar Charts">
                 </div>
                 <div class="mt-3"></div>
-                <p>On each image, at the top, you see a date range (Dec 13 - Dec 19) and at the bottom, you see a timeline that shows a range in which you usually sleep.
+                <p>On each image, at the top, you see a date range (Dec 13 - Dec 19) and at the bottom, you see a timeline that shows a range during which you usually sleep.
 It is displayed as military time: 22:00 - 06:00 (= 10pm - 6am).</p> 
                 <div class="row">
                     <div class="col-sm-12">
@@ -64,7 +64,7 @@ It is displayed as military time: 22:00 - 06:00 (= 10pm - 6am).</p>
                     <img src="img/basics_sleep_viz/basics_instruction_days.png" class="center" style="width:230px !important;"  alt="Example Bar Charts">
                 </div>
                 <div class="mt-3"></div>
-                <p>Legends for bars on the Y-axis are short forms for days of the week. 
+                <p>The legends for the bars on the Y-axis are short forms for the days of the week. 
                 </br>&#10148; The week starts on Monday
                 </br>&#10148; The weekend is Saturday and Sunday</br></p>
                
@@ -82,8 +82,8 @@ It is displayed as military time: 22:00 - 06:00 (= 10pm - 6am).</p>
             </div>
             <div class="mt-3"></div>
             <p>There are two vertical lines that represent your target sleep schedule:
-                </br>&#10148; 22:00(10pm) on the left = when you want to go to bed
-                </br>&#10148; 06:00(6am) on the right = when you want to wake up
+                </br>&#10148; 22:00 (10pm) on the left = when you want to go to bed
+                </br>&#10148; 06:00 (6am) on the right = when you want to wake up
                 </p>
         
                 <div class="row">

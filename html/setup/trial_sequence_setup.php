@@ -144,6 +144,7 @@ if(!empty($trial_sequence)){
   switch ($trial_sequence)
     {
         case 1:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T1"); 
             $stimuli = array("S1","S2","S3");
             $data_img = array("D1","D2","D3");
@@ -151,10 +152,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );
+            );
+            $experiment_order = array(
+              "experiment_sequence_1" => "T1-S1-D1",
+              "experiment_sequence_2" => "T1-S2-D2",
+              "experiment_sequence_3" => "T1-S3-D3"
+            );
             // var_dump("the value is either 1.");
             break;
         case 2:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T2");
             $stimuli = array("S1","S2","S3");
             $data_img = array("D1","D2","D3");
@@ -162,10 +169,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          ); 
+            );
+            $experiment_order = array(
+              "experiment_sequence_1" => "T2-S1-D1",
+              "experiment_sequence_2" => "T2-S2-D2",
+              "experiment_sequence_3" => "T2-S3-D3"
+            );
             // var_dump("the value is either 2.");
             break;
         case 3:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T3");
             $stimuli = array("S1","S2","S3");
             $data_img = array("D1","D2","D3");
@@ -174,9 +187,15 @@ if(!empty($trial_sequence)){
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
           );
+          $experiment_order = array(
+            "experiment_sequence_1" => "T3-S1-D1",
+            "experiment_sequence_2" => "T3-S2-D2",
+            "experiment_sequence_3" => "T3-S3-D3"
+          );
             // var_dump("the value is either 3.");
             break;
         case 4:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T1");
             $stimuli = array("S2","S3","S1");
             $data_img = array("D1","D2","D3");
@@ -184,10 +203,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );   
+            );
+            $experiment_order = array(
+              "experiment_sequence_1" => "T1-S2-D1",
+              "experiment_sequence_2" => "T1-S3-D2",
+              "experiment_sequence_3" => "T1-S1-D3"
+            );   
             // var_dump("the value is either 4.");
             break;
         case 5:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T2"); 
             $stimuli = array("S2","S3","S1");
             $data_img = array("D1","D2","D3");
@@ -195,10 +220,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );
+            );
+            $experiment_order = array(
+              "experiment_sequence_1" => "T2-S2-D1",
+              "experiment_sequence_2" => "T2-S3-D2",
+              "experiment_sequence_3" => "T2-S1-D3"
+            );  
             // var_dump("the value is either 5.");
             break;
         case 6:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T3");
             $stimuli = array("S2","S3","S1");
             $data_img = array("D1","D2","D3");
@@ -206,10 +237,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );
+            );
+            $experiment_order = array(
+              "experiment_sequence_1" => "T3-S2-D1",
+              "experiment_sequence_2" => "T3-S3-D2",
+              "experiment_sequence_3" => "T3-S1-D3"
+            );  
             // var_dump("the value is either 6.");
             break;
         case 7:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T1"); 
             $stimuli = array("S3","S1","S2");
             $data_img = array("D1","D2","D3");
@@ -217,10 +254,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );    
+          );
+          $experiment_order = array(
+            "experiment_sequence_1" => "T1-S3-D1",
+            "experiment_sequence_2" => "T1-S1-D2",
+            "experiment_sequence_3" => "T1-S2-D3"
+          );      
             // var_dump("the value is either 7.");
             break;
         case 8:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T2");
             $stimuli = array("S3","S1","S2");
             $data_img = array("D1","D2","D3");
@@ -228,10 +271,16 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );  
+           );
+           $experiment_order = array(
+            "experiment_sequence_1" => "T2-S3-D1",
+            "experiment_sequence_2" => "T2-S1-D2",
+            "experiment_sequence_3" => "T2-S2-D3"
+          );     
             // var_dump("the value is either 8.");
             break;
         case 9:
+            $between_subject_sequence = $trial_sequence;
             $task = array("T3");
             $stimuli = array("S3","S1","S2");
             $data_img = array("D1","D2","D3");
@@ -239,7 +288,12 @@ if(!empty($trial_sequence)){
               "D1" => array( 0, 39 ),
               "D2" => array( 40, 79 ),
               "D3" => array( 80, 119),
-          );    
+           );
+           $experiment_order = array(
+            "experiment_sequence_1" => "T3-S3-D1",
+            "experiment_sequence_2" => "T3-S1-D2",
+            "experiment_sequence_3" => "T3-S2-D3"
+          );        
             // var_dump("the value is either 9.");
             break;
     }

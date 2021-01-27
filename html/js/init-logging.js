@@ -67,22 +67,55 @@ $('body').on('next', function(e, type){
 });
 
 // send data upon 'finished' event
-$('body').on('finished', function(e, type){
-  if (!excluded) {
-    $.ajax({
-      url: 'ajax/results.php',
-      type: 'POST',
-      data: JSON.stringify(measurements),
-      contentType: 'application/json',
-      success: function (data) {
-        console.log("Experiment finished.");
-        $('#completion_code').html(data);
-        $(":button").hide();
-        window.onbeforeunload = null;
-      }
-    });
-  }
-});
+// $('body').on('finished', function(e, type){
+//   alert("button clicked");
+//   if (!excluded) {
+//     $.ajax({
+//       url: 'ajax/results.php',
+//       type: 'POST',
+//       data: JSON.stringify(measurements),
+//       contentType: 'application/json',
+//       success: function (data) {
+//         console.log("Experiment finished.");
+//         $('#completion_code').html(data);
+//         $(":button").hide();
+//         window.onbeforeunload = null;
+//       }
+//     });
+//   }
+// });
+
+// send data upon 'finished' event
+// $('body').on('finished', function(e, type){
+//   alert("button clicked");
+//   if (!excluded) {
+//     $.ajax({
+//       type        : 'POST',  
+//       url         : 'ajax/page_data_save.php',  
+//       data        : {
+//                         page_name                  : JSON.stringify(page_name), 
+//                         participant_id             : JSON.stringify(participant_id), 
+//                         system_generated_id        : JSON.stringify(system_generated_id), 
+//                         experiment_sequence        : JSON.stringify(experiment_sequence), 
+//                         feedbaack_comments         : JSON.stringify(feedbaack_comments), 
+//                   }, 
+//       dataType    : 'json',  
+//       success:function(response){
+//          if( response.status == 'error' ) {
+//             console.log('Something bad happened!');
+//          } else {
+//             console.log("Data saved successfully.");
+//          }
+//       },
+//       complete: function(response, textStatus) {
+//       // console.log(textStatus)
+//       },
+//       error:function (jqXHR, status, thrownError){
+//           console.log(jqXHR);
+//       }
+// }); // end Ajax
+//   }
+// });
 
 // send message upon 'excluded' event
 $('body').on('excluded', function(e, type){

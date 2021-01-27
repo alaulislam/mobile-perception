@@ -1,18 +1,3 @@
-<!-- <div class="row">
-  <div class="col">
-    <form class="mt-2" action="" method="post">
-      <div class="row">
-        <h2>Final question</h2>
-      </div>
-      <div class="row mt-4">
-        <div class="form-group">
-          <textarea class="form-control" id="optionalComments" rows="4" cols="80" placeholder="Do you have any comment about the study, for example concerning the clarity of the instructions or technical issues you might have experienced? (optional)"></textarea>
-        </div>
-      </div>
-    </form>
-  </div>
-</div> -->
-
 <div class="row">
   <div class="col">
     <div class="mt-1 d-flex justify-content-center section-header">
@@ -30,10 +15,47 @@
 <script type="text/javascript">
 
   // This is the event triggered to save the data entered. The event triggers when the 'next' button is pressed.
-	$('body').on('next', function(e, type){
+  $('body').on('finished', function(e, type){
+    event.preventDefault();
 		// The if clause below ensures that this specific instance of a next button press is only triggered when the id of the element corresponds to the one being defined above.
-    if (type === '<?php echo $id;?>' && !(typeof measurements === 'undefined')){
-      measurements['optionalComments'] = $("#optionalComments").val();
-		}
-	});
+    // if (type === '<?php echo $id;?>' && !(typeof measurements === 'undefined')){
+    //   measurements['optionalComments'] = $("#optionalComments").val();
+    // }
+    if (!excluded) {
+      var page_name                 = '<?php echo $id;?>';
+      var participant_id            = $('#participant_id').val();
+      var system_generated_id       = $('#system_generated_id').val();
+      var experiment_sequence       = <?php echo $between_subject_sequence;?>;
+      var feedbaack_comments        = $("#optionalComments").val();
+      $.ajax({
+            type        : 'POST',  
+            url         : 'ajax/page_data_save.php',  
+            data        : {
+                              page_name                  : JSON.stringify(page_name), 
+                              participant_id             : JSON.stringify(participant_id), 
+                              system_generated_id        : JSON.stringify(system_generated_id), 
+                              experiment_sequence        : JSON.stringify(experiment_sequence), 
+                              feedbaack_comments         : JSON.stringify(feedbaack_comments), 
+                        }, 
+            dataType    : 'json',  
+            success:function(response){
+               if( response.status == 'error' ) {
+                  console.log('Something bad happened!');
+               } else {
+                  console.log("Data saved successfully.");
+               }
+            },
+            complete: function(response, textStatus) {
+            // console.log(textStatus)
+            },
+            error:function (jqXHR, status, thrownError){
+                console.log(jqXHR);
+            }
+      }); // end Ajax
+      
+      }
+
+  });
+  
+
 </script>

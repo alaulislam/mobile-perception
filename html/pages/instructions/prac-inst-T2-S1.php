@@ -28,7 +28,7 @@
 
     <div id="training_T2S1">
         <div class="visible training_T2S1_page_slide">
-           <p>&#10148; During your training trials, you will be shown the same Square size images as before but the image will vary each time.</p>
+           <p>&#10148; During your training trials, the size of the visualization will stay the same but the bar widths will change.</p>
            <p>&#10148; If bedtime is later than (22:00) on 4 or more days in the week, press the YES button otherwise NO.</p>
             <figure class="img-container" style="margin-top:-10px">
                 <img src="img/instruction/answer-button-T2T3.png" style="width:120px !important; "  alt="Task two answer button">
@@ -44,11 +44,11 @@
             
         </div>
         <div class="visible training_T2S1_page_slide">
-           <p>&#10148; Only during training - each time you submit an answer, you will see feedback on the image, whether your answer choice is correct or wrong.</p>
-           <p>&#10148; To see the next training image, you have to press on the image after each feedback.</p>
-           <div class="img-container">
-                    <img src="img/instruction/click-S1.png" style="width:180px !important; margin-top:-15px"  alt="Task one answer button">
-            </div>
+        <p>&#10148; Only during training - each time you submit an answer, you will see feedback on a popup window, whether your answer choice is correct or wrong.</p>
+            <div class="img-container" >
+                  <img src="img/instruction/click-S1.png" style="height:180px !important;"  alt="feedback popup">
+           </div>
+           <div class="mt-4"></div>
             <div class="row" style="margin-top:5px">
                 <div class="col-sm-12">
                     <h5 class="d-inline-block align-middle text-muted training_T2S1_counter_display"></h5>
@@ -59,7 +59,8 @@
         </div>
 
         <div class="visible training_T2S1_page_slide">
-            <p>&#10148; It is ok if you did not answer correctly. Make a quick good guess of the right answer, but do not try to measure or calculate correct answers.</p>
+        <p>&#10148; The next training image will come after 5 seconds (you'll see a loading bar for this 5s) and the popup window will close automatically, or you can press the <strong>Next</strong> button for the next image if you don't want to wait for 5s.</p>
+            <p>&#10148; It is ok if you do not answer correctly. Make a quick good guess of the right answer, but do not try to measure or calculate correct answers.</p>
             
         </div>
 

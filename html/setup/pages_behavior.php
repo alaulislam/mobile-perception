@@ -67,6 +67,8 @@
 
   $PAGE_TEST = array(
     "id"		=> "test-A-B-C",
+    // "id"		=> "trial_T1_S1_D1",
+    "id"		=> "practice_T2_S1_D1",
     "next"		=> "",
     "button" 	=> "Next",
     "page"		=> "pages/instructions/test2.php",
@@ -74,6 +76,7 @@
     // "page"		=> "pages/training/prac-T3-S3-D3.php",
     // "page"		=> "pages/questions/post_questionnaire.php",
     // "page"		=> "pages/tutorial/thank_you.php",
+    //  "page"		=> "pages/instructions/prac-T3.php",
     "disabled"	=> false
   );
 
@@ -209,37 +212,11 @@
   );
 
 
-  // $VIS_PAGE = array(
-  //   "id"		=> "vis",
-  //   "next"		=> "comprehension",
-  //   "button" 	=> "Confirm",
-  //   "page"		=> "pages/visualization/vis_page.php",
-  //   "disabled"	=> false
-  // );
-
-  // $COMPREHENSION_PAGE = array(
-  //   "id"		=> "comprehension",
-  //   "next"		=> "attention",
-  //   "button" 	=> "Confirm",
-  //   "page"		=> "pages/trials/comprehension.php",
-  //   "disabled"	=> true
-  // );
-
-
-  // $ATTENTION_PAGE = array(
-  //   "id"		=> "attention",
-  //   "next"		=> "end",
-  //   "button"  => "Finish Study", // needs to be written exactly like that to trigger the finished event
-  //   "page"		=> "pages/trials/attention.php",
-  //   "disabled"	=> true
-  // );
-
-  $ATTENTION_FAILED_PAGE_T1S1 = array(
+  $ATTENTION_FAILED_PAGE = array(
     "id"		=> "excluded",
-    "next"		=> "non",
+    "next"		=> "none",
     "button" 	=> " ",
-    // "page"		=> "pages/trials/attention-failed-T1S1.php",
-    "page"		=> "pages/ajax/attention_check_failed.php",
+    "page"		=> "pages/questions/attention-check-failed.php",
     "disabled"	=> true
   );
 
@@ -261,43 +238,40 @@
 
 
   $PAGE_ORDER = array(
-          // $WELCOME_PAGE, 
-          // $IMPORTANT_PAGE,
-          // $CONSENT_PAGE,
-          // $PRE_QUESTIONNAIRE_PAGE,
-           $BASICS_SLEEP_VIZ_PAGE,
-          // $TASK_EXPLANATION_PAGE,
-          // $INTERMITTENT_MESSAGE_PAGE,
+          $WELCOME_PAGE, 
+          $IMPORTANT_PAGE,
+          $CONSENT_PAGE,
+          $PRE_QUESTIONNAIRE_PAGE,
+          $BASICS_SLEEP_VIZ_PAGE,
+          $TASK_EXPLANATION_PAGE,
+          $INTERMITTENT_MESSAGE_PAGE,
 
-           //$PAGE_TEST,
+          //  $PAGE_TEST,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
-          // $INSTRUCTION_TRIAL_1, 
-          // ${"TRIAL_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
-          // $CONFIDENCE_SURVEY_1,
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
+          $INSTRUCTION_TRIAL_1, 
+          ${"TRIAL_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
+          $CONFIDENCE_SURVEY_1,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[1]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
-          // $INSTRUCTION_TRIAL_2, 
-          // ${"TRIAL_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
-          // $CONFIDENCE_SURVEY_2,
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[1]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
+          $INSTRUCTION_TRIAL_2, 
+          ${"TRIAL_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
+           $CONFIDENCE_SURVEY_2,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[2]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
-          // $INSTRUCTION_TRIAL_3,
-          // ${"TRIAL_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
-          // $CONFIDENCE_SURVEY_3, 
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[2]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
+          $INSTRUCTION_TRIAL_3,
+          ${"TRIAL_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
+           $CONFIDENCE_SURVEY_3, 
         
-          // $POST_QUESTIONNAIRE_PAGE,
-          // $FEEDBACK_PAGE,
-          // $END_PAGE
+          $POST_QUESTIONNAIRE_PAGE,
+          $ATTENTION_FAILED_PAGE,
+          $FEEDBACK_PAGE,
+          $END_PAGE
 
-          // $VIS_PAGE
-          // $COMPREHENSION_PAGE,
-          // $ATTENTION_PAGE,
-          $ATTENTION_FAILED_PAGE_T1S1,
-          // $END_PAGE
+
         );
   
  ?>

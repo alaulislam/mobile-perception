@@ -12,20 +12,20 @@
           <b>Introduction:</b>
         </p>
         <p>
-        You are invited to participate in a study titled "Readability on smartwatches and fitness trackers." The study has received ethics approval under ref. no CER-Paris-Saclay-2020-xxx. 
+        You are invited to participate in a study titled "Readability of micro visualizations on mobile devices". The study has received ethics approval under ref. no CER-Paris-Saclay-2021-xxx. 
         </p>
         <p>
           <b>Main researchers:</b>
         </p>
         <p>
         Alaul Islam & Petra Isenberg (Inria & Université Paris-Saclay, France), 
-        Anastasia Bezerianos (LISN & Université Paris Saclay), and Tanja Blascheck (University of Stuttgart, Germany)</span>
+        Anastasia Bezerianos (LISN & Université Paris-Saclay, France), and Tanja Blascheck from the University of Stuttgart (Germany).</span>
         </p>
         <p>
           <b>Who can participate:</b>
         </p>
         <p>
-        Anyone who (1) owns a mobile phone (e.g, android mobile, iPhone) (2) speaks English, and (3) is at least 18 years old can participate in this study.
+        Anyone who (1) owns a mobile phone (e.g., android mobile, iPhone) (2) speaks English, and (3) is at least 18 years old can participate in this study.
 
         </p>
         <p>
@@ -44,7 +44,7 @@
           <b>What do we expect from you:</b>
         </p>
         <p>
-        If you agree to participate in the study, you will be shown 3 different sizes of bar charts for one question/task and will be asked questions such as your mobile brand and model name, etc. The entire experiment will take approximately <?php echo $EXP_DURATION ?> minutes.
+        If you agree to participate in the study, you will be shown 3 different sizes of bar charts for one task and will be asked questions such as your mobile brand and model name, etc. The entire experiment will take approximately <?php echo $EXP_DURATION ?> minutes.
         </p>
         <p>
           <b>Your rights to withdraw from the experiment at any time:</b>
@@ -65,7 +65,8 @@
           <b>Potential benefits:</b>
         </p>
         <p>
-        You will receive £<?php echo sprintf('%0.2f', $EXP_PAYMENT); ?>  for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment.
+        You will receive <strong>€ X / £ Y</strong> for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment.
+        <!-- You will receive £<?php echo sprintf('%0.2f', $EXP_PAYMENT); ?>  for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment. -->
         </p>
         <p>
           <b>Risks and discomforts:</b>

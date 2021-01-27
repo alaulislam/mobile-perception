@@ -15,30 +15,31 @@
     <div class="form-group" id="form_likert">
         <h5>How confident are you that your answers were correct?</h5>
         
-        <div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="1" name="q" id="radio_first_set_cs_completely_confident">
+        <div class="mt-3">
+          <div class="form-check" style="margin-top:4px">
+            <input type="radio" class="form-check-input" value="5" name="first_set_confidence_survey" id="radio_first_set_cs_completely_confident">
             <label class="form-check-label" for="radio_first_set_cs_completely_confident" style="margin-left:6px;">Completely confident</label>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="2" name="q" id="radio_first_set_cs_fairly_confident">
+          <div class="form-check" style="margin-top:4px">
+            <input type="radio" class="form-check-input" value="4" name="first_set_confidence_survey" id="radio_first_set_cs_fairly_confident">
             <label class="form-check-label" for="radio_first_set_cs_fairly_confident" style="margin-left:6px;">Fairly confident</label>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="3" name="q" id="radio_first_set_cs_somewhat_confident">
+          <div class="form-check" style="margin-top:4px">
+            <input type="radio" class="form-check-input" value="3" name="first_set_confidence_survey" id="radio_first_set_cs_somewhat_confident">
             <label class="form-check-label" for="radio_first_set_cs_somewhat_confident" style="margin-left:6px;">Somewhat confident</label>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="4" name="q" id="radio_first_set_cs_slightly_confident">
+          <div class="form-check" style="margin-top:4px">
+            <input type="radio" class="form-check-input" value="2" name="first_set_confidence_survey" id="radio_first_set_cs_slightly_confident">
             <label class="form-check-label" for="radio_first_set_cs_slightly_confident" style="margin-left:6px;">Slightly confident</label>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="5" name="q" id="radio_first_set_cs_not_confident">
+          <div class="form-check" style="margin-top:4px">
+            <input type="radio" class="form-check-input" value="1" name="first_set_confidence_survey" id="radio_first_set_cs_not_confident">
             <label class="form-check-label" for="radio_first_set_cs_not_confident" style="margin-left:6px;">Not confident at all</label>
           </div>
         </div>
 
     </div>
+    <div class="mt-4"></div>
    
 </div>
 
@@ -62,7 +63,55 @@ $(document).ready(function(){
              {
                 $("#btn_<?php echo $id;?>").prop('disabled', true);
              }  
-        });
+   });
 
 });
+
+$('body').on('next', function(e, type){
+        // var page_number = $('#page_' + type).val();
+        // console.log("page number",  type)
+        event.preventDefault();
+        if (type === '<?php echo $id;?>'){
+          var page_name                   = '<?php echo $id;?>';
+          var participant_id_cs_1         = $('#participant_id').val();
+          var system_generated_id         = $('#system_generated_id').val();
+          var experiment_sequence         = <?php echo $between_subject_sequence;?>;
+          var experiment_order            = '<?php echo $experiment_order["experiment_sequence_1"];?>';
+          var first_set_confidence_survey = $('input[name=first_set_confidence_survey]:checked').val();
+
+          $.ajax({
+                type        : 'POST',  
+                url         : 'ajax/page_data_save.php',  
+                data        : {
+                                  page_name                   : JSON.stringify(page_name), 
+                                  participant_id              : JSON.stringify(participant_id_cs_1), 
+                                  system_generated_id         : JSON.stringify(system_generated_id), 
+                                  experiment_sequence         : JSON.stringify(experiment_sequence),
+                                  experiment_order            : JSON.stringify(experiment_order),  
+                                  first_set_confidence_survey : JSON.stringify(first_set_confidence_survey)
+                              }, 
+                dataType    : 'json',  
+                success:function(response){
+                  if( response.status == 'error' ) {
+                      console.log('Something bad happened!');
+                  } else {
+                      console.log("Data saved successfully.");
+                  }
+                },
+                complete: function(response, textStatus) {
+                // console.log(textStatus)
+                },
+                error:function (jqXHR, status, thrownError){
+                //  alert('error occured');
+                // var jsonValue = jQuery.parseJSON( jqXHR.responseText );
+                // console.log(jsonValue.Message);
+                    console.log(jqXHR);
+                }
+          });
+        }
+    
+  });
+
+
+
 </script>

@@ -751,3 +751,15 @@ timestamp,participant_id,condition,study_id,session_id
 2021-01-05T00:45:16+0100,1,f1_level2_f2_level2,1,1
 2021-01-05T12:10:38+0100,1,f1_level2_f2_level1,1,1
 2021-01-05T12:50:27+0100,1,f1_level1_f2_level2,1,1
+2021-01-14T03:15:33+0100,DEBUG,f1_level1_f2_level1,1,1
+2021-01-14T03:23:25+0100,DEBUG,f1_level1_f2_level2,1,1
+2021-01-14T09:51:17+0100,DEBUG,f1_level2_f2_level2,1,1
+2021-01-20T13:07:12+0100,DEBUG,f1_level1_f2_level1,1,1
+2021-01-20T15:33:08+0100,DEBUG,f1_level1_f2_level1,1,1
+2021-01-21T17:33:39+0100,DEBUG,f1_level2_f2_level1,1,1
+2021-01-27T22:15:03+0100,Pilot,f1_level2_f2_level1,1,1
+2021-01-27T22:29:02+0100,Pilot,f1_level1_f2_level1,1,1
+2021-01-27T22:40:49+0100,Pilot,f1_level2_f2_level1,1,1
+2021-01-27T22:55:09+0100,Pilot,f1_level2_f2_level2,1,1
+2021-01-27T23:15:51+0100,Pilot,f1_level2_f2_level1,1,1
+2021-01-27T23:29:13+0100,Pilot,f1_level1_f2_level1,1,1

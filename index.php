@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="html/css/bootstrap.min.css">
   <link rel="stylesheet" href="html/css/main.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="html/css/bootstrap-modal-ios.css">
 
   <!-- Loads all libraries -->
   <script src="html/js/lib/jquery-3.3.1.min.js"></script>
@@ -57,21 +57,21 @@
       <!-- You can also press Ctrl+0 (on Windows or Linux) or Cmd+0 (on Macos) to reset the zoom.</p> -->
   </div>
   <div id="dimension-message" class="wrong-message container">
-  <p>You are being invited to participate in a <strong>mobile phone</strong> study titled <code>"Readability of visualizations on smartwatches and fitness trackers"</code>. This study is conducted by Alaul Islam and Petra Isenberg from Inria (France), Anastasia Bezerianos from LISN (France), and Tanja Blascheck (University of Stuttgart, Germany).</p>
+  <p>You are being invited to participate in a <strong>mobile phone</strong> study titled <code>"Readability of micro visualizations on mobile devices"</code>. This study is conducted by Alaul Islam and Petra Isenberg from Inria (France), Anastasia Bezerianos from LISN (France), and Tanja Blascheck from the University of Stuttgart (Germany).</p>
   <!-- <p>It may be happening because you're browsing this experiment using a laptop, tablet, or desktop computer.</p> -->
   <div class="alert alert-warning" role="alert">
-  It seems like you are not currently viewing the study on a mobile phone with a minimum screen resolution of 320x480 pixels (width x height).
+  It seems like you are currently not viewing the study on a mobile phone with a minimum screen resolution of 320x480 pixels (width x height).
   You cannot participate in this experiment using a laptop, tablet, or desktop computer.
 </div>
                  <img class = "d-none" id = "desktop_view_alert_img" src = "html/img/alert_device.png" alt = "Example Mobile" />
     <canvas id="windowsize" width="320px" height="200px"></canvas>
 
-    <h5 class="text-center">You can participate in the experiment if:</h5>
-            <p>If you view this page on a smartphone (e.g, android mobile, iPhone) and meet the following screen resolution
+    <h5 class="text-center">You can participate in the experiment:</h5>
+            <p>If you view this page on a smartphone (e.g., android mobile, iPhone) and meet the following screen resolution
             </br>&#10148; &nbsp;<strong>minimum</strong> screen resolution of 320x480 pixels (width x height)
             </br>&#10148; &nbsp;<strong>maximum</strong> screen resolution of 414x896 pixels (width x height)
       </p>
-        <p>Please revisit the page with a phone that fits this requirement in order to proceed.</p>
+        <p>Please revisit the page with a phone that fits this requirement to proceed.</p>
 </div>             
    
     <!-- <p>It may be happening because your browser window is too small or the page is zoomed in.</p> -->
