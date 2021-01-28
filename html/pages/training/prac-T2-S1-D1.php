@@ -32,13 +32,14 @@
 </style>
 <?php
    $total_image_P_T2S1D1 = 15;
+   $experiment_order_P_T2S1D1 = "T2-S1-D1";
+   $chart_type_P_T2S1D1 = "S1";
    $img_start_P_T2S1D1 = $image_start_end["D1"][0]; 
    $img_end_P_T2S1D1 = $image_start_end["D1"][1]; 
-   $chart_type_P_T2S1D1 = "S1";
    $trial_shuffle_P_T2S1D1 = array();
-   $trial_shuffle_P_T2S1D1 = handleImageimage_file_name_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1);
+   $trial_shuffle_P_T2S1D1 = handleImage_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1);
      
-   function handleImageimage_file_name_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1){
+   function handleImage_P_T2S1D1($img_start_P_T2S1D1, $img_end_P_T2S1D1, $chart_type_P_T2S1D1){
          $handle_task = fopen("img_csv/$chart_type_P_T2S1D1.csv",'r') or die("can't open file");
          $task_data = fgetcsv($handle_task, 1000, ",");
          $images = array();
@@ -97,8 +98,8 @@
          </div>
          <div class="d-flex justify-content-center" id="div_trainging_ans_buttons_P_T2S1D1">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-                <button type="button" id="btn_no_P_T2S1D1" class="btn btn-info">No</button>
-               <button type="button" id="btn_yes_P_T2S1D1" class="btn btn-info" style="margin-right: 15px;">Yes</button>
+                <button type="button" id="btn_NO_P_T2S1D1" class="btn btn-info">No</button>
+               <button type="button" id="btn_YES_P_T2S1D1" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
          </div>
          <div class="row mt-4 d-none" id="end_message_P_T2S1D1">
@@ -174,9 +175,9 @@
    
    $(document).ready(function() {
       $("#btn_<?php echo $id;?>").hide();
-       var time_counter_0_P_T2S1D1 = performance.now();
-       set_current_time_P_T2S1D1(time_counter_0_P_T2S1D1);
-       console.log("Initital time counter", time_counter_0_P_T2S1D1);
+       var time_counter_init_P_T2S1D1 = performance.now();
+       set_current_time_P_T2S1D1(time_counter_init_P_T2S1D1);
+       console.log("Initital time counter", time_counter_init_P_T2S1D1);
        show_images_P_T2S1D1(image_index_P_T2S1D1);
        $('.trial_images_P_T2S1D1').unbind('click touch');
    
@@ -184,12 +185,8 @@
          last_time_count_P_T2S1D1 = time_counter;
        }
        function button_enable_P_T2S1D1(){
-           $('#btn_no_P_T2S1D1').prop('disabled', false);
-           $('#btn_yes_P_T2S1D1').prop('disabled', false);
-       }
-       function button_disable_P_T2S1D1(){
-           $('#btn_no_P_T2S1D1').prop('disabled', true);
-           $('#btn_yes_P_T2S1D1').prop('disabled', true);     
+           $('#btn_NO_P_T2S1D1').prop('disabled', false);
+           $('#btn_YES_P_T2S1D1').prop('disabled', false);
        }
    
        function show_images_P_T2S1D1(n){
@@ -200,7 +197,6 @@
                 $('#btn_next_error_modal_message_P_T2S1D1').removeClass("d-none");
              }
              if( image_index_P_T2S1D1 > trial_image_count_P_T2S1D1){
-               button_disable_P_T2S1D1();
               $("#div_trainging_images_P_T2S1D1").children().hide();
               $("#div_trainging_ans_buttons_P_T2S1D1").children().hide();
               $('#end_message_P_T2S1D1').removeClass("d-none");
@@ -257,7 +253,7 @@
              }, 100); // 5 second = 100/width 2 => 50 => .1*50 [[ 100= .1 second ]] ; if width=1 => 10 second or, 50 = .05
        }
    
-       $("#btn_no_P_T2S1D1").click(function(){
+       $("#btn_NO_P_T2S1D1").click(function(){
            var current_trial_image_name_P_T2S1D1 = $('#current_trial_image_name_P_T2S1D1').val();
            var time_counter_left_P_T2S1D1 = performance.now();
 
@@ -305,7 +301,7 @@
           
        }); 
    
-       $("#btn_yes_P_T2S1D1").click(function(){
+       $("#btn_YES_P_T2S1D1").click(function(){
            var current_trial_image_name_P_T2S1D1 = $('#current_trial_image_name_P_T2S1D1').val();
            var time_counter_left_P_T2S1D1 = performance.now();
            
@@ -364,8 +360,8 @@
      var participant_id_P_T2S1D1              = $('#participant_id').val();
      var system_generated_id_P_T2S1D1         = $('#system_generated_id').val();
      var experiment_sequence_P_T2S1D1         = '<?php echo $between_subject_sequence;?>';
-     var experiment_order_P_T2S1D1            = 'T2-S1-D1';
-     var is_main_trial_P_T2S1D1               = '0';
+     var experiment_order_P_T2S1D1            = '<?php echo $experiment_order_P_T2S1D1;?>';
+     var is_main_trial_P_T2S1D1               = 0;
      if (type === '<?php echo $id;?>'){
       $.ajax({
            type        : 'POST',  

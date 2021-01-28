@@ -1,5 +1,5 @@
 <style>
-   .trial_images_T2S3D3{  
+   .trial_images_T_T2S3D3{  
    width: 213px;
    height: 213px;
    border: 2px solid black;
@@ -15,14 +15,14 @@
    border-right: 18px solid black; 
    background: black;
    } 
-   .trial_images_T2S3D3 img{
+   .trial_images_T_T2S3D3 img{
    max-height: 100%;
    max-width: 100%;
    position: absolute;
    margin: auto;
    top: 0; left: 0; bottom: 0; right: 0;
    }
-   #gif_trial_images_T2S3D3{  
+   #gif_trial_images_T_T2S3D3{  
    width: 213px;
    height: 213px;
    border: 2px solid black;
@@ -38,14 +38,14 @@
    border-right: 18px solid black; 
    background: black;
    } 
-   #gif_trial_images_T2S3D3 img{
+   #gif_trial_images_T_T2S3D3 img{
    max-height: 100%;
    max-width: 100%;
    position: absolute;
    margin: auto;
    top: 0; left: 0; bottom: 0; right: 0;
    }
-   #gif_trial_images_T2S3D3 .btn {
+   #gif_trial_images_T_T2S3D3 .btn {
    position: absolute;
    top: 50%;
    left: 50%;
@@ -60,53 +60,54 @@
    border-radius: 5px;
    text-align: center;
    }
-   #gif_trial_images_T2S3D3 .btn:hover {
+   #gif_trial_images_T_T2S3D3 .btn:hover {
    background-color: black;
    }
 </style>
 <?php
-     $total_image_T2S3D3 = 34;
-     $img_start_T2S3D3 = $image_start_end["D3"][0];
-     $img_end_T2S3D3 = $image_start_end["D3"][1];
-     $chart_type_T2S3D3 = "S3";
-     $practice_trial_shuffle_T2S3D3 = array();
-     $practice_trial_shuffle_T2S3D3 = handleImageFIle_T2S3D3($img_start_T2S3D3, $img_end_T2S3D3, $chart_type_T2S3D3);
-       
-     function handleImageFIle_T2S3D3($img_start_T2S3D3, $img_end_T2S3D3, $chart_type_T2S3D3){
-           $handle_task = fopen("img_csv/$chart_type_T2S3D3.csv",'r') or die("can't open file");
-           $task_data = fgetcsv($handle_task, 1000, ",");
-           $images = array();
-           while (($task_data = fgetcsv($handle_task, 1000, ",")) !== FALSE) {
-               $image_name = $task_data[0];
-               if ( !in_array($image_name, $images) ) {
-                   array_push($images, $image_name);
-               }
-           }
-         fclose($handle_task) or die("can't close file");
-         $temp_image_array = array();
-         for($i =0, $k = $img_start_T2S3D3; $k <= $img_end_T2S3D3; $k ++, $i++){
-           if ($k  % 4 != 0) 
-           {
-             if(isset($images[$k]))
-             {
-               $temp_image_array[$i] = $images[$k];
+   $total_image_T_T2S3D3 = 34;
+   $experiment_order_T_T2S3D3 = 'T2-S3-D3';
+   $chart_type_T_T2S3D3 = "S3";
+   $img_start_T_T2S3D3 = $image_start_end["D3"][0];
+   $img_end_T_T2S3D3 = $image_start_end["D3"][1];
+   $trial_image_shuffle_T_T2S3D3 = array();
+   $trial_image_shuffle_T_T2S3D3 = handleImageFIle_T_T2S3D3($img_start_T_T2S3D3, $img_end_T_T2S3D3, $chart_type_T_T2S3D3);
+     
+   function handleImageFIle_T_T2S3D3($img_start_T_T2S3D3, $img_end_T_T2S3D3, $chart_type_T_T2S3D3){
+         $handle_task = fopen("img_csv/$chart_type_T_T2S3D3.csv",'r') or die("can't open file");
+         $task_data = fgetcsv($handle_task, 1000, ",");
+         $images = array();
+         while (($task_data = fgetcsv($handle_task, 1000, ",")) !== FALSE) {
+             $image_name = $task_data[0];
+             if ( !in_array($image_name, $images) ) {
+                 array_push($images, $image_name);
              }
+         }
+       fclose($handle_task) or die("can't close file");
+       $temp_image_array = array();
+       for($i =0, $k = $img_start_T_T2S3D3; $k <= $img_end_T_T2S3D3; $k ++, $i++){
+         if ($k  % 4 != 0) 
+         {
+           if(isset($images[$k]))
+           {
+             $temp_image_array[$i] = $images[$k];
            }
          }
+       }
    
-         $practice_trial_shuffle = [];
-         $practice_trial_shuffle= $temp_image_array;
-         shuffle($practice_trial_shuffle);
-         if(isset($practice_trial_shuffle[0]) && isset($practice_trial_shuffle[2]) && isset($practice_trial_shuffle[7]) 
-         && isset($practice_trial_shuffle[3]) && isset($practice_trial_shuffle[6]) )
-         {
-           array_push($practice_trial_shuffle, $practice_trial_shuffle[0]);
-           array_push($practice_trial_shuffle, $practice_trial_shuffle[2]);
-           array_push($practice_trial_shuffle, $practice_trial_shuffle[7]);
-           array_push($practice_trial_shuffle, $practice_trial_shuffle[3]);
-           array_push($practice_trial_shuffle, $practice_trial_shuffle[6]);
-         }
-         return $practice_trial_shuffle;
+       $practice_trial_shuffle = [];
+       $practice_trial_shuffle= $temp_image_array;
+       shuffle($practice_trial_shuffle);
+       if(isset($practice_trial_shuffle[0]) && isset($practice_trial_shuffle[2]) && isset($practice_trial_shuffle[7]) 
+       && isset($practice_trial_shuffle[3]) && isset($practice_trial_shuffle[6]) )
+       {
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[0]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[2]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[7]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[3]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[6]);
+       }
+       return $practice_trial_shuffle;
    }
    
    
@@ -115,221 +116,224 @@
    <div class="col">
       <div class="container">
          <div class=mt-3></div>
-            <h5 id="header_question_T2S3D3">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5>
-         <div class="d-flex justify-content-center" style="margin-top: 10px;" id="div_training_images_T2S3D3">
-            <input type="hidden" id="current_trial_image_name_T2S3D3" value="">
+         <h5 id="header_question_T_T2S3D3">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5>
+         <div class="d-flex justify-content-center" style="margin-top: 10px;" id="div_training_images_T_T2S3D3">
+            <input type="hidden" id="current_trial_image_name_T_T2S3D3" value="">
             <div class="slideshow-container">
                <div class="slideshow-inner justify-content-center ">
-                  <div id="gif_trial_images_T2S3D3">
+                  <div id="gif_trial_images_T_T2S3D3">
                      <img  src="img/exp_start2.jpg"/>
-                     <button class="btn glow-on-hover" id="btn_trial_images_T2S3D3">Start!</button>
+                     <button class="btn glow-on-hover" id="btn_trial_images_T_T2S3D3">Start!</button>
                   </div>
-                  <div id="div_trial_images_T2S3D3" style="display:none">
+                  <div id="div_trial_images_T_T2S3D3" style="display:none">
                      <?php
                         for( $i_T2S3D3 = 0; $i_T2S3D3 < 30; $i_T2S3D3++)
                         {  ?>  
                      <?php if($i_T2S3D3 == 6){ ?> 
-                     <div class="trial_images_T2S3D3" id="T2S3D3-attn-s3_0_t2l">
-                        <img  src="img/attention/T2_S3/attn-s3_0_t2l.png"/>
+                     <div class="trial_images_T_T2S3D3" id="T2S3D3-attn-s3_300_t2l">
+                        <img  src="img/attention/T2_S3/attn-s3_300_t2l.png"/>
                      </div>
                      <?php } ?>
                      <?php if($i_T2S3D3 == 13){ ?> 
-                     <div class="trial_images_T2S3D3" id="T2S3D3-attn-s3_1_t2r">
-                        <img  src="img/attention/T2_S3/attn-s3_1_t2r.png"/>
+                     <div class="trial_images_T_T2S3D3" id="T2S3D3-attn-s3_301_t2r">
+                        <img  src="img/attention/T2_S3/attn-s3_301_t2r.png"/>
                      </div>
                      <?php } ?>
                      <?php if($i_T2S3D3 == 20){ ?> 
-                     <div class="trial_images_T2S3D3" id="T2S3D3-attn-s3_2_t2l">
-                        <img  src="img/attention/T2_S3/attn-s3_2_t2l.png"/>
+                     <div class="trial_images_T_T2S3D3" id="T2S3D3-attn-s3_302_t2l">
+                        <img  src="img/attention/T2_S3/attn-s3_302_t2l.png"/>
                      </div>
                      <?php } ?>
                      <?php if($i_T2S3D3 == 27){ ?> 
-                     <div class="trial_images_T2S3D3" id="T2S3D3-attn-s3_3_t2r">
-                        <img  src="img/attention/T2_S3/attn-s3_3_t2r.png"/>
+                     <div class="trial_images_T_T2S3D3" id="T2S3D3-attn-s3_303_t2r">
+                        <img  src="img/attention/T2_S3/attn-s3_303_t2r.png"/>
                      </div>
                      <?php } ?>
-                     <div class="trial_images_T2S3D3" id="T2S3D3_<?php echo $i_T2S3D3; ?>_<?php echo $practice_trial_shuffle_T2S3D3[$i_T2S3D3] ?>" >
-                        <img id="img_T2S3D3_<?php echo $i_T2S3D3 ?>_<?php echo $practice_trial_shuffle_T2S3D3[$i_T2S3D3] ?>" src="img/<?php echo $chart_type_T2S3D3; ?>/<?php echo $practice_trial_shuffle_T2S3D3[$i_T2S3D3] ?>.png"/>
+                     <div class="trial_images_T_T2S3D3" id="T2S3D3_<?php echo $i_T2S3D3; ?>_<?php echo $trial_image_shuffle_T_T2S3D3[$i_T2S3D3] ?>" >
+                        <img id="img_T2S3D3_<?php echo $i_T2S3D3 ?>_<?php echo $trial_image_shuffle_T_T2S3D3[$i_T2S3D3] ?>" src="img/<?php echo $chart_type_T_T2S3D3; ?>/<?php echo $trial_image_shuffle_T_T2S3D3[$i_T2S3D3] ?>.png"/>
                      </div>
                      <?php } ?>
                   </div>
                </div>
             </div>
          </div>
-         <div class="d-flex justify-content-center" id="div_trainging_ans_buttons_T2S3D3">
+         <div class="d-flex justify-content-center" id="div_trainging_ans_buttons_T_T2S3D3">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-               <button type="button" id="btn_no_T2S3D3" class="btn btn-info">No</button>
-               <button type="button" id="btn_yes_T2S3D3" class="btn btn-info" style="margin-right: 15px;">Yes</button>
+               <button type="button" id="btn_NO_T_T2S3D3" class="btn btn-info">No</button>
+               <button type="button" id="btn_YES_T_T2S3D3" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
          </div>
-         <div class="row mt-4 d-none" id="end_message_T2S3D3">
+         <div class="row mt-4 d-none" id="end_message_T_T2S3D3">
             <div class="alert alert-success col-md-4 col-md-offset-4">
-            <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
-              You finished your main trials. Please press <strong>Next</strong> to proceed.
+               <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
+               You finished your main trials. Please press <strong>Next</strong> to proceed.
             </div>
-        </div>
+         </div>
          <div class=mt-4></div>
       </div>
    </div>
 </div>
 <script type="text/javascript">
-   var trial_image_count_T2S3D3 = <?php echo $total_image_T2S3D3; ?>;
-   var image_index_T2S3D3 = 1;
+   var trial_image_count_T_T2S3D3 = <?php echo $total_image_T_T2S3D3; ?>;
+   var viz_size_T_T2S3D3 = '<?php echo $chart_type_T_T2S3D3 ?>';
+   var stimuli_T_T2S3D3 = viz_size_T_T2S3D3.toLowerCase();
+   var image_index_T_T2S3D3 = 1;
    
-   var file_T2S3D3 = [];
-   var chart_T2S3D3 = [];
-   var elements_T2S3D3 = [];
-   var trial_T2S3D3 = [];
-   var sequence_T2S3D3 = [];
-   var feedback_T2S3D3 = [];
-   var feedback_time_T2S3D3 = [];
-   var attention_check_count_T2S3D3 = 0;
-   
+   var image_file_name_T_T2S3D3 = [];
+   var chart_T_T2S3D3 = [];
+   var task_T_T2S3D3 = [];
+   var trial_T_T2S3D3 = [];
+   var sequence_T_T2S3D3 = [];
+   var feedback_T_T2S3D3 = [];
+   var feedback_time_T_T2S3D3 = [];
    
    $(document).ready(function() {
     $("#btn_<?php echo $id;?>").hide();
-     $("#btn_no_T2S3D3").hide();
-     $("#btn_yes_T2S3D3").hide();
+     $("#btn_NO_T_T2S3D3").hide();
+     $("#btn_YES_T_T2S3D3").hide();
    
-     $("#btn_trial_images_T2S3D3").click(function(){
-       $("#gif_trial_images_T2S3D3").hide();
-       $('#div_trial_images_T2S3D3').show();
-       $("#btn_no_T2S3D3").show();
-       $("#btn_yes_T2S3D3").show();
+     $("#btn_trial_images_T_T2S3D3").click(function(){
+       $("#gif_trial_images_T_T2S3D3").hide();
+       $('#div_trial_images_T_T2S3D3').show();
+       $("#btn_NO_T_T2S3D3").show();
+       $("#btn_YES_T_T2S3D3").show();
      }); 
    
    
-   var time_counter_0_T2S3D3 = performance.now();
-   set_current_time_T2S3D3(time_counter_0_T2S3D3);
-   console.log("Initital time counter", time_counter_0_T2S3D3);
-   show_images_T2S3D3(image_index_T2S3D3);
+   var time_counter_init_T_T2S3D3 = performance.now();
+   set_current_time_T_T2S3D3(time_counter_init_T_T2S3D3);
+   // console.log("Initital time counter", time_counter_init_T_T2S3D3);
+   show_images_T_T2S3D3(image_index_T_T2S3D3);
    
-   function set_current_time_T2S3D3(time_counter){
-     last_time_count_T2S3D3 = time_counter;
-   }
-
-   function button_enable_T2S3D3(){
-       $('#btn_no_T2S3D3').prop('disabled', false);
-       $('#btn_yes_T2S3D3').prop('disabled', false);
-   }
-   function button_disable_T2S3D3(){
-       $('#btn_no_T2S3D3').prop('disabled', true);
-       $('#btn_yes_T2S3D3').prop('disabled', true);     
+   function set_current_time_T_T2S3D3(time_counter){
+     last_time_count_T_T2S3D3 = time_counter;
    }
    
-   function show_images_T2S3D3(n){
-         if( image_index_T2S3D3 > trial_image_count_T2S3D3){
-         $("#div_training_images_T2S3D3").children().hide();
-         $("#div_trainging_ans_buttons_T2S3D3").children().hide();
-         $('#end_message_T2S3D3').removeClass("d-none");
-         $("#header_question_T2S3D3").hide();
+   
+   function show_images_T_T2S3D3(n){
+         if( image_index_T_T2S3D3 > trial_image_count_T_T2S3D3){
+         $("#div_training_images_T_T2S3D3").children().hide();
+         $("#div_trainging_ans_buttons_T_T2S3D3").children().hide();
+         $('#end_message_T_T2S3D3').removeClass("d-none");
+         $("#header_question_T_T2S3D3").hide();
          $("#btn_<?php echo $id;?>").show();
            return;
          }
          var i;
-         var slides_T2S3D3 = document.getElementsByClassName("trial_images_T2S3D3");
-         if (n > slides_T2S3D3.length) {image_index_T2S3D3 = 1}
-         if (n < 1) {image_index_T2S3D3 = slides_T2S3D3.length}
-         for (i = 0; i < slides_T2S3D3.length; i++) {
-             slides_T2S3D3[i].style.display = "none";
+         var slides_T_T2S3D3 = document.getElementsByClassName("trial_images_T_T2S3D3");
+         if (n > slides_T_T2S3D3.length) {image_index_T_T2S3D3 = 1}
+         if (n < 1) {image_index_T_T2S3D3 = slides_T_T2S3D3.length}
+         for (i = 0; i < slides_T_T2S3D3.length; i++) {
+             slides_T_T2S3D3[i].style.display = "none";
          }
-         slides_T2S3D3[image_index_T2S3D3-1].style.display = "block";
-         $('#current_trial_image_name_T2S3D3').val();
-         // console.log(slides_T2S3D3[image_index_T2S3D3-1].id);
-         $('#current_trial_image_name_T2S3D3').val(slides_T2S3D3[image_index_T2S3D3-1].id);
+         slides_T_T2S3D3[image_index_T_T2S3D3-1].style.display = "block";
+         $('#current_trial_image_name_T_T2S3D3').val();
+         // console.log(slides_T_T2S3D3[image_index_T_T2S3D3-1].id);
+         $('#current_trial_image_name_T_T2S3D3').val(slides_T_T2S3D3[image_index_T_T2S3D3-1].id);
    
    }
-   function next_images_T2S3D3(n){
-       button_enable_T2S3D3();
+   function next_images_T_T2S3D3(n){
        if (n < 0){
-       show_images_T2S3D3(image_index_T2S3D3 -= 1);
+       show_images_T_T2S3D3(image_index_T_T2S3D3 -= 1);
        } else {
-       show_images_T2S3D3(image_index_T2S3D3 += 1); 
+       show_images_T_T2S3D3(image_index_T_T2S3D3 += 1); 
        }
    }
-   $("#btn_no_T2S3D3").click(function(){
-       var current_trial_image_name_T2S3D3 = $('#current_trial_image_name_T2S3D3').val();
+   $("#btn_NO_T_T2S3D3").click(function(){
+       var current_trial_image_name_T_T2S3D3 = $('#current_trial_image_name_T_T2S3D3').val();
            time_counter_no_bn_T2S3D3 = performance.now();
-           file_T2S3D3.push(current_trial_image_name_T2S3D3);
-           var stimuli = current_trial_image_name_T2S3D3.substring(0,2);
-           chart_T2S3D3.push(stimuli);
-           elements_T2S3D3.push("t2");
-           var start_pos = current_trial_image_name_T2S3D3.indexOf('_') + 1;
-           var end_pos = current_trial_image_name_T2S3D3.indexOf('_',start_pos);
-           var image_number = current_trial_image_name_T2S3D3.substring(start_pos,end_pos)
-           sequence_T2S3D3.push(image_number);
-           trial_T2S3D3.push(image_index_T2S3D3);
+           image_file_name_T_T2S3D3.push(current_trial_image_name_T_T2S3D3);
+           chart_T_T2S3D3.push(stimuli_T_T2S3D3);
+         //   var stimuli = current_trial_image_name_T_T2S3D3.substring(0,2);
+         //   chart_T_T2S3D3.push(stimuli);
+           task_T_T2S3D3.push("t2");
+           var start_pos = current_trial_image_name_T_T2S3D3.indexOf('_') + 1;
+           var end_pos = current_trial_image_name_T_T2S3D3.indexOf('_',start_pos);
+           var image_number = current_trial_image_name_T_T2S3D3.substring(start_pos,end_pos)
+           sequence_T_T2S3D3.push(image_number);
+           trial_T_T2S3D3.push(image_index_T_T2S3D3);
    
-           var sliced_current_trial_image_name = current_trial_image_name_T2S3D3.slice(current_trial_image_name_T2S3D3.lastIndexOf('t2') + 2);
+           var sliced_current_trial_image_name = current_trial_image_name_T_T2S3D3.slice(current_trial_image_name_T_T2S3D3.lastIndexOf('t2') + 2);
            var feedback_match = sliced_current_trial_image_name.substr(0, 1);
            if(feedback_match === 'r'){
             //   alert('correct');
-             feedback_T2S3D3.push("correct");
-             feedback_time_T2S3D3.push(time_counter_no_bn_T2S3D3 - last_time_count_T2S3D3);
+             feedback_T_T2S3D3.push("correct");
+             feedback_time_T_T2S3D3.push(time_counter_no_bn_T2S3D3 - last_time_count_T_T2S3D3);
            }else{
             //  alert('wrong');
-             feedback_T2S3D3.push("error");
-             feedback_time_T2S3D3.push(time_counter_no_bn_T2S3D3 - last_time_count_T2S3D3);
+             feedback_T_T2S3D3.push("error");
+             feedback_time_T_T2S3D3.push(time_counter_no_bn_T2S3D3 - last_time_count_T_T2S3D3);
            }
-           set_current_time_T2S3D3(time_counter_no_bn_T2S3D3);
-           next_images_T2S3D3(1);
+           set_current_time_T_T2S3D3(time_counter_no_bn_T2S3D3);
+           next_images_T_T2S3D3(1);
       
    }); 
    
-   $("#btn_yes_T2S3D3").click(function(){
-       var current_trial_image_name_T2S3D3 = $('#current_trial_image_name_T2S3D3').val();
+   $("#btn_YES_T_T2S3D3").click(function(){
+       var current_trial_image_name_T_T2S3D3 = $('#current_trial_image_name_T_T2S3D3').val();
            time_counter_yes_bn_T2S3D3 = performance.now();
          
-           file_T2S3D3.push(current_trial_image_name_T2S3D3);
-           var stimuli = current_trial_image_name_T2S3D3.substring(0,2);
-           chart_T2S3D3.push(stimuli);
-           elements_T2S3D3.push("t2");
-           var start_pos = current_trial_image_name_T2S3D3.indexOf('_') + 1;
-           var end_pos = current_trial_image_name_T2S3D3.indexOf('_',start_pos);
-           var image_number = current_trial_image_name_T2S3D3.substring(start_pos,end_pos)
+           image_file_name_T_T2S3D3.push(current_trial_image_name_T_T2S3D3);
+           var stimuli = current_trial_image_name_T_T2S3D3.substring(0,2);
+           chart_T_T2S3D3.push(stimuli);
+           task_T_T2S3D3.push("t2");
+           var start_pos = current_trial_image_name_T_T2S3D3.indexOf('_') + 1;
+           var end_pos = current_trial_image_name_T_T2S3D3.indexOf('_',start_pos);
+           var image_number = current_trial_image_name_T_T2S3D3.substring(start_pos,end_pos)
            // console.log("Image Seq", image_number)
-           sequence_T2S3D3.push(image_number);
-           trial_T2S3D3.push(image_index_T2S3D3);
+           sequence_T_T2S3D3.push(image_number);
+           trial_T_T2S3D3.push(image_index_T_T2S3D3);
    
-           var sliced_current_trial_image_name = current_trial_image_name_T2S3D3.slice(current_trial_image_name_T2S3D3.lastIndexOf('t2') + 2);
+           var sliced_current_trial_image_name = current_trial_image_name_T_T2S3D3.slice(current_trial_image_name_T_T2S3D3.lastIndexOf('t2') + 2);
    
            var feedback_match = sliced_current_trial_image_name.substr(0, 1);
            if(feedback_match === 'l'){
             //  alert('correct');
-             feedback_T2S3D3.push("correct");
-             feedback_time_T2S3D3.push(time_counter_yes_bn_T2S3D3 - last_time_count_T2S3D3);
+             feedback_T_T2S3D3.push("correct");
+             feedback_time_T_T2S3D3.push(time_counter_yes_bn_T2S3D3 - last_time_count_T_T2S3D3);
            }else{
             // alert('wrong');
-             feedback_T2S3D3.push("error");
-             feedback_time_T2S3D3.push(time_counter_yes_bn_T2S3D3 - last_time_count_T2S3D3);
+             feedback_T_T2S3D3.push("error");
+             feedback_time_T_T2S3D3.push(time_counter_yes_bn_T2S3D3 - last_time_count_T_T2S3D3);
            }
    
-           set_current_time_T2S3D3(time_counter_yes_bn_T2S3D3);
-           next_images_T2S3D3(1);
+           set_current_time_T_T2S3D3(time_counter_yes_bn_T2S3D3);
+           next_images_T_T2S3D3(1);
    }); 
-
-
-});
-
+   
+   
+   });
+   
    
    $('body').on('next', function(e, type){
      // var page_number = $('#page_' + type).val();
      //  console.log("page number",  page_number);
      event.preventDefault();
-     var p_id_T2S3D3 = $('#participant_id').val();
+      var page_name_T_T2S3D3                = '<?php echo $id;?>';
+      var participant_id_T_T2S3D3           = $('#participant_id').val();
+      var system_generated_id_T_T2S3D3      = $('#system_generated_id').val();
+      var experiment_sequence_T_T2S3D3      = '<?php echo $between_subject_sequence;?>';
+      var experiment_order_T_T2S3D3         = '<?php echo $experiment_order_T_T2S3D3;?>';
+      var is_main_trial_T_T2S3D3            = 1;
      if (type === '<?php echo $id;?>'){
-
-       $.ajax({
+   
+      $.ajax({
            type        : 'POST',  
-           url         : 'ajax/test.php',  
-           data        : { participant_id  : JSON.stringify(p_id_T2S3D3), 
-                           chart           : JSON.stringify(chart_T2S3D3), 
-                           elements        : JSON.stringify(elements_T2S3D3), 
-                           trial           : JSON.stringify(trial_T2S3D3), 
-                           sequence        : JSON.stringify(sequence_T2S3D3),
-                           file            : JSON.stringify(file_T2S3D3), 
-                           time            : JSON.stringify(feedback_time_T2S3D3), 
-                           feedback        : JSON.stringify(feedback_T2S3D3) 
+           url         : 'ajax/experiment_data_save.php',  
+           data        : { 
+                                  page_name                   : JSON.stringify(page_name_T_T2S3D3), 
+                                  participant_id              : JSON.stringify(participant_id_T_T2S3D3), 
+                                  system_generated_id         : JSON.stringify(system_generated_id_T_T2S3D3), 
+                                  experiment_sequence         : JSON.stringify(experiment_sequence_T_T2S3D3),
+                                  experiment_order            : JSON.stringify(experiment_order_T_T2S3D3),
+                                  is_main_trial               : JSON.stringify(is_main_trial_T_T2S3D3),
+                                  task                        : JSON.stringify(task_T_T2S3D3),
+                                  visualization_size          : JSON.stringify(chart_T_T2S3D3),
+                                  trial_order                 : JSON.stringify(trial_T_T2S3D3),
+                                  image_file_order            : JSON.stringify(sequence_T_T2S3D3),
+                                  answering_time              : JSON.stringify(feedback_time_T_T2S3D3),
+                                  answer                      : JSON.stringify(feedback_T_T2S3D3),
+                                  image_file_name             : JSON.stringify(image_file_name_T_T2S3D3)
                          }, 
            dataType    : 'json',  
            success:function(response){
@@ -343,10 +347,9 @@
              // console.log(textStatus)
            },
            error:function (jqXHR, status, thrownError){
-             //  alert('error occured');
-             var jsonValue = jQuery.parseJSON( jqXHR.responseText );
-             console.log(jsonValue.Message);
-             // console.log(jqXHR);
+                console.log(jqXHR);
+                console.log(status);
+                console.log(thrownError);
            }
        });
    

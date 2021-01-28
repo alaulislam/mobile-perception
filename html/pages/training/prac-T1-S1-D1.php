@@ -1,4 +1,3 @@
-
 <style>
    .trial_images_P_T1S1D1{  
    width: 213px;
@@ -32,18 +31,18 @@
    }
    .modal-footer{
    border:0px;
-   /* max-height: 0px !important; */
    }
 </style>
 <?php
    $total_image_P_T1S1D1 = 15;
+   $experiment_order_P_T1S1D1 ="T1-S1-D1";
+   $chart_type_P_T1S1D1 = "S1";
    $img_start_P_T1S1D1 = $image_start_end["D1"][0]; 
    $img_end_P_T1S1D1 = $image_start_end["D1"][1]; 
-   $chart_type_P_T1S1D1 = "S1";
    $trial_shuffle_P_T1S1D1 = array();
-   $trial_shuffle_P_T1S1D1 = handleImageimage_file_name_P_T1S1D1($img_start_P_T1S1D1, $img_end_P_T1S1D1, $chart_type_P_T1S1D1);
+   $trial_shuffle_P_T1S1D1 = handleImageimage_P_T1S1D1($img_start_P_T1S1D1, $img_end_P_T1S1D1, $chart_type_P_T1S1D1);
      
-   function handleImageimage_file_name_P_T1S1D1($img_start_P_T1S1D1, $img_end_P_T1S1D1, $chart_type_P_T1S1D1){
+   function handleImageimage_P_T1S1D1($img_start_P_T1S1D1, $img_end_P_T1S1D1, $chart_type_P_T1S1D1){
          $handle_task = fopen("img_csv/$chart_type_P_T1S1D1.csv",'r') or die("can't open file");
          $task_data = fgetcsv($handle_task, 1000, ",");
          $images = array();
@@ -70,11 +69,11 @@
        if(isset($practice_trial_shuffle[0]) && isset($practice_trial_shuffle[2]) && isset($practice_trial_shuffle[7]) 
        && isset($practice_trial_shuffle[3]) && isset($practice_trial_shuffle[6]) )
        {
-       array_push($practice_trial_shuffle, $practice_trial_shuffle[0]);
-       array_push($practice_trial_shuffle, $practice_trial_shuffle[2]);
-       array_push($practice_trial_shuffle, $practice_trial_shuffle[7]);
-       array_push($practice_trial_shuffle, $practice_trial_shuffle[3]);
-       array_push($practice_trial_shuffle, $practice_trial_shuffle[6]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[0]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[2]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[7]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[3]);
+         array_push($practice_trial_shuffle, $practice_trial_shuffle[6]);
        }
    
        return $practice_trial_shuffle;
@@ -85,7 +84,7 @@
    <div class="col">
       <div class="container">
          <div class=mt-3></div>
-         <h5 id="header_q_P_T1S1D1">On which day did you sleep longer, Saturday or Sunday?</h5>
+         <h5 id="header_question_P_T1S1D1">On which day did you sleep longer, Saturday or Sunday?</h5>
          <div class="d-flex justify-content-center" id="div_trainging_images_P_T1S1D1">
             <input type="hidden" id="current_trial_image_name_P_T1S1D1" name="current_trial_image_name_P_T1S1D1" value="">
             <div class="slideshow-container">
@@ -108,19 +107,11 @@
          </div>
          <div class="row mt-4 d-none" id="end_message_P_T1S1D1">
             <div class="alert alert-success col-md-4 col-md-offset-4">
-            <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
-              You finished your training trials. Please click <strong>Next</strong> to proceed with the main trails.
+               <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
+               You finished your training trials. Please click <strong>Next</strong> to proceed with the main trails.
             </div>
-        </div>
+         </div>
          <div class=mt-4></div>
-         <!-- <div class="row" id="alert_prac_T1S1D1">
-            <i class="fa fa-user mr-2"></i>
-            <div class="alert alert-dark alert-dismissible fade show col-md-4 col-md-offset-4">
-               <strong>NB:</strong> Press on the training images after each feedback for the next image.
-               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </div>
-            </div> -->
          <div class="modal left xs fade" id="modal_correct_ans_P_T1S1D1" tabindex="-1" role="dialog" aria-labelledby="top_modal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                <div class="modal-content h-auto rounded-right">
@@ -128,15 +119,17 @@
                   <div class="modal-header d-none" id="modal_correct_dismiss_P_T1S1D1">
                      <!-- <h5 class="modal-title"><i class="fa fa-cog"></i> Preferences</h5> -->
                      <button type="button" class="close" id="modal_correct_dismiss_btn_P_T1S1D1"  data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
+                     <span aria-hidden="true">&times;</span>
                      </button>
-                   </div>
+                  </div>
                   <div class="modal-body text-center">
-                  <div class="row">
+                     <div class="row">
                         <div class="col-4 img-container">
                            <img src="img/icons/correct.png" style="height:40px !important;"  alt="CORRECT!">
                         </div>
-                        <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is correct!</p></div>
+                        <div class="col-8">
+                           <p class="lead" style="margin-left:-30px">Your answer is correct!</p>
+                        </div>
                      </div>
                      <div class="progress">
                         <div class="progress-bar bg-info" id="progress_bar_correct_P_T1S1D1" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -154,13 +147,15 @@
             <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                <div class="modal-content h-auto rounded-right">
                   <div class="mt-1"></div>
-                   <div class="modal-body text-center">
+                  <div class="modal-body text-center">
                      <div class="row">
-                           <div class="col-4 img-container">
-                              <img src="img/icons/error.png" style="height:40px !important;"  alt="Wrong!">
-                           </div>
-                           <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is wrong!</p></div>
+                        <div class="col-4 img-container">
+                           <img src="img/icons/error.png" style="height:40px !important;"  alt="Wrong!">
                         </div>
+                        <div class="col-8">
+                           <p class="lead" style="margin-left:-30px">Your answer is wrong!</p>
+                        </div>
+                     </div>
                      <div class="progress">
                         <div class="progress-bar bg-info" id="progress_bar_error_P_T1S1D1" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
@@ -180,9 +175,7 @@
    var trial_image_count_P_T1S1D1 = <?php echo $total_image_P_T1S1D1; ?>;
    var viz_size_P_T1S1D1 = '<?php echo $chart_type_P_T1S1D1 ?>';
    var stimuli_P_T1S1D1 = viz_size_P_T1S1D1.toLowerCase();
-
    var image_index_P_T1S1D1 = 1;
-   
    var image_file_name_P_T1S1D1 = [];
    var chart_P_T1S1D1 = [];
    var task_P_T1S1D1 = [];
@@ -190,18 +183,14 @@
    var sequence_P_T1S1D1 = [];
    var feedback_P_T1S1D1 = [];
    var feedback_time_P_T1S1D1 = [];
-   // window.addEventListener("load",function() {
-   
-   // })
    
    $(document).ready(function() { 
-
-     $("#btn_<?php echo $id;?>").hide();
-       var time_counter_0_P_T1S1D1 = performance.now();
-       set_current_time_P_T1S1D1(time_counter_0_P_T1S1D1);
-       console.log("Initital time counter", time_counter_0_P_T1S1D1);
-       show_images_P_T1S1D1(image_index_P_T1S1D1);
    
+     $("#btn_<?php echo $id;?>").hide();
+       var time_counter_init_P_T1S1D1 = performance.now();
+       set_current_time_P_T1S1D1(time_counter_init_P_T1S1D1);
+      //  console.log("Initital time counter", time_counter_init_P_T1S1D1);
+       show_images_P_T1S1D1(image_index_P_T1S1D1);
        function set_current_time_P_T1S1D1(time_counter){
          last_time_count_P_T1S1D1 = time_counter;
        }
@@ -209,25 +198,18 @@
            $('#btn_saturday_P_T1S1D1').prop('disabled', false);
            $('#btn_sunday_P_T1S1D1').prop('disabled', false);
        }
-       function button_disable_P_T1S1D1(){
-           $('#btn_saturday_P_T1S1D1').prop('disabled', true);
-           $('#btn_sunday_P_T1S1D1').prop('disabled', true);     
-       }
        function show_images_P_T1S1D1(n){
              if( image_index_P_T1S1D1 === trial_image_count_P_T1S1D1){
-                // $('#modal_correct_dismiss_P_T1S1D1').removeClass("d-none");
-                // $('#modal_error_dismiss_P_T1S1D1').removeClass("d-none");
                 $("#btn_next_correct_modal_P_T1S1D1").hide();
                 $("#btn_next_error_modal_P_T1S1D1").hide();
                 $('#btn_next_correct_modal_message_P_T1S1D1').removeClass("d-none");
                 $('#btn_next_error_modal_message_P_T1S1D1').removeClass("d-none");
              }
              if( image_index_P_T1S1D1 > trial_image_count_P_T1S1D1){
-               button_disable_P_T1S1D1();
               $("#div_trainging_images_P_T1S1D1").children().hide();
               $("#div_trainging_ans_buttons_P_T1S1D1").children().hide();
               $('#end_message_P_T1S1D1').removeClass("d-none");
-              $("#header_q_P_T1S1D1").hide();
+              $("#header_question_P_T1S1D1").hide();
               $("#btn_<?php echo $id;?>").show();
                return;
              }
@@ -285,7 +267,6 @@
            var current_trial_image_name_P_T1S1D1 = $('#current_trial_image_name_P_T1S1D1').val();
            var time_counter_left_P_T1S1D1 = performance.now();
            // console.log("Left button clicked" + (time_counter_left_P_T1S1D1 - last_time_count_P_T1S1D1) + " milliseconds.")
-          //  button_disable_P_T1S1D1();
         
            image_file_name_P_T1S1D1.push(current_trial_image_name_P_T1S1D1);
          //   var stimuli_P_T1S1D1 = current_trial_image_name_P_T1S1D1.substring(0,2);
@@ -324,23 +305,19 @@
               //  $('#modal_error_ans_P_T1S1D1').fadeOut(100,function(){$('#modal_error_ans_P_T1S1D1').modal('hide'); });
                next_images_P_T1S1D1(1);
              });
-
+   
              feedback_P_T1S1D1.push("error");
              feedback_time_P_T1S1D1.push(time_counter_left_P_T1S1D1 - last_time_count_P_T1S1D1);
            }
-   
            set_current_time_P_T1S1D1(time_counter_left_P_T1S1D1);
-          
        }); 
    
        $("#btn_saturday_P_T1S1D1").click(function(){
-
+   
            var current_trial_image_name_P_T1S1D1 = $('#current_trial_image_name_P_T1S1D1').val();
            time_counter_left_P_T1S1D1 = performance.now();
            // console.log("Left button clicked" + (time_counter_left_P_T1S1D1 - last_time_count_P_T1S1D1) + " milliseconds.")
-        
-          //  button_disable_P_T1S1D1();
-
+   
            image_file_name_P_T1S1D1.push(current_trial_image_name_P_T1S1D1);
          //   var stimuli_P_T1S1D1 = current_trial_image_name_P_T1S1D1.substring(8,2);
            chart_P_T1S1D1.push(stimuli_P_T1S1D1);
@@ -381,27 +358,11 @@
              feedback_P_T1S1D1.push("error");
              feedback_time_P_T1S1D1.push(time_counter_left_P_T1S1D1 - last_time_count_P_T1S1D1);
            }
-   
            set_current_time_P_T1S1D1(time_counter_left_P_T1S1D1);
-          
        });
-      //  $("#modal_correct_dismiss_btn_P_T1S1D1").off('click').on('click', function(){
-      //     $("#div_trainging_images_P_T1S1D1").children().hide();
-      //     $("#div_trainging_ans_buttons_P_T1S1D1").children().hide();
-      //     $('#end_message_P_T1S1D1').removeClass("d-none");
-      //     $("#header_q_P_T1S1D1").hide();
-      //   });
-      //   $("#modal_error_dismiss_btn_P_T1S1D1").off('click').on('click', function(){
-      //     $("#div_trainging_images_P_T1S1D1").children().hide();
-      //     $("#div_trainging_ans_buttons_P_T1S1D1").children().hide();
-      //     $('#end_message_P_T1S1D1').removeClass("d-none");
-      //     $("#header_q_P_T1S1D1").hide();
-      //   })  
-   
    });
    
    $('body').on('next', function(e, type){
-   
      // var page_number = $('#page_' + type).val();
      //  console.log("page number",  type);
      event.preventDefault();
@@ -409,8 +370,8 @@
       var participant_id_P_T1S1D1              = $('#participant_id').val();
       var system_generated_id_P_T1S1D1         = $('#system_generated_id').val();
       var experiment_sequence_P_T1S1D1         = '<?php echo $between_subject_sequence;?>';
-      var experiment_order_P_T1S1D1            = 'T1-S1-D1';
-      var is_main_trial_P_T1S1D1               = '0';
+      var experiment_order_P_T1S1D1            = '<?php echo $experiment_order_P_T1S1D1;?>';
+      var is_main_trial_P_T1S1D1               = 0;
      if (type === '<?php echo $id;?>'){
        $.ajax({
            type        : 'POST',  
@@ -445,10 +406,6 @@
                 console.log(jqXHR);
                 console.log(status);
                 console.log(thrownError);
-             //  alert('error occured');
-            //  var jsonValue = jQuery.parseJSON( jqXHR.responseText );
-             //console.log(jsonValue.Message);
-             // console.log(jqXHR);
            }
        });
    
@@ -458,4 +415,3 @@
    });
    
 </script>
-

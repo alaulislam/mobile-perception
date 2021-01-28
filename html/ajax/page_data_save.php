@@ -148,7 +148,7 @@
             // echo '<script>console.log('.$participant_id.','.$system_generated_id.','. $experiment_sequence .','.$has_smartwatch.','.$has_fitness_band.','.$is_used_bar_chart_likert.')</script>';
             // print_r( $participant_id, $experiment_sequence, $has_smartwatch, $has_fitness_band, $is_used_bar_chart_likert);
             $response = array();
-            $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
+            $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_confidence_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
             // $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_". $page_name ."_seq_". $experiment_sequence . ".csv";
             $exists = file_exists($filename);
             if (!$handle = fopen($filename, 'a')) {
@@ -205,7 +205,7 @@
         // echo '<script>console.log('.$participant_id.','.$system_generated_id.','. $experiment_sequence .','.$has_smartwatch.','.$has_fitness_band.','.$is_used_bar_chart_likert.')</script>';
         // print_r( $participant_id, $experiment_sequence, $has_smartwatch, $has_fitness_band, $is_used_bar_chart_likert);
         $response = array();
-        $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
+        $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_confidence_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
         $exists = file_exists($filename);
         if (!$handle = fopen($filename, 'a')) {
             echo "Cannot open file ($filename)";
@@ -260,7 +260,7 @@
             }
             // echo '<script>console.log('.$participant_id.','.$system_generated_id.','. $experiment_sequence .','.$has_smartwatch.','.$has_fitness_band.','.$is_used_bar_chart_likert.')</script>';
             $response = array();
-            $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
+            $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_confidence_". $experiment_order ."_seq_". $experiment_sequence ."_". $page_name . ".csv";
             $exists = file_exists($filename);
             if (!$handle = fopen($filename, 'a')) {
                 echo "Cannot open file ($filename)";

@@ -126,7 +126,7 @@ if(isset($_POST['page_name']) && !empty($_POST['page_name'])  ){ //if isset star
     if($system_generated_id !="" &&  $participant_id !="" &&  $experiment_order !="" && $experiment_sequence !="")
     {
         $response = array();
-        $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_". $experiment_order ."_seq_". $experiment_sequence . ".csv";
+        $filename = "../../results/individual/". $system_generated_id ."_". $participant_id ."_trials_". $experiment_order ."_seq_". $experiment_sequence . ".csv";
         // $filename = "../../results/" . $participant_id .'.csv';
         $exists = file_exists($filename);
         if (!$handle = fopen($filename, 'a')) {

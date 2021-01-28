@@ -32,13 +32,14 @@
 </style>
 <?php
    $total_image_P_T2S3D2 = 15;
+   $experiment_order_P_T2S3D2 = "T2-S3-D2";
+   $chart_type_P_T2S3D2 = "S3";
    $img_start_P_T2S3D2 = $image_start_end["D2"][0]; 
    $img_end_P_T2S3D2 = $image_start_end["D2"][1]; 
-   $chart_type_P_T2S3D2 = "S3";
    $trial_shuffle_P_T2S3D2 = array();
-   $trial_shuffle_P_T2S3D2 = handleImageFIle_P_T2S3D2($img_start_P_T2S3D2, $img_end_P_T2S3D2, $chart_type_P_T2S3D2);
+   $trial_shuffle_P_T2S3D2 = handleImage_P_T2S3D2($img_start_P_T2S3D2, $img_end_P_T2S3D2, $chart_type_P_T2S3D2);
      
-   function handleImageFIle_P_T2S3D2($img_start_P_T2S3D2, $img_end_P_T2S3D2, $chart_type_P_T2S3D2){
+   function handleImage_P_T2S3D2($img_start_P_T2S3D2, $img_end_P_T2S3D2, $chart_type_P_T2S3D2){
          $handle_task = fopen("img_csv/$chart_type_P_T2S3D2.csv",'r') or die("can't open file");
          $task_data = fgetcsv($handle_task, 1000, ",");
          $images = array();
@@ -79,8 +80,8 @@
 <div class="row">
    <div class="col">
       <div class="container">
-      <div class="mt-3"></div>
-       <h5 id="header_question_P_T2S3D2">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5>
+         <div class="mt-3"></div>
+         <h5 id="header_question_P_T2S3D2">Did you go to bed later than planned (22:00) on 4 or more days this week?</h5>
          <div class="d-flex justify-content-center" id="div_trainging_images_P_T2S3D2">
             <input type="hidden" id="current_trial_image_name_P_T2S3D2" name="current_trial_image_name_P_T2S3D2" value="">
             <div class="slideshow-container">
@@ -97,16 +98,16 @@
          </div>
          <div class="d-flex justify-content-center" id="div_trainging_ans_buttons_P_T2S3D2">
             <div class = "btn-group-justified btn-group-lg btn-group-horizontal">
-                <button type="button" id="btn_no_P_T2S3D2" class="btn btn-info">No</button>
-               <button type="button" id="btn_yes_P_T2S3D2" class="btn btn-info" style="margin-right: 15px;">Yes</button>
+               <button type="button" id="btn_NO_P_T2S3D2" class="btn btn-info">No</button>
+               <button type="button" id="btn_YES_P_T2S3D2" class="btn btn-info" style="margin-right: 15px;">Yes</button>
             </div>
          </div>
          <div class="row mt-4 d-none" id="end_message_P_T2S3D2">
             <div class="alert alert-success col-md-4 col-md-offset-4">
-            <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
-            You finished your training trials. Please click <strong>Next</strong> to proceed with the main trails.
+               <h4 class="alert-heading"><i class="fa fa-check"></i> Congratulations!</h4>
+               You finished your training trials. Please click <strong>Next</strong> to proceed with the main trails.
             </div>
-        </div>
+         </div>
          <div class=mt-4></div>
          <div class="modal left xs fade" id="modal_correct_ans_P_T2S3D2" tabindex="-1" role="dialog" aria-labelledby="top_modal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -114,11 +115,13 @@
                   <div class="mt-1"></div>
                   <div class="modal-body text-center">
                      <div class="row">
-                           <div class="col-4 img-container">
-                              <img src="img/icons/correct.png" style="height:40px !important;"  alt="CORRECT!">
-                           </div>
-                           <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is correct!</p></div>
+                        <div class="col-4 img-container">
+                           <img src="img/icons/correct.png" style="height:40px !important;"  alt="CORRECT!">
                         </div>
+                        <div class="col-8">
+                           <p class="lead" style="margin-left:-30px">Your answer is correct!</p>
+                        </div>
+                     </div>
                      <div class="progress">
                         <div class="progress-bar bg-info" id="progress_bar_correct_P_T2S3D2" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
@@ -136,12 +139,14 @@
                <div class="modal-content h-auto rounded-right">
                   <div class="mt-1"></div>
                   <div class="modal-body text-center">
-                  <div class="row">
-                           <div class="col-4 img-container">
-                              <img src="img/icons/error.png" style="height:40px !important;"  alt="Wrong!">
-                           </div>
-                           <div class="col-8"><p class="lead" style="margin-left:-30px">Your answer is wrong!</p></div>
+                     <div class="row">
+                        <div class="col-4 img-container">
+                           <img src="img/icons/error.png" style="height:40px !important;"  alt="Wrong!">
                         </div>
+                        <div class="col-8">
+                           <p class="lead" style="margin-left:-30px">Your answer is wrong!</p>
+                        </div>
+                     </div>
                      <div class="progress">
                         <div class="progress-bar bg-info" id="progress_bar_error_P_T2S3D2" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
@@ -154,17 +159,18 @@
                </div>
             </div>
          </div>
-        
       </div>
    </div>
 </div>
 <script type="text/javascript">
    var trial_image_count_P_T2S3D2 = <?php echo $total_image_P_T2S3D2; ?>;
+   var viz_size_P_T2S3D2 = '<?php echo $chart_type_P_T2S3D2 ?>';
+   var stimuli_P_T2S3D2 = viz_size_P_T2S3D2.toLowerCase();
    var image_index_P_T2S3D2 = 1;
    
-   var file_P_T2S3D2 = [];
+   var image_file_name_P_T2S3D2 = [];
    var chart_P_T2S3D2 = [];
-   var elements_P_T2S3D2 = [];
+   var task_P_T2S3D2 = [];
    var trial_P_T2S3D2 = [];
    var sequence_P_T2S3D2 = [];
    var feedback_P_T2S3D2 = [];
@@ -172,9 +178,9 @@
    
    $(document).ready(function() {
       $("#btn_<?php echo $id;?>").hide();
-       var time_counter_0_P_T2S3D2 = performance.now();
-       set_current_time_P_T2S3D2(time_counter_0_P_T2S3D2);
-       console.log("Initital time counter", time_counter_0_P_T2S3D2);
+       var time_counter_init_P_T2S3D2 = performance.now();
+       set_current_time_P_T2S3D2(time_counter_init_P_T2S3D2);
+       console.log("Initital time counter", time_counter_init_P_T2S3D2);
        show_images_P_T2S3D2(image_index_P_T2S3D2);
        $('.trial_images_P_T2S3D2').unbind('click touch');
    
@@ -182,12 +188,8 @@
          last_time_count_P_T2S3D2 = time_counter;
        }
        function button_enable_P_T2S3D2(){
-           $('#btn_no_P_T2S3D2').prop('disabled', false);
-           $('#btn_yes_P_T2S3D2').prop('disabled', false);
-       }
-       function button_disable_P_T2S3D2(){
-           $('#btn_no_P_T2S3D2').prop('disabled', true);
-           $('#btn_yes_P_T2S3D2').prop('disabled', true);     
+           $('#btn_NO_P_T2S3D2').prop('disabled', false);
+           $('#btn_YES_P_T2S3D2').prop('disabled', false);
        }
    
        function show_images_P_T2S3D2(n){
@@ -198,7 +200,6 @@
                 $('#btn_next_error_modal_message_P_T2S3D2').removeClass("d-none");
              }
              if( image_index_P_T2S3D2 > trial_image_count_P_T2S3D2){
-               button_disable_P_T2S3D2();
               $("#div_trainging_images_P_T2S3D2").children().hide();
               $("#div_trainging_ans_buttons_P_T2S3D2").children().hide();
               $('#end_message_P_T2S3D2').removeClass("d-none");
@@ -255,14 +256,13 @@
              }, 100); // 5 second = 100/width 2 => 50 => .1*50 [[ 100= .1 second ]] ; if width=1 => 10 second or, 50 = .05
        }
    
-       $("#btn_no_P_T2S3D2").click(function(){
+       $("#btn_NO_P_T2S3D2").click(function(){
            var current_trial_image_name_P_T2S3D2 = $('#current_trial_image_name_P_T2S3D2').val();
            var time_counter_left_P_T2S3D2 = performance.now();
-
-           file_P_T2S3D2.push(current_trial_image_name_P_T2S3D2);
-           var stimuli_P_T2S3D2 = current_trial_image_name_P_T2S3D2.substring(0,2);
+   
+           image_file_name_P_T2S3D2.push(current_trial_image_name_P_T2S3D2);
            chart_P_T2S3D2.push(stimuli_P_T2S3D2);
-           elements_P_T2S3D2.push("t2");
+           task_P_T2S3D2.push("t2");
            var start_pos_P_T2S3D2 = current_trial_image_name_P_T2S3D2.indexOf('_') + 1;
            var end_pos_P_T2S3D2 = current_trial_image_name_P_T2S3D2.indexOf('_',start_pos_P_T2S3D2);
            var image_number_P_T2S3D2 = current_trial_image_name_P_T2S3D2.substring(start_pos_P_T2S3D2,end_pos_P_T2S3D2)
@@ -296,7 +296,7 @@
               //  $('#modal_error_ans_P_T2S3D2').fadeOut(100,function(){$('#modal_error_ans_P_T2S3D2').modal('hide'); });
                next_images_P_T2S3D2(1);
              });
-
+   
              feedback_P_T2S3D2.push("error");
              feedback_time_P_T2S3D2.push(time_counter_left_P_T2S3D2 - last_time_count_P_T2S3D2);
            }
@@ -304,14 +304,13 @@
           
        }); 
    
-       $("#btn_yes_P_T2S3D2").click(function(){
+       $("#btn_YES_P_T2S3D2").click(function(){
            var current_trial_image_name_P_T2S3D2 = $('#current_trial_image_name_P_T2S3D2').val();
            var time_counter_left_P_T2S3D2 = performance.now();
            
-           file_P_T2S3D2.push(current_trial_image_name_P_T2S3D2);
-           var stimuli_P_T2S3D2 = current_trial_image_name_P_T2S3D2.substring(0,2);
+           image_file_name_P_T2S3D2.push(current_trial_image_name_P_T2S3D2);
            chart_P_T2S3D2.push(stimuli_P_T2S3D2);
-           elements_P_T2S3D2.push("t2");
+           task_P_T2S3D2.push("t2");
            var start_pos_P_T2S3D2 = current_trial_image_name_P_T2S3D2.indexOf('_') + 1;
            var end_pos_P_T2S3D2 = current_trial_image_name_P_T2S3D2.indexOf('_',start_pos_P_T2S3D2);
            var image_number_P_T2S3D2 = current_trial_image_name_P_T2S3D2.substring(start_pos_P_T2S3D2,end_pos_P_T2S3D2)
@@ -342,8 +341,6 @@
               $("#btn_next_error_modal_P_T2S3D2").off('click').on('click', function(){
                 clear_modal_progress_bar_interval_P_T2S3D2();
                 $("#progress_bar_error_P_T2S3D2").css('width', 0 + '%');
-              // $("#btn_next_error_modal_P_T2S3D2").click(function(){
-               // $('#modal_error_ans_P_T2S3D2').fadeOut(100,function(){$('#modal_error_ans_P_T2S3D2').modal('hide'); });
                $('#modal_error_ans_P_T2S3D2').modal('toggle');
                next_images_P_T2S3D2(1);
               });
@@ -362,19 +359,30 @@
      // var page_number = $('#page_' + type).val();
      //  console.log("page number",  type);
      event.preventDefault();
-     var p_id_P_T2S3D2 = $('#participant_id').val();
+     var page_name_P_T2S3D2                   = '<?php echo $id;?>';
+     var participant_id_P_T2S3D2              = $('#participant_id').val();
+     var system_generated_id_P_T2S3D2         = $('#system_generated_id').val();
+     var experiment_sequence_P_T2S3D2         = '<?php echo $between_subject_sequence;?>';
+     var experiment_order_P_T2S3D2            = '<?php echo $experiment_order_P_T2S3D2;?>';
+     var is_main_trial_P_T2S3D2               = 0;
      if (type === '<?php echo $id;?>'){
-       $.ajax({
+      $.ajax({
            type        : 'POST',  
-           url         : 'ajax/test.php',  
-           data        : { participant_id  : JSON.stringify(p_id_P_T2S3D2), 
-                           chart           : JSON.stringify(chart_P_T2S3D2), 
-                           elements        : JSON.stringify(elements_P_T2S3D2), 
-                           trial           : JSON.stringify(trial_P_T2S3D2), 
-                           sequence        : JSON.stringify(sequence_P_T2S3D2),
-                           file            : JSON.stringify(file_P_T2S3D2), 
-                           time            : JSON.stringify(feedback_time_P_T2S3D2), 
-                           feedback        : JSON.stringify(feedback_P_T2S3D2) 
+           url         : 'ajax/experiment_data_save.php',  
+           data        : { 
+                                  page_name                   : JSON.stringify(page_name_P_T2S3D2), 
+                                  participant_id              : JSON.stringify(participant_id_P_T2S3D2), 
+                                  system_generated_id         : JSON.stringify(system_generated_id_P_T2S3D2), 
+                                  experiment_sequence         : JSON.stringify(experiment_sequence_P_T2S3D2),
+                                  experiment_order            : JSON.stringify(experiment_order_P_T2S3D2),
+                                  is_main_trial               : JSON.stringify(is_main_trial_P_T2S3D2),
+                                  task                        : JSON.stringify(task_P_T2S3D2),
+                                  visualization_size          : JSON.stringify(chart_P_T2S3D2),
+                                  trial_order                 : JSON.stringify(trial_P_T2S3D2),
+                                  image_file_order            : JSON.stringify(sequence_P_T2S3D2),
+                                  answering_time              : JSON.stringify(feedback_time_P_T2S3D2),
+                                  answer                      : JSON.stringify(feedback_P_T2S3D2),
+                                  image_file_name             : JSON.stringify(image_file_name_P_T2S3D2)
                          }, 
            dataType    : 'json',  
            success:function(response){
@@ -388,10 +396,9 @@
              // console.log(textStatus)
            },
            error:function (jqXHR, status, thrownError){
-             //  alert('error occured');
-             var jsonValue = jQuery.parseJSON( jqXHR.responseText );
-             console.log(jsonValue.Message);
-             // console.log(jqXHR);
+                console.log(jqXHR);
+                console.log(status);
+                console.log(thrownError);
            }
        });
    
@@ -401,4 +408,3 @@
    });
    
 </script>
-
