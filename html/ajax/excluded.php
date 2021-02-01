@@ -4,6 +4,15 @@
 
 	$excluded_filename = "../../results/excluded.csv";
 	$exists = file_exists($excluded_filename);
+
+	// if (!$handle = fopen($filename, 'a')) {
+	// 	echo "Cannot open file ($filename)";
+	// 	$response['status'] = 'error';
+	// 	$response['message'] = 'Cannot open the csv file';
+	// 	exit;
+	// }
+
+
 	$excluded_file = fopen($excluded_filename, "a+");
 
 	if (!$exists){

@@ -147,8 +147,8 @@
                         <img  src="img/attention/T1_S3/attn-s3_303_t1r.png"/>
                      </div>
                      <?php } ?>
-                     <div class="trial_images_T1S3D3" id="T1S3D3_<?php echo $i_T1S3D3; ?>_<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>" >
-                        <img id="img_T1S3D3_<?php echo $i_T1S3D3 ?>_<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>" src="img/<?php echo $chart_type_T_T1S3D3; ?>/<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>.png"/>
+                     <div class="trial_images_T1S3D3" id="T1S3D3-<?php echo $i_T1S3D3; ?>-<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>" >
+                        <img id="img-T1S3D3-<?php echo $i_T1S3D3 ?>-<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>" src="img/<?php echo $chart_type_T_T1S3D3; ?>/<?php echo $trial_image_shuffle_T_T1S3D3[$i_T1S3D3] ?>.png"/>
                      </div>
                      <?php } ?>
                   </div>

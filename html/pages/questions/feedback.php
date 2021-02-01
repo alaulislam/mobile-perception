@@ -17,10 +17,6 @@
   // This is the event triggered to save the data entered. The event triggers when the 'next' button is pressed.
   $('body').on('finished', function(e, type){
     event.preventDefault();
-		// The if clause below ensures that this specific instance of a next button press is only triggered when the id of the element corresponds to the one being defined above.
-    // if (type === '<?php echo $id;?>' && !(typeof measurements === 'undefined')){
-    //   measurements['optionalComments'] = $("#optionalComments").val();
-    // }
     if (!excluded) {
       var page_name                 = '<?php echo $id;?>';
       var participant_id            = $('#participant_id').val();
@@ -53,7 +49,44 @@
             }
       }); // end Ajax
       
-      }
+      var experiment_duration       = parseInt(timeSpentOnSite/1000);
+      var browserInfo               = bowser.getParser(window.navigator.userAgent);
+      var browser_name              = browserInfo.getBrowserName();
+      var browser_version           = browserInfo.getBrowserVersion();
+      var operating_system          = browserInfo.getOSName();
+      var target_log                = 'finish';
+      $.ajax({
+            type        : 'POST',  
+            url         : 'ajax/exp_finish_log.php',  
+            data        : {
+                              page_name                  : JSON.stringify(page_name), 
+                              participant_id             : JSON.stringify(participant_id), 
+                              system_generated_id        : JSON.stringify(system_generated_id),
+                              experiment_sequence        : JSON.stringify(experiment_sequence),  
+                              experiment_duration        : JSON.stringify(experiment_duration), 
+                              browser_name               : JSON.stringify(browser_name),
+                              browser_version            : JSON.stringify(browser_version),
+                              operating_system           : JSON.stringify(operating_system),
+                              target_log                 : JSON.stringify(target_log)   
+                         }, 
+            dataType    : 'json',  
+            success:function(response){
+               if( response.status == 'error' ) {
+                  console.log('Something bad happened!');
+               } else {
+                  console.log("Data saved successfully.");
+               }
+            },
+            complete: function(response, textStatus) {
+            // console.log(textStatus)
+            },
+            error:function (jqXHR, status, thrownError){
+                console.log(jqXHR);
+            }
+      }); // end Ajax
+      
+      } // end if for !excluded
+
 
   });
   

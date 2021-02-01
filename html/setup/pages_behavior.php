@@ -68,7 +68,7 @@
   $PAGE_TEST = array(
     "id"		=> "test-A-B-C",
     // "id"		=> "trial_T1_S1_D1",
-    "id"		=> "practice_T2_S1_D1",
+    "id"		=> "practice_T1_S3_D1",
     "next"		=> "",
     "button" 	=> "Next",
     "page"		=> "pages/instructions/test2.php",
@@ -238,38 +238,38 @@
 
 
   $PAGE_ORDER = array(
-          // $WELCOME_PAGE, 
-          // $IMPORTANT_PAGE,
-          // $CONSENT_PAGE,
-          // $PRE_QUESTIONNAIRE_PAGE,
-          // $BASICS_SLEEP_VIZ_PAGE,
-          // $TASK_EXPLANATION_PAGE,
-          // $INTERMITTENT_MESSAGE_PAGE,
+          $WELCOME_PAGE, 
+          $IMPORTANT_PAGE,
+          $CONSENT_PAGE,
+          $PRE_QUESTIONNAIRE_PAGE,
+          $BASICS_SLEEP_VIZ_PAGE,
+          $TASK_EXPLANATION_PAGE,
+          $INTERMITTENT_MESSAGE_PAGE,
 
-           $PAGE_TEST,
+          //  $PAGE_TEST,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
-          // $INSTRUCTION_TRIAL_1, 
-          // ${"TRIAL_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
-          // $CONFIDENCE_SURVEY_1,
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
+          $INSTRUCTION_TRIAL_1, 
+          ${"TRIAL_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
+          $CONFIDENCE_SURVEY_1,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[1]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
-          // $INSTRUCTION_TRIAL_2, 
-          // ${"TRIAL_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
-          //  $CONFIDENCE_SURVEY_2,
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[1]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
+          $INSTRUCTION_TRIAL_2, 
+          ${"TRIAL_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
+           $CONFIDENCE_SURVEY_2,
 
-          // ${"INSTRUCTION_PRAC_$task[0]_$stimuli[2]"},
-          // ${"PRACTICE_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
-          // $INSTRUCTION_TRIAL_3,
-          // ${"TRIAL_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
-          //  $CONFIDENCE_SURVEY_3, 
+          ${"INSTRUCTION_PRAC_$task[0]_$stimuli[2]"},
+          ${"PRACTICE_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
+          $INSTRUCTION_TRIAL_3,
+          ${"TRIAL_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
+           $CONFIDENCE_SURVEY_3, 
         
-          // $POST_QUESTIONNAIRE_PAGE,
-          // $ATTENTION_FAILED_PAGE,
-          // $FEEDBACK_PAGE,
-          // $END_PAGE
+          $POST_QUESTIONNAIRE_PAGE,
+          $ATTENTION_FAILED_PAGE,
+          $FEEDBACK_PAGE,
+          $END_PAGE
 
         );
   

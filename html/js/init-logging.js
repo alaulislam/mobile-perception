@@ -14,9 +14,6 @@
     measurements["browser_version"] = browserInfo.getBrowserVersion();
     measurements["os"] = browserInfo.getOSName();
 
-
-
-
 var excluded = false;
 
 // save timestamps each time "next" is clicked
@@ -53,16 +50,16 @@ $('body').on('next', function(e, type){
   }
 
   // the below is for intermediary logging of the completion of each page. Deactivate if not needed.
-  $.ajax({
-    url: 'ajax/log.php',
-    type: 'POST',
-    data: JSON.stringify(measurements),
-    contentType: 'application/json',
-    success: function (data) {
-      // console.log('Page: ' + page_number);
-      // console.log(measurements);
-    }
-  });
+  // $.ajax({
+  //   url: 'ajax/log.php',
+  //   type: 'POST',
+  //   data: JSON.stringify(measurements),
+  //   contentType: 'application/json',
+  //   success: function (data) {
+  //     // console.log('Page: ' + page_number);
+  //     // console.log(measurements);
+  //   }
+  // });
 
 });
 
@@ -152,3 +149,79 @@ $('body').on('reloaded', function(e, type){
     }
   });
 });
+
+
+// Time spent counter for each participant
+
+var timer;
+var timerStart;
+var timeSpentOnSite = getTimeSpentOnSite();
+
+function getTimeSpentOnSite(){
+    timeSpentOnSite = parseInt(localStorage.getItem('timeSpentOnSite'));
+    timeSpentOnSite = isNaN(timeSpentOnSite) ? 0 : timeSpentOnSite;
+    return timeSpentOnSite;
+}
+
+function startCounting(){
+		timerStart = Date.now();
+		timer = setInterval(function(){
+    		timeSpentOnSite = getTimeSpentOnSite()+(Date.now()-timerStart);
+    		localStorage.setItem('timeSpentOnSite',timeSpentOnSite);
+    		timerStart = parseInt(Date.now());
+    		// Convert to seconds
+    		// console.log(parseInt(timeSpentOnSite/1000));
+		},1000);
+}
+startCounting();
+
+/* ---------- Stop the timer when the window/tab is inactive ---------- */
+
+var stopCountingWhenWindowIsInactive = true; 
+
+if( stopCountingWhenWindowIsInactive ){
+    
+    if( typeof document.hidden !== "undefined" ){
+        var hidden = "hidden", 
+        visibilityChange = "visibilitychange", 
+        visibilityState = "visibilityState";
+    }else if ( typeof document.msHidden !== "undefined" ){
+        var hidden = "msHidden", 
+        visibilityChange = "msvisibilitychange", 
+        visibilityState = "msVisibilityState";
+    }
+    var documentIsHidden = document[hidden];
+
+    document.addEventListener(visibilityChange, function() {
+        if(documentIsHidden != document[hidden]) {
+            if( document[hidden] ){
+                // Window is inactive
+                clearInterval(timer);
+            }else{
+                // Window is active
+                startCounting();
+            }
+            documentIsHidden = document[hidden];
+        }
+    });
+}
+
+// window.onbeforeunload = function() {
+//   return "Data will be lost if you leave the page, are you sure?";
+// };
+// window.addEventListener("hashchange", function(e) {
+//   alert("You can't navigate back otherwise you'll be terminated from the experiment. Are you sure?")
+// })
+
+// $(window).on('unload', function() {
+//   conferma();
+//   clearInterval(timer);
+  
+// });
+
+// function conferma() {
+//   if(confirm('Confermi di voler cancellare la news selezionata?')){
+//       window.location.reload();
+//   }
+//   return false;
+// }

@@ -67,7 +67,7 @@
             </div>
          </div>
          <div style="margin-top:-10px"></div>
-         <span class="text-muted" style="font-size:13px;"> Next button should only be "clickable" if both questions are answered.</span>
+         <span class="text-muted" style="font-size:13px;"> Next button will only be "clickable" if both questions are answered.</span>
       </div>
    </div>
 </div>

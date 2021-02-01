@@ -10,7 +10,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 
 // write individual file
-$indiv_file = "../../results/individual/" . $data["participant_id"] . '.csv';
+$indiv_file = "../../results/individual/" .'log_'. $data["system_generated_id"] .'_'. $data["participant_id"] . '.csv';
 $exists = file_exists($indiv_file);
 $indiv_handle = fopen($indiv_file, "a+");
 

@@ -149,8 +149,8 @@
                         <img  src="img/attention/T2_S1/attn-s1_303_t2r.png"/>
                      </div>
                      <?php } ?>
-                     <div class="trial_images_T_T2S1D3" id="T2S1D3_<?php echo $i_T2S1D3; ?>_<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>" >
-                        <img id="img_T2S1D3_<?php echo $i_T2S1D3 ?>_<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>" src="img/<?php echo $chart_type_T_T2S1D3; ?>/<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>.png"/>
+                     <div class="trial_images_T_T2S1D3" id="T2S1D3-<?php echo $i_T2S1D3; ?>-<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>" >
+                        <img id="img-T2S1D3-<?php echo $i_T2S1D3 ?>-<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>" src="img/<?php echo $chart_type_T_T2S1D3; ?>/<?php echo $trial_image_shuffle_T_T2S1D3[$i_T2S1D3] ?>.png"/>
                      </div>
                      <?php } ?>
                   </div>
@@ -274,8 +274,7 @@
            time_counter_yes_bn_T2S1D3 = performance.now();
          
            image_file_name_T_T2S1D3.push(current_trial_image_name_T_T2S1D3);
-           var stimuli = current_trial_image_name_T_T2S1D3.substring(0,2);
-           chart_T_T2S1D3.push(stimuli);
+           chart_T_T2S1D3.push(stimuli_T_T2S1D3);
            task_T_T2S1D3.push("t2");
            var start_pos = current_trial_image_name_T_T2S1D3.indexOf('_') + 1;
            var end_pos = current_trial_image_name_T_T2S1D3.indexOf('_',start_pos);

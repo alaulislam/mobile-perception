@@ -5,17 +5,20 @@ deleteUnixTimeIfMoreThanTwoHour();
 function deleteUnixTimeIfMoreThanTwoHour(){
 
   function getTimeStampArray(){
-    $filename = "experiment_setup_csv/temp.csv";
+    $filename = "experiment_setup_csv/experiment_condition.csv";
     $exists = file_exists($filename);
     if($exists){
       $handle = fopen($filename, 'r') or die("can't open file");
       $data = fgetcsv($handle, 1000, ",");
       $timeArray = array();
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-          $time = $data[1];
-          if ( !in_array($time, $timeArray) ) {
+          if (isset($data[1])) {
+            $time = $data[1];
+            if ( !in_array($time, $timeArray) ) {
               array_push($timeArray, $time);
+            }
           }
+          // $time = $data[1];
       }
       fclose($handle) or die("can't close file");
       return $timeArray;
@@ -26,7 +29,7 @@ function deleteUnixTimeIfMoreThanTwoHour(){
   }
   $current_time = time();
   // $test_time = 1605139790;
-  $filename_with_path = 'experiment_setup_csv/temp.csv';                                         
+  $filename_with_path = 'experiment_setup_csv/experiment_condition.csv';                                         
   $time_array = getTimeStampArray();
   $del_tag_array = [];
   if(!empty($time_array)){
@@ -34,7 +37,7 @@ function deleteUnixTimeIfMoreThanTwoHour(){
       // $minutes = (int)($seconds / 60);
       $difference = $current_time - $value;
       $difference_min = (int)($difference/60);
-      if((int)($difference/60) > 120){
+      if((int)($difference/60) > 120){ //120 min = 2 hr
         array_push($del_tag_array, $value);
       }
     }
@@ -43,10 +46,12 @@ function deleteUnixTimeIfMoreThanTwoHour(){
   $tag_data_from_csv = [];
   if (!empty($del_tag_array)) {
   if ($handle = fopen($filename_with_path, "r")) {                                
-    while ($data = fgetcsv($handle, 1000, ",")) {                               
+    while ($data = fgetcsv($handle, 1000, ",")) {   
+      if (isset($data[1])) {                            
         if (in_array($data[1], $del_tag_array)){                                
             continue;                                                           
-        }                                                                       
+        }
+      }                                                                       
           $tag_data_from_csv[] = $data;                                           
       }                                                                           
     }                                                                               
@@ -66,17 +71,20 @@ function deleteUnixTimeIfMoreThanTwoHour(){
 function getRandomTrialSequence(){
 
   function checkTrialSequence(){
-    $filename = "experiment_setup_csv/temp.csv";
+    $filename = "experiment_setup_csv/experiment_condition.csv";
     $exists = file_exists($filename);
     if($exists){
       $handle = fopen($filename, 'r') or die("can't open file");
       $data = fgetcsv($handle, 1000, ",");
       $sequence = array();
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-          $serial = $data[0];
-          if ( !in_array($serial, $sequence) ) {
+          if (isset($data[0])) {      
+            $serial = $data[0];
+            if ( !in_array($serial, $sequence) ) {
               array_push($sequence, $serial);
+            }
           }
+         
       }
       fclose($handle) or die("can't close file");
       return $sequence;
@@ -85,7 +93,8 @@ function getRandomTrialSequence(){
     }
    
   }
-  $experiment_sequence = array(1,2,3,4,5,6,7,8,9);
+  // $experiment_sequence = array(1,2,3,4,5,6,7,8,9);
+  $experiment_sequence = array(9);
   function getFinalExpSequence($e_s_t, $e_s){
     $f_e_s = [];
     for($i = 0; $i< count($e_s); $i++)
@@ -113,7 +122,7 @@ function getRandomTrialSequence(){
   return $random_sequence_value;
 }
 function setTempTrialSequence($trial_sequence){
-    $filename = "experiment_setup_csv/temp.csv";
+    $filename = "experiment_setup_csv/experiment_condition.csv";
     $exists = file_exists($filename);
     $handle = fopen( $filename ,'a') or die("can't open file");
     // $agree_file = fopen($agree_filename, "a");
