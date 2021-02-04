@@ -114,14 +114,14 @@ assignFactorLevels();
   $starter_file = fopen($starter_filename, "a+");
 
   if (!$exists){
-    fwrite($starter_file, "timestamp,participant_id,condition,study_id,session_id");
+    fwrite($starter_file, "timestamp,participant_id,system_generated_id,study_id,session_id");
   }
 
   fwrite($starter_file,
     PHP_EOL .
     date(DateTime::ISO8601) . ',' .
-    (($is_debug > 0) ? 'DEBUG' : $participant_id) . ',' .
-    $condition . ',' .
+    (($is_debug > 0) ? 'Pilot' : $participant_id) . ',' .
+    $system_generated_id . ',' .
     $study_id . ',' .
     $session_id
   );

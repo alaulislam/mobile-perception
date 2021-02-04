@@ -545,5 +545,21 @@ body {
 .btn-info:active:focus:not(:disabled):not(.disabled),
 .btn:focus, .btn:active, .btn:hover{
     box-shadow: none!important;
-    outline: 0;
+    outline: none;
+}
+
+.btn-info, 
+.btn-info:hover, 
+.btn-info:active, 
+.btn-info:active:focus, 
+.btn-info:visited, 
+.btn-info:focus {     
+  /* color: #dcdcdc;     
+  background-color: #232323;        
+  outline: none;  */
+  color: #fff !important;
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  box-shadow: none!important;
+  outline: none;
 }

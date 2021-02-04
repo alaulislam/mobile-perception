@@ -213,7 +213,7 @@
 
 
   $ATTENTION_FAILED_PAGE = array(
-    "id"		=> "excluded",
+    "id"		=> "excluded_page",
     "next"		=> "none",
     "button" 	=> " ",
     "page"		=> "pages/questions/attention-check-failed.php",
@@ -246,7 +246,7 @@
           $TASK_EXPLANATION_PAGE,
           $INTERMITTENT_MESSAGE_PAGE,
 
-          //  $PAGE_TEST,
+          // $PAGE_TEST,
 
           ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
           ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},

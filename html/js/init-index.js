@@ -5,4 +5,6 @@ $(window).on('load', function () {
   $('#loader').delay(100).fadeOut('slow');
   // Hide the content and show a message asking for resizing the window or using a different device
   $(window).on('resize', checkWindowDimension);
+
 });
+

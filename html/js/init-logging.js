@@ -115,22 +115,22 @@ $('body').on('next', function(e, type){
 // });
 
 // send message upon 'excluded' event
-$('body').on('excluded', function(e, type){
-  // console.log("excluded; sending notice to server");
-  measurements["reloaded"] = false;
-  measurements["excluded"] = true;
-  window.onbeforeunload = null;
-  $.ajax({
-    url: 'ajax/excluded.php',
-    type: 'POST',
-    data: JSON.stringify(measurements),
-    contentType: 'application/json',
-    success: function (d) {
-      console.log("Participant excluded because of the attention check.");
-      console.log(measurements);
-    }
-  });
-});
+// $('body').on('excluded', function(e, type){
+//   // console.log("excluded; sending notice to server");
+//   measurements["reloaded"] = false;
+//   measurements["excluded"] = true;
+//   window.onbeforeunload = null;
+//   $.ajax({
+//     url: 'ajax/excluded.php',
+//     type: 'POST',
+//     data: JSON.stringify(measurements),
+//     contentType: 'application/json',
+//     success: function (d) {
+//       console.log("Participant excluded because of the attention check.");
+//       console.log(measurements);
+//     }
+//   });
+// });
 
 // send message upon 'reloader' event
 $('body').on('reloaded', function(e, type){
@@ -147,7 +147,7 @@ $('body').on('reloaded', function(e, type){
       console.log("Participant excluded because page reload.");
       console.log(measurements);
     }
-  });
+  });// end ajax
 });
 
 
@@ -225,3 +225,4 @@ if( stopCountingWhenWindowIsInactive ){
 //   }
 //   return false;
 // }
+

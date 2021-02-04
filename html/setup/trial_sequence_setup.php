@@ -5,7 +5,7 @@ deleteUnixTimeIfMoreThanTwoHour();
 function deleteUnixTimeIfMoreThanTwoHour(){
 
   function getTimeStampArray(){
-    $filename = "experiment_setup_csv/experiment_condition.csv";
+    $filename = "../results/experiment_condition.csv";
     $exists = file_exists($filename);
     if($exists){
       $handle = fopen($filename, 'r') or die("can't open file");
@@ -29,7 +29,7 @@ function deleteUnixTimeIfMoreThanTwoHour(){
   }
   $current_time = time();
   // $test_time = 1605139790;
-  $filename_with_path = 'experiment_setup_csv/experiment_condition.csv';                                         
+  $filename_with_path = '../results/experiment_condition.csv';                                         
   $time_array = getTimeStampArray();
   $del_tag_array = [];
   if(!empty($time_array)){
@@ -71,7 +71,7 @@ function deleteUnixTimeIfMoreThanTwoHour(){
 function getRandomTrialSequence(){
 
   function checkTrialSequence(){
-    $filename = "experiment_setup_csv/experiment_condition.csv";
+    $filename = "../results/experiment_condition.csv";
     $exists = file_exists($filename);
     if($exists){
       $handle = fopen($filename, 'r') or die("can't open file");
@@ -93,8 +93,8 @@ function getRandomTrialSequence(){
     }
    
   }
-  // $experiment_sequence = array(1,2,3,4,5,6,7,8,9);
-  $experiment_sequence = array(9);
+  $experiment_sequence = array(1,2,3,4,5,6,7,8,9);
+  // $experiment_sequence = array(6);
   function getFinalExpSequence($e_s_t, $e_s){
     $f_e_s = [];
     for($i = 0; $i< count($e_s); $i++)
@@ -122,7 +122,7 @@ function getRandomTrialSequence(){
   return $random_sequence_value;
 }
 function setTempTrialSequence($trial_sequence){
-    $filename = "experiment_setup_csv/experiment_condition.csv";
+    $filename = "../results/experiment_condition.csv";
     $exists = file_exists($filename);
     $handle = fopen( $filename ,'a') or die("can't open file");
     // $agree_file = fopen($agree_filename, "a");

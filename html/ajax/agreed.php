@@ -7,14 +7,14 @@
   $agree_file = fopen($agree_filename, "a+");
 
   if (!$exists){
-    fwrite($agree_file, "timestamp,participant_id,condition,study_id,session_id");
+    fwrite($agree_file, "timestamp,participant_id,system_generated_id,study_id,session_id");
   }
 
   fwrite($agree_file,
     PHP_EOL .
     date(DateTime::ISO8601) . ',' .
     $data["participant_id"] . ',' .
-    $data["condition"] . ',' .
+    $data["system_generated_id"] . ',' .
     $data["study_id"] . ',' .
     $data["session_id"]
   );

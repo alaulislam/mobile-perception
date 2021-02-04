@@ -321,7 +321,7 @@
 
    $('body').on('next', function(e, type){
    // console.log("next");
-   var  excluded = false;
+   //  var  excluded = false;
    if (type === '<?php echo $id;?>'){
       var first_question_answer = $('input[name=attn_q_one]:checked').val();
       var second_question_answer = $('input[name=attn_q_two]:checked').val();
@@ -330,9 +330,48 @@
       if(first_question_answer != task_name && second_question_answer != "sleep"){
          excluded = true;
          $('body').trigger('excluded');
+         var excluded_for_attn_check = "exclude_participant";
+         var participant_id          = $('#participant_id').val();
+         var system_generated_id     = $('#system_generated_id').val();
+         var experiment_sequence     = <?php echo $between_subject_sequence;?>;
+         var experiment_duration     = parseInt(timeSpentOnSite/1000);
+         var browserInfo             = bowser.getParser(window.navigator.userAgent);
+         var browser_name            = browserInfo.getBrowserName();
+         var browser_version         = browserInfo.getBrowserVersion();
+         var operating_system        = browserInfo.getOSName();
+         $.ajax({
+            type        : 'POST',  
+            url         : 'ajax/excluded_for_attention_check.php',  
+            data        : {
+                              excluded_for_attn_check    : JSON.stringify(excluded_for_attn_check), 
+                              participant_id             : JSON.stringify(participant_id), 
+                              system_generated_id        : JSON.stringify(system_generated_id), 
+                              experiment_sequence        : JSON.stringify(experiment_sequence),
+                              experiment_duration        : JSON.stringify(experiment_duration), 
+                              browser_name               : JSON.stringify(browser_name),
+                              browser_version            : JSON.stringify(browser_version),
+                              operating_system           : JSON.stringify(operating_system)
+                        }, 
+            dataType    : 'json',  
+            success:function(response){
+               if( response.status == 'error' ) {
+                  console.log('Something bad happened!');
+               } else {
+                  console.log("Participant excluded .");
+               }
+            },
+            complete: function(response, textStatus) {
+            },
+            error:function (jqXHR, status, thrownError){
+            }
+         });// ajax end
+
+         
          // console.log("failed on attention check --> exclude");
-         $('#<?php echo $next ?>').hide().promise().done(() => $('#excluded').show());
-         $(":button").hide();
+         // $('#<?php echo $next ?>').hide().promise().done(() => $('#excluded_page').show());
+         // $(":button").hide();
+         $('#<?php echo $next ?>').hide();
+         $('#excluded_page').show();
       } else {
          // console.log("passed on attention check");
          $('#<?php echo $id ?>').hide().promise().done(() => $('#<?php echo $next ?>').show());
@@ -400,10 +439,10 @@
             // var jsonValue = jQuery.parseJSON( jqXHR.responseText );
             // console.log(jsonValue.Message);
             }
-      });
+      });// ajax end
 
 
-      }// ajax end
+      }// !excluded end
 
    }
 
