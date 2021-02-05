@@ -95,6 +95,39 @@ function getRandomTrialSequence(){
   }
   $experiment_sequence = array(1,2,3,4,5,6,7,8,9);
   // $experiment_sequence = array(6);
+  function getUnfinishedExperimentSequence($finished_seq, $all_seq){
+    $unfinished_seq = [];
+    for($i = 0; $i< count($all_seq); $i++)
+    {
+        if ( !in_array($all_seq[$i], $finished_seq) ) {
+              array_push($unfinished_seq, $all_seq[$i]);
+        }
+    }
+    return $unfinished_seq; 
+  }
+
+  function checkFinishedTrialSequence(){
+    $filename = "../results/experiment_condition_done.csv";
+    $exists = file_exists($filename);
+    if($exists){
+      $handle = fopen($filename, 'r') or die("can't open file");
+      $data = fgetcsv($handle, 1000, ",");
+      $sequence = array();
+      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+          if (isset($data[0])) {      
+            $serial = $data[0];
+            if ( !in_array($serial, $sequence) ) {
+              array_push($sequence, $serial);
+            }
+          }
+         
+      }
+      fclose($handle) or die("can't close file");
+      return $sequence;
+    }else{
+      return array();
+    }
+  }
   function getFinalExpSequence($e_s_t, $e_s){
     $f_e_s = [];
     for($i = 0; $i< count($e_s); $i++)
@@ -106,15 +139,23 @@ function getRandomTrialSequence(){
     return $f_e_s; 
   }
 
+  $experiment_sequence_finished = [];
+  $experiment_sequence_finished = checkFinishedTrialSequence();
+  $unfinished_experiment_sequence = [];
+  $unfinished_experiment_sequence = getUnfinishedExperimentSequence($experiment_sequence_finished, $experiment_sequence); // compare with all experiment sequence with done sequence and get the undone sequence
+  // var_dump($experiment_sequence_check);
+
   $experiment_sequence_temp = [];
-  $experiment_sequence_temp = checkTrialSequence();
+  $experiment_sequence_temp = checkTrialSequence(); // check what experiment condition/sequence is in queue
   $final_experiment_sequence = [];
-  $final_experiment_sequence = getFinalExpSequence($experiment_sequence_temp, $experiment_sequence);
+  $final_experiment_sequence = getFinalExpSequence($experiment_sequence_temp, $unfinished_experiment_sequence); // leave those experiment sequence what is in queue and what sequence is already done
+  // var_dump($final_experiment_sequence);
+  // pick a random sequence what is not done
   if(!empty($final_experiment_sequence)){
     $random_sequence_key = array_rand($final_experiment_sequence);
     $random_sequence_value = $final_experiment_sequence[$random_sequence_key];
   }else{
-    $random_sequence_key = array_rand($experiment_sequence);
+    $random_sequence_key = array_rand($experiment_sequence); //if all conditions are finished pick a random sequence from the original sequence
     $random_sequence_value = $experiment_sequence[$random_sequence_key];
   }
 //   $random_sequence_key = array_rand($final_experiment_sequence);

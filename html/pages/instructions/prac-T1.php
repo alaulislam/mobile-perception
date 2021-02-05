@@ -92,7 +92,7 @@
                      <img src="img/task_explanation/task_explanation_T1_S3.gif" style="height: 160px !important;"  alt="Example of Tall size visualization.">
                      <figcaption class="figure-caption">Example of Tall size visualization.</figcaption>
                   </figure>
-                  <p class="text-center mt-0">Saturday < Sunday</br><b>Answer:</b> Sunday</p>
+                  <p class="text-center mt-0">Saturday > Sunday</br><b>Answer:</b> Saturday</p>
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="d-inline-block align-middle text-muted task_explanation_T1_slide_counter"></h5>

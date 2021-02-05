@@ -83,6 +83,30 @@
                 console.log(jqXHR);
             }
       }); // end Ajax
+      var target_message            = 'sequence_set';
+      $.ajax({
+            type        : 'POST',  
+            url         : 'ajax/finished_experiment_sequence.php',  
+            data        : {
+                              experiment_sequence        : JSON.stringify(experiment_sequence),  
+                              experiment_duration        : JSON.stringify(experiment_duration),
+                              target_message             : JSON.stringify(target_message)    
+                         }, 
+            dataType    : 'json',  
+            success:function(response){
+               if( response.status == 'error' ) {
+                  console.log('Something bad happened!');
+               } else {
+                  console.log("Data saved successfully.");
+               }
+            },
+            complete: function(response, textStatus) {
+            // console.log(textStatus)
+            },
+            error:function (jqXHR, status, thrownError){
+                console.log(jqXHR);
+            }
+      }); // end Ajax
       
       } // end if for !excluded
 
