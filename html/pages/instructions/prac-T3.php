@@ -115,36 +115,10 @@
                      </div>
                      <p class="text-center text-muted" style="font-size:90%;">Example of answering buttons</p>
                      <div class="mt-4">
-                     <p>  Hold your phone so you can comfortably push these buttons. 
-                     Try it now and then press <strong>Next</strong> to move on.</p>
+                     <p>  Hold your phone properly so that you can comfortably push these buttons. 
+                     Press <strong>Next</strong> to move on.</p>
                      </div>
             </div>
-
-            <!-- <div class="task_explanation_T3_slide">
-               <figure class="img-container">
-                  <img src="img/task_explanation/task_explanation_T3_S3.gif" style="height: 160px !important;"  alt="Example of Tall size visualization.">
-                  <figcaption class="figure-caption">Example of Tall size visualization.</figcaption>
-               </figure>
-               <div class="form-group mt-2">
-                  <p><b>Q.</b> Did you sleep longer on average on the weekend days (Sat, Sun) compared to the weekdays (Mon-Fri)?</p>
-                  <div class="d-flex justify-content-center" style="margin-top:-25px;">
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input radio_btn_task_explanation_T3" type="radio" id="radio_btn_task_explanation_T3_yes" value="yes" name="radio_btn_task_explanation_T3">
-                        <label class="form-check-label lead" for="radio_btn_task_explanation_T3_yes">YES</label>
-                     </div>
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input radio_btn_task_explanation_T3" type="radio" id="radio_btn_task_explanation_T3_no" value="no" name="radio_btn_task_explanation_T3">
-                        <label class="form-check-label lead" for="radio_btn_task_explanation_T3_no">NO</label>
-                     </div>
-                  </div>
-               </div>
-               <div role="alert" id="alert_correct_task_explanation_T3" style="margin-top:-10px;">
-                  <p class="text-success"><strong>Correct!</strong> Click <strong>Next</strong> to proceed to the next section.</p>
-               </div>
-               <div role="alert" id="alert_wrong_task_explanation_T3">
-                  <p class="text-danger"><strong>Wrong!</strong> The correct answer is YES. Please select YES to proceed to the next section.</p>
-               </div>
-            </div> -->
          </div>
       </div>
    </div>

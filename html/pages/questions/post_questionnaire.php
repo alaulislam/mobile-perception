@@ -330,7 +330,7 @@
       if(first_question_answer != task_name && second_question_answer != "sleep"){
          excluded = true;
          $('body').trigger('excluded');
-         var excluded_for_attn_check = "exclude_participant";
+         var excluded_for_attn_check = "excluded_participant_for_last_two_questions";
          var participant_id          = $('#participant_id').val();
          var system_generated_id     = $('#system_generated_id').val();
          var experiment_sequence     = <?php echo $between_subject_sequence;?>;
@@ -339,18 +339,20 @@
          var browser_name            = browserInfo.getBrowserName();
          var browser_version         = browserInfo.getBrowserVersion();
          var operating_system        = browserInfo.getOSName();
+         var total_attn_check_ques_wrong = 2;
          $.ajax({
             type        : 'POST',  
             url         : 'ajax/excluded_for_attention_check.php',  
             data        : {
-                              excluded_for_attn_check    : JSON.stringify(excluded_for_attn_check), 
-                              participant_id             : JSON.stringify(participant_id), 
-                              system_generated_id        : JSON.stringify(system_generated_id), 
-                              experiment_sequence        : JSON.stringify(experiment_sequence),
-                              experiment_duration        : JSON.stringify(experiment_duration), 
-                              browser_name               : JSON.stringify(browser_name),
-                              browser_version            : JSON.stringify(browser_version),
-                              operating_system           : JSON.stringify(operating_system)
+                              excluded_for_attn_check     : JSON.stringify(excluded_for_attn_check), 
+                              participant_id              : JSON.stringify(participant_id), 
+                              system_generated_id         : JSON.stringify(system_generated_id), 
+                              experiment_sequence         : JSON.stringify(experiment_sequence),
+                              experiment_duration         : JSON.stringify(experiment_duration), 
+                              browser_name                : JSON.stringify(browser_name),
+                              browser_version             : JSON.stringify(browser_version),
+                              operating_system            : JSON.stringify(operating_system),
+                              total_attn_check_ques_wrong : JSON.stringify(total_attn_check_ques_wrong)
                         }, 
             dataType    : 'json',  
             success:function(response){

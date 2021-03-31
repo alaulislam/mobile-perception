@@ -130,8 +130,8 @@
                      </div>
                      <p class="text-center text-muted" style="font-size:90%;">Example of answering buttons</p>
                      <div class="mt-4">
-                     <p>  Hold your phone so you can comfortably push these buttons. 
-                     Try it now and then press <strong>Next</strong> to move on.</p>
+                     <p>  Hold your phone properly so that you can comfortably push these buttons. 
+                     Press <strong>Next</strong> to move on.</p>
                      </div>
             </div>
            

@@ -1,0 +1,2 @@
+participant_id, system_generated_id, experiment_sequence, experiment_browser, experiment_browser_version, experiment_os, timestamp, experiment_duration, exclusion_reason, total_wrong_ans
+Pilot, f528764d624db129b32c21fbca0cb8d6, 105, Firefox, 86.0, macOS, 2021-03-22T15:53:20+0100, 6450, excluded_participant_for_at_least_six_wrong_ans, 6

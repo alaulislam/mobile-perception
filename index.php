@@ -69,7 +69,7 @@
     <h5 class="text-center">You can participate in the experiment:</h5>
             <p>If you view this page on a smartphone (e.g., android mobile, iPhone) and meet the following screen resolution
             </br>&#10148; &nbsp;<strong>minimum</strong> screen resolution of 320x480 pixels (width x height)
-            </br>&#10148; &nbsp;<strong>maximum</strong> screen resolution of 414x896 pixels (width x height)
+            <!-- </br>&#10148; &nbsp;<strong>maximum</strong> screen resolution of 414x896 pixels (width x height) -->
       </p>
         <p>Please revisit the page with a phone that fits this requirement to proceed.</p>
 </div>             

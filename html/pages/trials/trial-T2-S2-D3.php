@@ -186,6 +186,8 @@
    var sequence_T_T2S2D3 = [];
    var feedback_T_T2S2D3 = [];
    var feedback_time_T_T2S2D3 = [];
+   var attention_check_flag_T_T2S2D3 = false;
+   var attention_check_counter_T_T2S2D3 = 0
    
    $(document).ready(function() {
     $("#btn_<?php echo $id;?>").hide();
@@ -240,7 +242,11 @@
        }
    }
    $("#btn_NO_T_T2S2D3").click(function(){
-       var current_trial_image_name_T_T2S2D3 = $('#current_trial_image_name_T_T2S2D3').val();
+           var current_trial_image_name_T_T2S2D3 = $('#current_trial_image_name_T_T2S2D3').val();
+           var attention_check_img_T_T2S2D3 = current_trial_image_name_T_T2S2D3.startsWith("T2S2D3-attn-");
+           if(attention_check_img_T_T2S2D3){
+            attention_check_flag_T_T2S2D3 = true;
+           }
            time_counter_no_bn_T2S2D3 = performance.now();
            image_file_name_T_T2S2D3.push(current_trial_image_name_T_T2S2D3);
            chart_T_T2S2D3.push(stimuli_T_T2S2D3);
@@ -263,16 +269,23 @@
             //  alert('wrong');
              feedback_T_T2S2D3.push("error");
              feedback_time_T_T2S2D3.push(time_counter_no_bn_T2S2D3 - last_time_count_T_T2S2D3);
+             if(attention_check_flag_T_T2S2D3){
+               attention_check_counter_T_T2S2D3+=1;
+             }
            }
+           attention_check_flag_T_T2S2D3 = false;
            set_current_time_T_T2S2D3(time_counter_no_bn_T2S2D3);
            next_images_T_T2S2D3(1);
       
    }); 
    
    $("#btn_YES_T_T2S2D3").click(function(){
-       var current_trial_image_name_T_T2S2D3 = $('#current_trial_image_name_T_T2S2D3').val();
+           var current_trial_image_name_T_T2S2D3 = $('#current_trial_image_name_T_T2S2D3').val();
+           var attention_check_img_T_T2S2D3 = current_trial_image_name_T_T2S2D3.startsWith("T2S2D3-attn-");
+           if(attention_check_img_T_T2S2D3){
+            attention_check_flag_T_T2S2D3 = true;
+           }
            time_counter_yes_bn_T2S2D3 = performance.now();
-         
            image_file_name_T_T2S2D3.push(current_trial_image_name_T_T2S2D3);
            chart_T_T2S2D3.push(stimuli_T_T2S2D3);
            task_T_T2S2D3.push("t2");
@@ -294,7 +307,11 @@
             // alert('wrong');
              feedback_T_T2S2D3.push("error");
              feedback_time_T_T2S2D3.push(time_counter_yes_bn_T2S2D3 - last_time_count_T_T2S2D3);
+             if(attention_check_flag_T_T2S2D3){
+               attention_check_counter_T_T2S2D3+=1;
+             }
            }
+           attention_check_flag_T_T2S2D3 = false;
    
            set_current_time_T_T2S2D3(time_counter_yes_bn_T2S2D3);
            next_images_T_T2S2D3(1);
@@ -315,7 +332,9 @@
       var experiment_order_T_T2S2D3         = '<?php echo $experiment_order_T_T2S2D3;?>';
       var is_main_trial_T_T2S2D3            = 1;
      if (type === '<?php echo $id;?>'){
-   
+      var global_attn_check_fail_count_T_T2S2D3       = parseInt($('#attention_check_fail_count').val());
+      var curr_page_attn_check_fail_count_T_T2S2D3    = parseInt(attention_check_counter_T_T2S2D3);
+      $('#attention_check_fail_count').val(global_attn_check_fail_count_T_T2S2D3 + curr_page_attn_check_fail_count_T_T2S2D3);
       $.ajax({
            type        : 'POST',  
            url         : 'ajax/experiment_data_save.php',  

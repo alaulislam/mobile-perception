@@ -40,7 +40,9 @@
   </div>
 
 <?php
-      if (isset($_GET["DEBUG"]) || isset($_GET["debug"])){
+    $missing_parameters = false;
+      
+    if (isset($_GET["PROLIFIC_PID"]) || isset($_GET["STUDY_ID"])){
         $ip = getenv('HTTP_CLIENT_IP')?:
         getenv('HTTP_X_FORWARDED_FOR')?:
         getenv('HTTP_X_FORWARDED')?:
@@ -53,9 +55,9 @@
         // $_GET["SESSION_ID"] = session_id();
         // $_GET["PROLIFIC_PID"] = hash('md5', $ip);
         $system_generated_id = hash('md5', $ip);
+      }else {
+        $missing_parameters = true;
       }
-
-    $missing_parameters = false;
   // get URL parameters sent by Prolific
   if (isset($_GET["PROLIFIC_PID"])) {
     $participant_id = $_GET["PROLIFIC_PID"];
@@ -80,8 +82,8 @@
   }  else {
     $is_debug = 0;
   }
-
-  echo '<script>console.log('.$participant_id.')</script>';
+  $attention_check_fail_count = 0;
+  // echo '<script>console.log('.$participant_id.')</script>';
 
 ?>
   <div class ="container" id="missing-parameter-container" style="display:none;">
@@ -100,7 +102,6 @@ require "setup/constants.php";
 require "setup/functions.php";
 require "setup/trial_sequence_setup.php";
 require "setup/pages_behavior.php";
-require "setup/page_function.php";
 
 assignFactorLevels();
 
@@ -139,6 +140,7 @@ assignFactorLevels();
   echo '<input type="hidden" id="study_id" value="' . "" . $study_id .  '">';
   echo '<input type="hidden" id="session_id" value="' . "" . $session_id .  '">';
   echo '<input type="hidden" id="condition" value="' . "" . $condition .  '">';
+  echo '<input type="hidden" id="attention_check_fail_count" value="' . "" . $attention_check_fail_count .  '">';
   if (!is_null($factor1)){
     echo '<input  type="hidden" 
                   id="' . $FACTOR_LEVELS["factor1"]["name"]  . '" value="' . "" . $factor1 .  '">';

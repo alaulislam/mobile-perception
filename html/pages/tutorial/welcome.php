@@ -9,7 +9,7 @@
         <p>This study is conducted by Alaul Islam and Petra Isenberg from Inria (France), 
           Anastasia Bezerianos from LISN (France), and Tanja Blascheck from the University of Stuttgart (Germany).</p>
         <!-- <p class="text-justify"> The purpose of this study is to understand the readability of visualizations on different types of small displays: a smartwatch and a wristband.</p> -->
-        <p>The whole experiment combines both training sections and experiment sections and  will take you <strong>X</strong> minutes to complete.</p>
+        <p>The whole experiment combines both training sections and experiment sections and  will take you <strong>17</strong> minutes to complete.</p>
   </div>
 
   </div>

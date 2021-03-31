@@ -33,7 +33,7 @@
                      &nbsp;If you are viewing this page on a smartphone (e.g., android mobile, iPhone) and meet the following screen resolution
                      <ul class="inner">
                         <li style="margin-left:-25px;">&nbsp;<strong>minimum</strong> screen resolution of 320x480 pixels (width x height)</li>
-                        <li style="margin-left:-25px;">&nbsp;<strong>maximum</strong> screen resolution of 414x896 pixels (width x height)</li>
+                        <!-- <li style="margin-left:-25px;">&nbsp;<strong>maximum</strong> screen resolution of 414x896 pixels (width x height)</li> -->
                      </ul>
                   </li>
                </ul>
@@ -55,7 +55,7 @@
                <div class="mt-2"></div>
                <p>&raquo; You will not be able to withdraw your response once you confirm your participation at the end of this experiment by clicking on the completion link</p>
                <div class="mt-2"></div>
-               <p>&raquo; You will receive <strong>€ X / £ Y</strong>  for participating in this experiment, provided that you complete the experiment, consent to participate, and correctly answer attention check questions</p>
+               <p>&raquo; You will receive <strong>£ 2.63</strong>  for participating in this experiment, provided that you complete the experiment, consent to participate, and correctly answer attention check questions</p>
             </div>
          </div>
       </div>

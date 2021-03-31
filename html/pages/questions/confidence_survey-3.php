@@ -72,6 +72,56 @@ $('body').on('next', function(e, type){
         // console.log("page number",  type)
         event.preventDefault();
         if (type === '<?php echo $id;?>'){
+
+          var global_attn_check_fail_count  = parseInt($('#attention_check_fail_count').val());
+     
+
+         if(global_attn_check_fail_count >= 6){
+         excluded = true;
+         $('body').trigger('excluded');
+         var excluded_for_attn_check = "excluded_participant_for_at_least_six_wrong_ans";
+         var participant_id          = $('#participant_id').val();
+         var system_generated_id     = $('#system_generated_id').val();
+         var experiment_sequence     = <?php echo $between_subject_sequence;?>;
+         var experiment_duration     = parseInt(timeSpentOnSite/1000);
+         var browserInfo             = bowser.getParser(window.navigator.userAgent);
+         var browser_name            = browserInfo.getBrowserName();
+         var browser_version         = browserInfo.getBrowserVersion();
+         var operating_system        = browserInfo.getOSName();
+         $.ajax({
+            type        : 'POST',  
+            url         : 'ajax/excluded_for_attention_check.php',  
+            data        : {
+                              excluded_for_attn_check     : JSON.stringify(excluded_for_attn_check), 
+                              participant_id              : JSON.stringify(participant_id), 
+                              system_generated_id         : JSON.stringify(system_generated_id), 
+                              experiment_sequence         : JSON.stringify(experiment_sequence),
+                              experiment_duration         : JSON.stringify(experiment_duration), 
+                              browser_name                : JSON.stringify(browser_name),
+                              browser_version             : JSON.stringify(browser_version),
+                              operating_system            : JSON.stringify(operating_system),
+                              total_attn_check_ques_wrong : JSON.stringify(global_attn_check_fail_count)
+                        }, 
+            dataType    : 'json',  
+            success:function(response){
+               if( response.status == 'error' ) {
+                  console.log('Something bad happened!');
+               } else {
+                  console.log("Participant excluded .");
+               }
+            },
+            complete: function(response, textStatus) {
+            },
+            error:function (jqXHR, status, thrownError){
+            }
+         });// ajax end
+         $('#<?php echo $next ?>').hide();
+         $('#excluded_for_trials_attn_check_page').show();
+          } else {
+            // console.log("passed on attention check");
+            $('#<?php echo $id ?>').hide().promise().done(() => $('#<?php echo $next ?>').show());
+          }
+        if(!excluded){
           var page_name                   = '<?php echo $id;?>';
           var participant_id_cs_1         = $('#participant_id').val();
           var system_generated_id         = $('#system_generated_id').val();
@@ -107,8 +157,10 @@ $('body').on('next', function(e, type){
                 // console.log(jsonValue.Message);
                     console.log(jqXHR);
                 }
-          });
-        }
+          });// ajax end
+         } //end !excluded "if"
+
+        } //end page "if"
     
   });
 

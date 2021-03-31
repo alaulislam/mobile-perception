@@ -25,11 +25,11 @@
 /* Prolific specific data */
 
 	// Completion URL. Fill in the one provided in their inteface
-	static $COMPLETION_URL = "https://app.prolific.co/submissions/complete?cc=6B23E247";
+	static $COMPLETION_URL = "https://app.prolific.co/submissions/complete?cc=E509380D";
 	
 	// The information below is meant to be filled in automatically in the consent form. Adjust to the value corresponding to your experiment.
 	// Experiment duration in minutes
-	static $EXP_DURATION = 20;
+	static $EXP_DURATION = 17;
 	// Payment to participants in British Pound
 	static $EXP_PAYMENT = 0.45;
 

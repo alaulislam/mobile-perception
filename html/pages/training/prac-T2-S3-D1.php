@@ -129,7 +129,7 @@
                   <div style="margin-top:-15px"></div>
                   <div class="modal-footer">
                      <p class="d-none" id="btn_next_correct_modal_message_P_T2S3D1">Training is over, wait a moment please!</p>
-                     <button type="button" class="btn btn-dark border rounded-pill shadow-sm mb-1" id="btn_next_correct_modal_P_T2S3D1">NEXT</button>
+                     <button type="button" class="btn btn-dark border rounded-pill btn-wider w-100" id="btn_next_correct_modal_P_T2S3D1">NEXT</button>
                   </div>
                </div>
             </div>
@@ -154,7 +154,7 @@
                   <div style="margin-top:-15px"></div>
                   <div class="modal-footer">
                      <p class="d-none" id="btn_next_error_modal_message_P_T2S3D1">Training is over, wait a moment please!</p>
-                     <button type="button" class="btn btn-dark border rounded-pill shadow-sm mb-1" id="btn_next_error_modal_P_T2S3D1">NEXT</button>
+                     <button type="button" class="btn btn-dark border rounded-pill btn-wider w-100" id="btn_next_error_modal_P_T2S3D1">NEXT</button>
                   </div>
                </div>
             </div>

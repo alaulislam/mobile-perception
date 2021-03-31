@@ -12,7 +12,7 @@
           <b>Introduction:</b>
         </p>
         <p>
-        You are invited to participate in a study titled "Readability of micro visualizations on mobile devices". The study has received ethics approval under ref. no CER-Paris-Saclay-2021-xxx. 
+        You are invited to participate in a study titled "Readability of micro visualizations on mobile devices". The study has received ethics approval under ref. no. CER-Paris-Saclay-2021-015. 
         </p>
         <p>
           <b>Main researchers:</b>
@@ -65,7 +65,7 @@
           <b>Potential benefits:</b>
         </p>
         <p>
-        You will receive <strong>€ X / £ Y</strong> for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment.
+        You will receive <strong>£ 2.63</strong> for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment.
         <!-- You will receive £<?php echo sprintf('%0.2f', $EXP_PAYMENT); ?>  for participating in this experiment, under the condition that you complete the experiment, do not rush through the experiment, and answer the attention check questions correctly (if any). If attention check questions are present, it will be easy if you pay attention to the experiment. -->
         </p>
         <p>

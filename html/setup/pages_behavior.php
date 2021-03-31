@@ -80,6 +80,29 @@
     "disabled"	=> false
   );
 
+  // $PAGE_1 = array(
+  //   "id"		=> "trial_T1_S1_D1",
+  //   "next"		=> "trial_T1_S2_D2",
+  //   "button" 	=> "Next",
+  //   "page"		=> "pages/instructions/trial-T1-S1-D1.php",
+  //   "disabled"	=> false
+  // );
+  // $PAGE_2 = array(
+  //   "id"		=> "trial_T1_S2_D2",
+  //   "next"		=> "trial_T1_S2_D3",
+  //   "button" 	=> "Next",
+  //   "page"		=> "pages/instructions/trial-T1-S1-D2.php",
+  //   "disabled"	=> false
+  // );
+  // $PAGE_3 = array(
+  //   "id"		=> "trial_T1_S2_D3",
+  //   "next"		=> "",
+  //   "button" 	=> "Next",
+  //   "page"		=> "pages/instructions/trial-T1-S1-D3.php",
+  //   "disabled"	=> false
+  // );
+
+
   ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"} = array(
     "id"		=> "instruction_prac_$task[0]_$stimuli[0]",
     "next"		=> "practice_$task[0]_$stimuli[0]_$data_img[0]",
@@ -203,6 +226,14 @@
     "disabled"	=> false
   );
 
+  $ATTENTION_FAILED_TRIALS_IMG_PAGE = array(
+    "id"		=> "excluded_for_trials_attn_check_page",
+    "next"		=> "none",
+    "button" 	=> " ",
+    "page"		=> "pages/questions/attention-check-failed-for-trials.php",
+    "disabled"	=> true
+  );
+
   $POST_QUESTIONNAIRE_PAGE = array(
     "id"		=> "post_questionnaire",
     "next"		=> "feedback",
@@ -246,7 +277,7 @@
           $TASK_EXPLANATION_PAGE,
           $INTERMITTENT_MESSAGE_PAGE,
 
-          // $PAGE_TEST,
+            // $PAGE_TEST,
 
           ${"INSTRUCTION_PRAC_$task[0]_$stimuli[0]"},
           ${"PRACTICE_TASK_$task[0]_$stimuli[0]_$data_img[0]"},
@@ -258,14 +289,15 @@
           ${"PRACTICE_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
           $INSTRUCTION_TRIAL_2, 
           ${"TRIAL_TASK_$task[0]_$stimuli[1]_$data_img[1]"},
-           $CONFIDENCE_SURVEY_2,
+          $CONFIDENCE_SURVEY_2,
 
           ${"INSTRUCTION_PRAC_$task[0]_$stimuli[2]"},
           ${"PRACTICE_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
           $INSTRUCTION_TRIAL_3,
           ${"TRIAL_TASK_$task[0]_$stimuli[2]_$data_img[2]"},
-           $CONFIDENCE_SURVEY_3, 
-        
+          $CONFIDENCE_SURVEY_3,
+
+          $ATTENTION_FAILED_TRIALS_IMG_PAGE,
           $POST_QUESTIONNAIRE_PAGE,
           $ATTENTION_FAILED_PAGE,
           $FEEDBACK_PAGE,

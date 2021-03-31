@@ -183,6 +183,8 @@
    var sequence_T_T1S1D2 = [];
    var feedback_T_T1S1D2 = [];
    var feedback_time_T_T1S1D2 = [];
+   var attention_check_flag_T_T1S1D2 = false;
+   var attention_check_counter_T_T1S1D2 = 0;
    
    $(document).ready(function() {
      $("#btn_<?php echo $id;?>").hide();
@@ -236,7 +238,10 @@
    
    $("#btn_sunday_T_T1S1D2").click(function(){
            var current_trial_image_name_T_T1S1D2 = $('#current_trial_image_name_T_T1S1D2').val();
-           //var attention_check = current_trial_image_name_T_T1S1D2.startsWith("T1S1D2ATTN-");
+           var attention_check_img_T_T1S1D2 = current_trial_image_name_T_T1S1D2.startsWith("T1S1D2-attn-");
+           if(attention_check_img_T_T1S1D2){
+            attention_check_flag_T_T1S1D2 = true;
+           }
            time_counter_sunday_btn_T_T1S1D2 = performance.now();
            image_file_name_T_T1S1D2.push(current_trial_image_name_T_T1S1D2);
            chart_T_T1S1D2.push(stimuli_T_T1S1D2);
@@ -255,13 +260,21 @@
            }else{
              feedback_T_T1S1D2.push("error");
              feedback_time_T_T1S1D2.push(time_counter_sunday_btn_T_T1S1D2 - last_time_count_T_T1S1D2);
+             if(attention_check_flag_T_T1S1D2){
+               attention_check_counter_T_T1S1D2+=1;
+             }
            }
+           attention_check_flag_T_T1S1D2 = false;
            set_current_time_T_T1S1D2(time_counter_sunday_btn_T_T1S1D2);
            next_images_T_T1S1D2(1);
    }); 
    
    $("#btn_saturday_T_T1S1D2").click(function(){
-       var current_trial_image_name_T_T1S1D2 = $('#current_trial_image_name_T_T1S1D2').val();
+           var current_trial_image_name_T_T1S1D2 = $('#current_trial_image_name_T_T1S1D2').val();
+           var attention_check_img_T_T1S1D2 = current_trial_image_name_T_T1S1D2.startsWith("T1S1D2-attn-");
+           if(attention_check_img_T_T1S1D2){
+            attention_check_flag_T_T1S1D2 = true;
+           }
            time_counter_saturday_btn_T_T1S1D2 = performance.now();
          
            image_file_name_T_T1S1D2.push(current_trial_image_name_T_T1S1D2);
@@ -283,8 +296,11 @@
            }else{
              feedback_T_T1S1D2.push("error");
              feedback_time_T_T1S1D2.push(time_counter_saturday_btn_T_T1S1D2 - last_time_count_T_T1S1D2);
+             if(attention_check_flag_T_T1S1D2){
+               attention_check_counter_T_T1S1D2+=1;
+             }
            }
-   
+           attention_check_flag_T_T1S1D2 = false;
            set_current_time_T_T1S1D2(time_counter_saturday_btn_T_T1S1D2);
            next_images_T_T1S1D2(1);
       
@@ -300,7 +316,13 @@
       var experiment_sequence_T_T1S1D2       = '<?php echo $between_subject_sequence;?>';
       var experiment_order_T_T1S1D2          = '<?php echo $experiment_order_T_T1S1D2;?>';
       var is_main_trial_T_T1S1D2             = 1;
-     if (type === '<?php echo $id;?>'){
+     
+      if (type === '<?php echo $id;?>'){
+      var global_attn_check_fail_count_T_T1S1D2       = parseInt($('#attention_check_fail_count').val());
+      var curr_page_attn_check_fail_count_T_T1S1D2    = parseInt(attention_check_counter_T_T1S1D2);
+      $('#attention_check_fail_count').val(global_attn_check_fail_count_T_T1S1D2 + curr_page_attn_check_fail_count_T_T1S1D2);
+      // var attention_check_fail_count_T_T1S1D2         = parseInt($('#attention_check_fail_count').val());
+      // console.log('attention check counter', attention_check_fail_count_T_T1S1D2)
    
       $.ajax({
            type        : 'POST',  
@@ -323,9 +345,9 @@
            dataType    : 'json',  
            success:function(response){
                if( response.status == 'error' ) {
-                 console.log('Something bad happened!');
+                  console.log(response.message);
                } else {
-                   console.log(response.participant_id);
+                  console.log(response.message);
                }
            },
            complete: function(response, textStatus) {
