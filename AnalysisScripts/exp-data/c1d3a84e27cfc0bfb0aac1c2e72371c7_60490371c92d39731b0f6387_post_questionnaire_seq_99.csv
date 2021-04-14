@@ -1,0 +1,2 @@
+participant_id, system_generated_id, experiment_sequence, viz_preference_for_weekly_sleep_data, orientation_preference_for_wristband_display, is_checked_sleep_duration, is_checked_sleep_phase, is_checked_sleep_quality, is_checked_sleep_schedule, attention_check_question_one, attention_check_question_two, timestamp, page_name
+60490371c92d39731b0f6387, c1d3a84e27cfc0bfb0aac1c2e72371c7, 99, square, wide, 1, 1, 1, 0, T3, sleep, 2021-03-24T11:04:45+0100, post_questionnaire

@@ -1,0 +1,2 @@
+participant_id, system_generated_id, experiment_sequence, has_smartwatch, has_fitness_band, is_used_bar_chart_likert, timestamp,  page_name
+602628fe49a39b2569dfdf0b, 4f4879c2b4128bd8b4f07debdb40ebde, 104, 1, 0, 3, 2021-03-24T10:47:55+0100, pre_questionnaire

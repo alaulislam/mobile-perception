@@ -1,0 +1,2 @@
+participant_id, system_generated_id, experiment_browser, experiment_browser_version, experiment_os, timestamp, experiment_duration
+5e9ef5d02f8d2d04be8a78ae, b922f4b586bc2284e17c348a6f3f0e08, Chrome, 89.0.4389.105, Android, 2021-03-24T11:05:56+0100, 651

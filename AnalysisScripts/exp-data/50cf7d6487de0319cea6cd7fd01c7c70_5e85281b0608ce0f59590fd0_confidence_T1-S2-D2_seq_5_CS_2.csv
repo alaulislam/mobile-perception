@@ -1,0 +1,2 @@
+participant_id, system_generated_id, experiment_sequence, experiment_order, second_set_confidence_survey_likert, timestamp, page_name
+5e85281b0608ce0f59590fd0, 50cf7d6487de0319cea6cd7fd01c7c70, 5, T1-S2-D2, 4, 2021-03-24T10:46:04+0100, confidence_survey_2
